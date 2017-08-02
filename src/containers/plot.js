@@ -28,7 +28,12 @@ class Plot extends React.Component {
     let weatherData = [{
       x: this.props.xData,
       y: this.props.yData,
-      type: this.props.type
+      type: this.props.type,
+      mode: this.props.mode,
+      line: {
+        color: 'pink',
+        width: 6
+  }
     }];
 
     let styling = {
@@ -81,7 +86,13 @@ class Plot extends React.Component {
     Plotly.newPlot('plot', [{
       x: this.props.xData,
       y: this.props.yData,
-      type: this.props.type
+      type: this.props.type,
+      mode: this.props.mode,
+      line: {
+        color: 'purple',
+        width: 6
+  }
+
     }],{
       showlegend: false,
       displayModeBar: false,

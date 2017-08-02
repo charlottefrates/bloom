@@ -187,6 +187,7 @@ export default class WeatherForcast extends React.Component{
                       yData={this.state.temps}
                       onPlotClick={this.onPlotClick}
                       type="scatter"
+                      mode="line"
                   />
                   </div>
                   ) : null }
