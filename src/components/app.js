@@ -25,7 +25,10 @@ export default class App extends React.Component{
     render(){
         return (
             <div>
-                {/*Weather Component*/}
+                {/*
+                Weather Component
+                Form captures location entry upon submit
+                */}
                 <h1>Bloom Weather</h1>
                 <form onSubmit={this.fetchData}>
                   <label>I want to know the weather for
