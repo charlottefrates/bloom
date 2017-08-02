@@ -10,6 +10,7 @@ export default class WeatherForcast extends React.Component{
     constructor(props) {
     super(props);
     this.state = {location: '',
+                  current: '',
                   data:{ },
                   dates: [],
                   temps: [],
@@ -31,17 +32,34 @@ export default class WeatherForcast extends React.Component{
         const location = encodeURIComponent(this.state.location);
 
         let key = '3229556f6b40c6492802319447e8181d';
+        let key2 = '16feb82ad77fc7d5f39ac7507d74ffe4';
+
         //to change units
         let metric = 'metric';
         let imperial = 'imperial'
 
-        const urlPrefix = 'http://api.openweathermap.org/data/2.5/forecast?q=';
+        const urlPrefixcurrent = 'http://api.openweathermap.org/data/2.5/weather?q='
+        const urlPrefixfiveday = 'http://api.openweathermap.org/data/2.5/forecast?q=';
         let urlSuffix = `&APPID=${key}&units=${imperial}`;
-        const urlfiveday = urlPrefix + location + urlSuffix;
-
+        let urlSuffix2 = `&APPID=${key2}&units=${imperial}`;
+        const urlfiveday = urlPrefixfiveday + location + urlSuffix;
+        const urlcurrent = urlPrefixcurrent + location + urlSuffix;
 
         //Axios - Promised based data fetching
         // automatically converts data in JSON
+        axios.get(urlcurrent)
+          .then(response => {
+                var currentTemperature = response.data.main.temp;
+                console.log(response.data.main.temp);
+
+                this.setState({
+                  current:response.data.main.temp
+                })
+          })
+          .catch(error => {
+                  console.log('Error fetching and parsing data', error);
+          });
+
         axios.get(urlfiveday)
           .then(response => {
               var list = response.data.list;
@@ -97,10 +115,13 @@ export default class WeatherForcast extends React.Component{
 
 
     render(){
-        let currentTemp = 'no location';
+        let fiveDayTemp = 'no location';
         if (this.state.data.list) {
-          currentTemp = this.state.data.list[0].main.temp;
+          fiveDayTemp = this.state.data.list[0].main.temp;
         }
+
+        let currentTemp = this.state.current;
+
         return (
             <div>
                 {/*
@@ -128,17 +149,30 @@ export default class WeatherForcast extends React.Component{
 
                 {(this.state.data.list) ? (
                   <div className="wrapper">
-                  {/* Render the current temperature if no specific date is selected */}
+                  {/* Render the current temperature if no specific date is selected*/}
                   <p className="temp-wrapper">
-                    <p> Projected Temp </p>
                     <span className="temp">
-                      { this.state.selected.temp ? this.state.selected.temp : currentTemp }
+                    { currentTemp}
+                    </span>
+                    <span className="temp-symbol">°C</span>
+                    <span className="temp-date2">
+                     Current temperature
+                     </span>
+                  </p>
+
+                  <br/>
+
+                  <p className="temp-wrapper">
+                    <span className="temp">
+                      { this.state.selected.temp ? this.state.selected.temp : fiveDayTemp }
                     </span>
                     <span className="temp-symbol">°C</span>
                     <span className="temp-date">
-                      { this.state.selected.temp ? this.state.selected.date : ''}
+                       { this.state.selected.temp ? this.state.selected.date : ''}
                     </span>
                   </p>
+
+                  <br/>
 
                   <h2>5 Day Forecast</h2>
 

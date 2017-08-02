@@ -59,6 +59,13 @@ input {
   transform: translateX(-50%);
   color: rgba(0, 0, 0, 0.5);
 }
+.temp-date2 {
+  position: absolute;
+  bottom: -1em;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(0, 0, 0, 0.5);
+}
 
 .butt {
 	font-size: .825em;

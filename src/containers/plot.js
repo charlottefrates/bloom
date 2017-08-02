@@ -25,8 +25,6 @@ class Plot extends React.Component {
 
     let display = {
       displayModeBar: false,
-      showlegend: true,
-      barmode: 'group'
     };
 
     Plotly.newPlot('plot',weatherData,styling,display );
@@ -48,8 +46,11 @@ class Plot extends React.Component {
         gridcolor: 'transparent'
       }
     }, {
-      displayModeBar: false
+      displayModeBar: false,
     });
+    //Event that captures temperature on click of specific date
+    document.getElementById('plot').on('plotly_click', this.props.onPlotClick);
+
   }
 
   render() {
