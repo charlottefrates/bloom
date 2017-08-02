@@ -45,21 +45,29 @@ export default class WeatherForcast extends React.Component{
         const urlfiveday = urlPrefixfiveday + location + urlSuffix;
         const urlcurrent = urlPrefixcurrent + location + urlSuffix;
 
+        let currentTemp = '';
+
         //Axios - Promised based data fetching
         // automatically converts data in JSON
+
+        //first request
         axios.get(urlcurrent)
           .then(response => {
                 var currentTemperature = response.data.main.temp;
-                console.log(response.data.main.temp);
-
+                // saving this data so that this state can be captured
+                // in second request
+                currentTemp = currentTemperature;
+                console.log('The current temperature is',currentTemperature);
                 this.setState({
                   current:response.data.main.temp
                 })
+
           })
           .catch(error => {
                   console.log('Error fetching and parsing data', error);
           });
 
+        //second request
         axios.get(urlfiveday)
           .then(response => {
               var list = response.data.list;
@@ -70,11 +78,9 @@ export default class WeatherForcast extends React.Component{
                   dates.push(list[i].dt_txt);
                   temps.push(list[i].main.temp);
                 }
-              console.log(list);
-              console.log(dates);
-              console.log(temps);
 
                 this.setState({
+                  current:currentTemp,
                   data: response.data,
                   dates: dates,
                   temps: temps,
@@ -83,13 +89,13 @@ export default class WeatherForcast extends React.Component{
                     temp: null
                   }
                 })
+
+                console.log(this.state);
+
           })
           .catch(error => {
                   console.log('Error fetching and parsing data', error);
           });
-
-
-          console.log('fetch data', this.state.data);
           }
 
 
@@ -128,8 +134,8 @@ export default class WeatherForcast extends React.Component{
                 Weather Component
                 Form captures location entry upon submit
                 */}
-                <form className="wrapper"onSubmit={this.handleChange}>
-                  <label>I want to see a 5 day weather forcast for
+                <form className="wrappermain"onSubmit={this.handleChange}>
+                  <label>I want to know the weather for
                     {/* controlled input for now */}
                     <input
                     placeholder={"State, Country"}
@@ -162,6 +168,8 @@ export default class WeatherForcast extends React.Component{
 
                   <br/>
 
+                  {/*<h2 className="forcastitle">5 Day Forecast</h2>*/}
+
                   <p className="temp-wrapper">
                     <span className="temp">
                       { this.state.selected.temp ? this.state.selected.temp : fiveDayTemp }
@@ -173,8 +181,6 @@ export default class WeatherForcast extends React.Component{
                   </p>
 
                   <br/>
-
-                  <h2>5 Day Forecast</h2>
 
                   <Plot
                       xData={this.state.dates}

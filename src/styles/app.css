@@ -22,6 +22,11 @@ input {
 
 .wrapper {
   max-width: 90%;
+  margin: 0 auto;
+}
+
+.wrappermain {
+  max-width: 90%;
   padding-top: 20px;
   padding-bottom: 20px;
   margin: 27px auto;
@@ -30,12 +35,25 @@ input {
   box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-/*
-.chartalign{
-  margin-left: 3%;
-  height: 600px;
+.svg-container{
+  position: relative !important;
+  width: 700-px !important;
+  height: 450px !important;
 }
-*/
+
+
+.chartalign{
+}
+
+
+.forcastitle{
+  display: block;
+    background: grey;
+    padding: 5px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .temp-wrapper {
   text-align: center;
@@ -43,12 +61,12 @@ input {
 }
 
 .temp {
-  font-size: 64px;
+  font-size: 40px;
 }
 
 .temp-symbol {
   position: absolute;
-  top: 54px;
+  top: 8px;
   margin-left: 4px;
 }
 
