@@ -10,25 +10,21 @@ export default class WeatherForcast extends React.Component{
     constructor(props) {
     super(props);
     this.state = {location: '',
-                  current_temp: '',
-                  current_condition: '',
-                  current_wind: '',
-                  data:{ },
+                  weather:{},
                   dates: [],
-                  temps: [],
-                  max:[],
-                  min:[],
-                  five_day_description: [],
-                  five_day_wind:[],
-                  selected: {
-                    date: '',
-                    temp: null
-                  }
+                  maxtemps: [],
+                  mintemps: [],
+                  descriptions:[],
+                  //selected: {
+                //    date: '',
+                //    temp: null
+                //  }
                 };
 
     //handler binds so that mutable state is kept within the property
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.changeLocation.bind(this);
+
   }
 
     handleChange = (e) =>{
@@ -44,91 +40,74 @@ export default class WeatherForcast extends React.Component{
         let metric = 'metric';
         let imperial = 'imperial'
 
-        const urlPrefixcurrent = 'http://api.openweathermap.org/data/2.5/weather?q='
-        const urlPrefixfiveday = 'http://api.openweathermap.org/data/2.5/forecast?q=';
+        const urlPrefix = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
+        //const urlPrefixcurrent = 'http://api.openweathermap.org/data/2.5/weather?q='
         let urlSuffix = `&APPID=${key}&units=${imperial}`;
-        let urlSuffix2 = `&APPID=${key2}&units=${imperial}`;
-        const urlfiveday = urlPrefixfiveday + location + urlSuffix;
-        const urlcurrent = urlPrefixcurrent + location + urlSuffix;
+        let cnt = '&cnt=5'
+        const url = urlPrefix + location + urlSuffix + cnt;
+        //const urlcurrent = urlPrefixcurrent + location + urlSuffix;
 
-        let currentTemp = '';
-        let currentCondition = '';
-        let currentWind= '';
 
         //Axios - Promised based data fetching
         // automatically converts data in JSON
 
         //first request
-        axios.get(urlcurrent)
+        axios.get(url)
           .then(response => {
-                var currentTemperature = response.data.main.temp;
-                var condition = response.data.weather[0].description;
-                var wind = response.data.wind.speed;
-                // saving this data so that this state can be captured
-                // in second request
-                currentTemp = currentTemperature;
-                currentCondition = condition;
-                currentWind = wind;
+            let list = response.data.list;
+            let dates = [];
+            let reformatdate = [ ];
+            let maxtemps = [];
+            let mintemps = [];
+            let descriptions = [];
 
-                console.log('The current temperature is',currentTemperature);
-                console.log('The current condition is',condition);
-                console.log('The wind is moving '+ wind + 'mph');
-                this.setState({
-                  current_temp:currentTemp,
-                  current_condition:currentCondition,
-                  current_wind:currentWind
+            function getFormattedDate(date){
+              let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+              return new Date(date * 1000).toLocaleDateString("en-US",options);
+            }
 
-                })
 
-          })
-          .catch(error => {
-                  console.log('Error fetching and parsing data', error);
-          });
+            for (let i = 0; i < list.length; i++) {
+                 dates.push(list[i].dt);
+                 maxtemps.push(list[i].temp.max);
+                 mintemps.push(list[i].temp.min);
+                 descriptions.push(list[i].weather[0].main)
+               }
 
-        //second request
-        axios.get(urlfiveday)
-          .then(response => {
-            console.log('The five day forcast report is',response);
-              var list = response.data.list;
-              var dates = [];
-              var temps = [];
-              var maxTemp = [];
-              var minTemp = [];
-              var descriptions = [];
-              var wind = [];
-
-              for (var i = 0; i < list.length; i++) {
-                  dates.push(list[i].dt_txt);
-                  temps.push(list[i].main.temp);
-                  maxTemp.push(list[i].main.temp_max);
-                  minTemp.push(list[i].main.temp_min);
-                  descriptions.push(list[i].weather[0].main);
-                  wind.push(list[i].wind.speed);
-                }
-
-                this.setState({
-                  current_temp:currentTemp,
-                  current_condition:currentCondition,
-                  current_wind:currentWind,
-                  data: response.data,
-                  dates: dates,
-                  temps: temps,
-                  max:maxTemp,
-                  min:minTemp,
-                  five_day_description:descriptions,
-                  five_day_wind:wind,
-                  selected: {
-                    date: '',
-                    temp: null
+               //changes format of dates
+               for (let i = 0; i < dates.length; i++) {
+                    reformatdate.push(getFormattedDate(dates[i]));
                   }
-                })
+
+                //show only day name
+
+                for (var i = 0; i < reformatdate.length; i++) {
+                  var change = reformatdate[i].substring(0,reformatdate[i].indexOf(','));
+                  //console.log (change);
+                  reformatdate.push(change);
+                }
+                
+
+            this.setState({
+                weather:response,
+                dates: reformatdate,
+                maxtemps: maxtemps,
+                mintemps: mintemps,
+                descriptions:descriptions
+              });
+
+              console.log(this.state);
 
           })
           .catch(error => {
                   console.log('Error fetching and parsing data', error);
           });
 
-          }
+
+    }
+
+
+
 
 
     //utility method to capture controlled text input
@@ -152,17 +131,24 @@ export default class WeatherForcast extends React.Component{
     };
 
 
-    render(){
-        let fiveDayTemp = 'no location';
-        if (this.state.data.list) {
-          fiveDayTemp = this.state.data.list[0].main.temp;
-        }
 
-        let currentTemp = this.state.current_temp;
-        let currentCondition = this.state.current_condition;
-        let currentWind = this.state.current_wind;
-        let max = this.state.max;
-        let min = this.state.min;
+    render(){
+
+      let d = new Date();
+      let n = d.toLocaleTimeString();
+
+      let objToday = new Date(),
+	     weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+	      dayOfWeek = weekday[objToday.getDay()],
+	       domEnder = function() { let a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+	        dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
+	         months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+	          curMonth = months[objToday.getMonth()],
+	           curYear = objToday.getFullYear(),
+
+	               curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+                 let today = dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
+
 
         return (
             <div>
@@ -181,54 +167,140 @@ export default class WeatherForcast extends React.Component{
                   </label>
                 </form>
 
-                {/*
-                   Render the current temperature and the forecast if we have data
-                   otherwise return null
-                   Add ternary operator so that we only render the current temp
-                   and forecast WHEN we have it
-
-                */}
-
-                {(this.state.data.list) ? (
+                {(this.state.weather.data) ? (
                   <div className="wrapper">
-                  {/* Render the current temperature if no specific date is selected*/}
 
-                  <p className="temp-wrapper">
-                    <span className="temp">
-                    { currentTemp}
-                    </span>
-                    <span className="temp-symbol">°C</span>
-                    <span className="temp-date2"> Current temperature </span>
-                    <span className="temp-date3"> {currentCondition} </span>
-                    <span className="temp-date4"> Wind: {currentWind} mph</span>
-                  </p>
+                  <div className="container" id="wrapper">
+                    <div className="container-fluid" id="current-weather">
+                    <div className="row">
 
-                  <br/>
-                  <br/>
-                  <br/>
+                    {/* <!-- Right panel --> */}
+                    <div className="col-md-4 col-sm-5">
+                      <h5><spam id="cityName">{this.state.weather.data.city.name}</spam>, <spam id="cityCode">{this.state.weather.data.city.country}</spam></h5>
+                      <h6 id="localDate">{today}</h6>
+                      <h5 id="localTime">{n}</h5>
+                    </div>
 
-                  <p className="temp-wrapper">
-                    <span className="temp">
-                      { this.state.selected.temp ? this.state.selected.temp : fiveDayTemp }
-                    </span>
-                    <span className="temp-symbol">°C</span>
-                    <span className="temp-date">
-                       { this.state.selected.temp ? this.state.selected.date : ''}
-                    </span>
-                  </p>
+                    {/* <!-- Center panel --> */}
+                    <div className="col-md-5 col-sm-7 center_one" >
+                      <div className="row">
+                        <i className="wi center_two" id ="main-icon" ></i>
+                        <div>
+                          <spam id="mainTemperature">{this.state.weather.data.list[0].temp.day}</spam>
+                          <h6 id="tempDescription">{this.state.weather.data.list[0].weather[0].description}</h6>
+                        </div>
+                        <p className="center_three"><a href="" id="farenheit">°F</a></p>
+                      </div>
+                    </div>
+
+                    {/* <!-- Left panel -->*/}
+                    <div className="col-xs-12 col-sm-12 col-md-3 row left_one" >
+                        <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
+                          <h6>Humidity: <spam id="humidity">{this.state.weather.data.list[0].humidity}</spam>%</h6>
+                        </div>
+                        <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
+                          <h6>Wind: <spam id="wind">{this.state.weather.data.list[0].speed}</spam> m/s</h6>
+                        </div>
+                        <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
+                          <h6>High: <spam id="mainTempHot">{this.state.weather.data.list[0].temp.max}</spam>°</h6>
+                        </div>
+                        <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
+                          <h6>Low: <spam id="mainTempLow">{this.state.weather.data.list[0].temp.min}</spam>°</h6>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
 
 
-                  <Plot
-                      xData={this.state.dates}
-                      yData={this.state.temps}
-                      yDataDes={this.state.five_day_description}
-                      onPlotClick={this.onPlotClick}
-                      type="scatter"
-                      mode="line"
-                  />
+                {/* <!-- 4 days forecast -->*/}
+                <div className="container-fluid">
+                  <div className="row forcast_one">
+
+                    {/*<!-- Day 1 -->*/}
+                    <div className="col-md-3 col-sm-6 day-weather-box">
+                      <div className="col-sm-12 day-weather-inner-box">
+                        <div className="col-sm-8 forecast-main">
+                          <p id="forecast-day-1-name">{this.state.dates[1]}</p>
+                          <div className="row">
+                            <h5 id="forecast-day-1-main">°</h5>
+                            <i className="wi forecast-icon" id="forecast-day-1-icon"></i>
+                          </div>
+                        </div>
+                        <div className="col-sm-4 forecast-min-low">
+                          <p><spam className="high-temperature" id="forecast-day-1-ht">{this.state.weather.data.list[1].temp.max}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-1-lt">{this.state.weather.data.list[1].temp.min}</spam></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/*<!-- Day 2 -->*/}
+                    <div className="col-md-3 col-sm-6 day-weather-box">
+                      <div className="col-sm-12 day-weather-inner-box">
+                        <div className="col-sm-8 forecast-main">
+                          <p id="forecast-day-2-name">{this.state.dates[2]}</p>
+                          <div className="row">
+                            <h5 id="forecast-day-2-main">°</h5>
+                            <i className="wi forecast-icon" id="forecast-day-2-icon"></i>
+                          </div>
+                        </div>
+                        <div className="col-sm-4 forecast-min-low">
+                          <p><spam className="high-temperature" id="forecast-day-2-ht"></spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-2-lt"></spam></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/*<!-- Day 3 -->*/}
+                    <div className="col-md-3 col-sm-6 day-weather-box">
+                      <div className="col-sm-12 day-weather-inner-box">
+                        <div className="col-sm-8 forecast-main">
+                          <p id="forecast-day-3-name"> {this.state.dates[3]}</p>
+                          <div className="row">
+                            <h5 id="forecast-day-3-main">°</h5>
+                            <i className="wi forecast-icon" id="forecast-day-3-icon"></i>
+                          </div>
+                        </div>
+                        <div className="col-sm-4 forecast-min-low">
+                          <p><spam className="high-temperature" id="forecast-day-3-ht"></spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-3-lt"></spam></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/*<!-- Day 4 -->*/}
+                    <div className="col-md-3 col-sm-6 day-weather-box">
+                      <div className="col-sm-12 day-weather-inner-box">
+                        <div className="col-sm-8 forecast-main">
+                          <p id="forecast-day-4-name"> {this.state.dates[4]}</p>
+                          <div className="row">
+                            <h5 id="forecast-day-4-main">°</h5>
+                            <i className="wi forecast-icon" id="forecast-day-4-icon"></i>
+                          </div>
+                        </div>
+                        <div className="col-sm-4 forecast-min-low">
+                          <p><spam className="high-temperature" id="forecast-day-4-ht"></spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-4-lt"></spam></p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <Plot
+                  xData={this.state.dates}
+                  yData={this.state.maxtemps}
+                  yDataDes={this.state.descriptions}
+                  onPlotClick={this.onPlotClick}
+                  type="scatter"
+                  mode="line"
+                />
 
                   </div>
                   ) : null }
+
 
             </div>
     );

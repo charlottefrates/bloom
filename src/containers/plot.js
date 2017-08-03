@@ -64,7 +64,7 @@ class Plot extends React.Component {
     {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Descriprion Forcast',
+      title: '5-Day Description Forcast',
       font: {
         size: 16
     }
@@ -137,7 +137,7 @@ class Plot extends React.Component {
     {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Descriprion Forcast',
+      title: '5-Day Description Forcast',
       font: {
         size: 16
     }
