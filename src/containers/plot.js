@@ -25,7 +25,8 @@ class Plot extends React.Component {
 
     var gd = gd3.node();
 
-    let weatherData = [{
+    Plotly.newPlot('plot',
+    [{
       x: this.props.xData,
       y: this.props.yData,
       type: this.props.type,
@@ -33,27 +34,41 @@ class Plot extends React.Component {
       line: {
         color: 'pink',
         width: 6
-  }
-    }];
-
-    let styling = {
-      margin: {
-        t: 0, r: 0, l: 30
-      },
-      xaxis: {
-        gridcolor: 'transparent'
       }
-    };
-
-    let display = {
+    }],
+    {
+      showlegend: false,
       displayModeBar: false,
-      title: '5-Day Forcast',
+      title: '5-Day Temperature Forcast',
       font: {
         size: 16
     }
-    };
+    });
 
-    Plotly.newPlot('plot',weatherData,display );
+    Plotly.newPlot('plot2',
+    [{
+      x: this.props.xData,
+      y: this.props.yDataDes,
+      type: this.props.type,
+      mode: 'markers',
+  marker: {
+    color: 'rgba(156, 165, 196, 0.95)',
+    line: {
+      color: 'rgba(156, 165, 196, 1.0)',
+      width: 1,
+    },
+    symbol: 'circle',
+    size: 16
+  }
+    }],
+    {
+      showlegend: false,
+      displayModeBar: false,
+      title: '5-Day Descriprion Forcast',
+      font: {
+        size: 16
+    }
+    });
 
     window.onresize = function() {
     Plotly.Plots.resize(gd);
@@ -83,20 +98,46 @@ class Plot extends React.Component {
     var gd = gd3.node();
 
 
-    Plotly.newPlot('plot', [{
+    Plotly.newPlot('plot',
+    [{
       x: this.props.xData,
       y: this.props.yData,
       type: this.props.type,
       mode: this.props.mode,
       line: {
-        color: 'purple',
+        color: 'pink',
         width: 6
-  }
-
-    }],{
+      }
+    }],
+    {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Forcast',
+      title: '5-Day Temperature Forcast',
+      font: {
+        size: 16
+    }
+    });
+
+    Plotly.newPlot('plot2',
+    [{
+      x: this.props.xData,
+      y: this.props.yDataDes,
+      type: this.props.type,
+      mode: 'markers',
+  marker: {
+    color: 'rgba(156, 165, 196, 0.95)',
+    line: {
+      color: 'rgba(156, 165, 196, 1.0)',
+      width: 1,
+    },
+    symbol: 'circle',
+    size: 16
+  }
+    }],
+    {
+      showlegend: false,
+      displayModeBar: false,
+      title: '5-Day Descriprion Forcast',
       font: {
         size: 16
     }
@@ -114,7 +155,11 @@ class Plot extends React.Component {
 
   render() {
     return (
-      <div id="plot" >
+      <div>
+      <div id="plot" className='move' >
+      </div>
+      <div id="plot2" className='move' >
+      </div>
       </div>
     );
   }
