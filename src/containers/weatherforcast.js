@@ -89,6 +89,7 @@ export default class WeatherForcast extends React.Component{
         //first API call
         axios.get(url)
           .then(response => {
+            //grabs response in a variable
             let list = response.data.list;
 
             let dates = [];
@@ -114,13 +115,11 @@ export default class WeatherForcast extends React.Component{
               let maxarray = Math.round(list[i].temp.max);
               let minarray = Math.round(list[i].temp.min);
 
+              //console.log(list[i].weather[0].icon)
+
               //weather icon from Map
+              //Accesses Object Notation (weatherIconsMap) by bracket notation that contains icon code
               let weatherIcon = weatherIconsMap[list[i].weather[0].icon];
-
-
-              //TODO: grab element and add class based on weatherIcon
-              //let element =  document.getElementById('-icon');
-              //console.log(element);
 
               // adds array to variables
               dates.push(list[i].dt);
@@ -236,18 +235,18 @@ export default class WeatherForcast extends React.Component{
 
       let d = new Date();
       let n = d.toLocaleTimeString();
+      let today = dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 
       let objToday = new Date(),
-	     weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+	     weekday = new Array(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']),
 	      dayOfWeek = weekday[objToday.getDay()],
-	       domEnder = function() { let a = objToday; if (/1/.test(parseInt((a + "").charAt(0))))
-                return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+	       domEnder = function() {
+           let a = objToday; if (/1/.test(parseInt((a + "").charAt(0))))
+                return "th"; a = parseInt((a + "").charAt(1)); return 1 === a ? "st" : 2 === a ? "nd" : 3 === a ? "rd" : "th" }(),
 	        dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
-	         months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+	         months = new Array(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']),
 	          curMonth = months[objToday.getMonth()],
-	           curYear = objToday.getFullYear(),
-	            curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
-                 let today = dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
+	           curYear = objToday.getFullYear();
 
 
         return (
