@@ -11,6 +11,12 @@ export default class WeatherForcast extends React.Component{
     super(props);
     this.state = {location: '',
                   weather:{},
+                  current_temp:'',
+                  current_humidity: '',
+                  current_wind:'',
+                  current_high:'',
+                  current_min: '',
+                  current_condition:'',
                   dates: [],
                   maxtemps: [],
                   mintemps: [],
@@ -41,17 +47,25 @@ export default class WeatherForcast extends React.Component{
         let imperial = 'imperial'
 
         const urlPrefix = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='
-        //const urlPrefixcurrent = 'http://api.openweathermap.org/data/2.5/weather?q='
+        const urlPrefixcurrent = 'http://api.openweathermap.org/data/2.5/weather?q='
         let urlSuffix = `&APPID=${key}&units=${imperial}`;
         let cnt = '&cnt=5'
         const url = urlPrefix + location + urlSuffix + cnt;
-        //const urlcurrent = urlPrefixcurrent + location + urlSuffix;
+        const urlcurrent = urlPrefixcurrent + location + urlSuffix;
+
+        //variables capturing current weather data from second API call
+        let currentTemp = '';
+        let currentCondition = '';
+        let currentWind= '';
+        let currentHumidity = '';
+        let currentMax = '';
+        let currentMin = '';
 
 
         //Axios - Promised based data fetching
         // automatically converts data in JSON
 
-        //first request
+        //first API call
         axios.get(url)
           .then(response => {
             let list = response.data.list;
@@ -74,9 +88,15 @@ export default class WeatherForcast extends React.Component{
 
 
             for (let i = 0; i < list.length; i++) {
+              let maxarray = Math.round(list[i].temp.max);
+              let minarray = Math.round(list[i].temp.min);
+
+              console.log('Max temp ' +maxarray),
+              console.log('Min temp ' +minarray),
+
                  dates.push(list[i].dt);
-                 maxtemps.push(list[i].temp.max);
-                 mintemps.push(list[i].temp.min);
+                 maxtemps.push(maxarray);
+                 mintemps.push(minarray);
                  descriptions.push(list[i].weather[0].main)
                }
 
@@ -90,7 +110,6 @@ export default class WeatherForcast extends React.Component{
                 for (var i = 0; i < reformatdate.length; i++) {
                   var change = reformatdate[i].substring(0,reformatdate[i].indexOf(','));
                   finalname.push(change);
-                  console.log(finalname);
                 }
 
 
@@ -104,6 +123,48 @@ export default class WeatherForcast extends React.Component{
               });
 
               console.log(this.state);
+
+          })
+          .catch(error => {
+                  console.log('Error fetching and parsing data', error);
+          });
+
+          //Second API call gets current
+          axios.get(urlcurrent)
+          .then(response => {
+                let currentTemperature = Math.round(response.data.main.temp);
+                let condition = response.data.weather[0].description;
+                let wind = Math.round(response.data.wind.speed);
+                let humidity = Math.round(response.data.main.humidity);
+                let maxtemp =  Math.round(response.data.main.temp_max);
+                let mintemp = Math.round(response.data.main.temp_min);
+
+                console.log('The current temperature is '+ currentTemperature + 'deg F');
+                console.log('The current condition is',condition);
+                console.log('The wind is moving '+ wind + 'mph');
+                console.log('The humidty level is '+ humidity);
+                console.log('The highest temperature is projected to be '+ maxtemp + ' deg F');
+                console.log('The lowest temperature is projected to be '+ mintemp + ' deg F');
+
+                // saving this data so that this state can be captured
+                // in second request
+                currentTemp = currentTemperature;
+                currentCondition = condition;
+                currentWind = wind;
+                currentHumidity = humidity;
+                currentMax = maxtemp;
+                currentMin= mintemp;
+
+
+                this.setState({
+                  current_temp:currentTemp,
+                  current_humidity:currentHumidity,
+                  current_wind:currentWind,
+                  current_high:currentMax,
+                  current_min:currentMin,
+                  current_condition:currentCondition
+
+                })
 
           })
           .catch(error => {
@@ -147,13 +208,13 @@ export default class WeatherForcast extends React.Component{
       let objToday = new Date(),
 	     weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
 	      dayOfWeek = weekday[objToday.getDay()],
-	       domEnder = function() { let a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+	       domEnder = function() { let a = objToday; if (/1/.test(parseInt((a + "").charAt(0))))
+                return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
 	        dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
 	         months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
 	          curMonth = months[objToday.getMonth()],
 	           curYear = objToday.getFullYear(),
-
-	               curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+	            curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
                  let today = dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 
 
@@ -185,7 +246,7 @@ export default class WeatherForcast extends React.Component{
                     <div className="col-md-4 col-sm-5">
                       <h5><spam id="cityName">{this.state.weather.data.city.name}</spam>, <spam id="cityCode">{this.state.weather.data.city.country}</spam></h5>
                       <h6 id="localDate">{today}</h6>
-                      <h5 id="localTime"></h5>
+                      <h5 id="localTime">{n}</h5>
                     </div>
 
                     {/* <!-- Center panel --> */}
@@ -193,25 +254,25 @@ export default class WeatherForcast extends React.Component{
                       <div className="row">
                         <i className="wi center_two" id ="main-icon" ></i>
                         <div>
-                          <spam id="mainTemperature">{this.state.weather.data.list[0].temp.day}°F </spam>
-                          <h6 id="tempDescription">{this.state.weather.data.list[0].weather[0].description}</h6>
+                          <spam id="mainTemperature">{this.state.current_temp}°F </spam>
+                          <h6 id="tempDescription">{this.state.current_condition}</h6>
                         </div>
                       </div>
                     </div>
 
-                    {/* <!-- Left panel -->*/}
+                    {/* <!-- Right panel -->*/}
                     <div className="col-xs-12 col-sm-12 col-md-3 row left_one" >
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Humidity: <spam id="humidity">{this.state.weather.data.list[0].humidity}</spam>%</h6>
+                          <h6>Humidity: <spam id="humidity">{this.state.current_humidity}</spam>%</h6>
                         </div>
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Wind: <spam id="wind">{this.state.weather.data.list[0].speed}</spam> m/s</h6>
+                          <h6>Wind: <spam id="wind">{this.state.current_wind}</spam> m/s</h6>
                         </div>
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>High: <spam id="mainTempHot">{this.state.weather.data.list[0].temp.max}</spam>°</h6>
+                          <h6>High: <spam id="mainTempHot">{this.state.current_high}</spam>°</h6>
                         </div>
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Low: <spam id="mainTempLow">{this.state.weather.data.list[0].temp.min}</spam>°</h6>
+                          <h6>Low: <spam id="mainTempLow">{this.state.current_min}</spam>°</h6>
                         </div>
                       </div>
                     </div>
@@ -234,8 +295,8 @@ export default class WeatherForcast extends React.Component{
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-1-ht">hi {this.state.weather.data.list[1].temp.max}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-1-lt">lo {this.state.weather.data.list[1].temp.min}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-1-ht">hi {this.state.maxtemps[1]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-1-lt">{this.state.mintemps[1]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -251,8 +312,8 @@ export default class WeatherForcast extends React.Component{
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-2-ht">hi {this.state.weather.data.list[2].temp.max}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-2-lt">lo {this.state.weather.data.list[2].temp.min}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-2-ht">hi {this.state.maxtemps[2]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-2-lt">lo {this.state.mintemps[2]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -268,8 +329,8 @@ export default class WeatherForcast extends React.Component{
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-3-ht">hi {this.state.weather.data.list[3].temp.max}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-3-lt">lo {this.state.weather.data.list[3].temp.min}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-3-ht">hi {this.state.maxtemps[3]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-3-lt">lo {this.state.mintemps[3]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -285,8 +346,8 @@ export default class WeatherForcast extends React.Component{
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-4-ht">hi {this.state.weather.data.list[4].temp.max}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-4-lt">lo {this.state.weather.data.list[4].temp.min}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-4-ht">hi {this.state.maxtemps[4]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-4-lt">lo {this.state.mintemps[4]}</spam></p>
                         </div>
                       </div>
                     </div>
