@@ -3,6 +3,8 @@ import Plot from '../containers/plot';
 
 import axios from 'axios';
 
+
+
 /*Functional Component using ES6 class to define component*/
 
 export default class WeatherForcast extends React.Component{
@@ -21,10 +23,7 @@ export default class WeatherForcast extends React.Component{
                   maxtemps: [],
                   mintemps: [],
                   descriptions:[],
-                  //selected: {
-                //    date: '',
-                //    temp: null
-                //  }
+                  icons:[],
                 };
 
     //handler binds so that mutable state is kept within the property
@@ -61,6 +60,28 @@ export default class WeatherForcast extends React.Component{
         let currentMax = '';
         let currentMin = '';
 
+        // Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
+        let weatherIconsMap = {
+          "01d": "wi-day-sunny",
+          "01n": "wi-night-clear",
+          "02d": "wi-day-cloudy",
+          "02n": "wi-night-cloudy",
+          "03d": "wi-cloud",
+          "03n": "wi-cloud",
+          "04d": "wi-cloudy",
+          "04n": "wi-cloudy",
+          "09d": "wi-showers",
+          "09n": "wi-showers",
+          "10d": "wi-day-hail",
+          "10n": "wi-night-hail",
+          "11d": "wi-thunderstorm",
+          "11n": "wi-thunderstorm",
+          "13d": "wi-snow",
+          "13n": "wi-snow",
+          "50d": "wi-fog",
+          "50n": "wi-fog"
+        };
+
 
         //Axios - Promised based data fetching
         // automatically converts data in JSON
@@ -80,6 +101,8 @@ export default class WeatherForcast extends React.Component{
             let mintemps = [];
             let descriptions = [];
 
+            let icons = [];
+
 
             function getFormattedDate(date){
               let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -91,13 +114,21 @@ export default class WeatherForcast extends React.Component{
               let maxarray = Math.round(list[i].temp.max);
               let minarray = Math.round(list[i].temp.min);
 
-              console.log('Max temp ' +maxarray),
-              console.log('Min temp ' +minarray),
+              //weather icon from Map
+              let weatherIcon = weatherIconsMap[list[i].weather[0].icon];
 
-                 dates.push(list[i].dt);
-                 maxtemps.push(maxarray);
-                 mintemps.push(minarray);
-                 descriptions.push(list[i].weather[0].main)
+
+              //TODO: grab element and add class based on weatherIcon
+              //let element =  document.getElementById('-icon');
+              //console.log(element);
+
+              // adds array to variables
+              dates.push(list[i].dt);
+              maxtemps.push(maxarray);
+              mintemps.push(minarray);
+              descriptions.push(list[i].weather[0].main);
+              icons.push("wi " + weatherIcon);
+
                }
 
                //changes format of dates
@@ -119,7 +150,8 @@ export default class WeatherForcast extends React.Component{
                 dates: finalname,
                 maxtemps: maxtemps,
                 mintemps: mintemps,
-                descriptions:descriptions
+                descriptions:descriptions,
+                icons:icons
               });
 
               console.log(this.state);
@@ -252,7 +284,7 @@ export default class WeatherForcast extends React.Component{
                     {/* <!-- Center panel --> */}
                     <div className="col-md-5 col-sm-7 center_one" >
                       <div className="row">
-                        <i className="wi center_two" id ="main-icon" ></i>
+                        <i className={this.state.icons[0]} id ="main-icon" ></i>
                         <div>
                           <spam id="mainTemperature">{this.state.current_temp}°F </spam>
                           <h6 id="tempDescription">{this.state.current_condition}</h6>
@@ -291,12 +323,12 @@ export default class WeatherForcast extends React.Component{
                           <p id="forecast-day-1-name">{this.state.dates[1]}</p>
                           <div className="row">
                             <h5 id="forecast-day-1-main">{this.state.weather.data.list[1].temp.day}°</h5>
-                            <i className="wi forecast-icon" id="forecast-day-1-icon"></i>
+                            <i className={this.state.icons[1]} id="forecast-day-1-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
                           <p><spam className="high-temperature" id="forecast-day-1-ht">hi {this.state.maxtemps[1]}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-1-lt">{this.state.mintemps[1]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-1-lt">lo {this.state.mintemps[1]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -308,7 +340,7 @@ export default class WeatherForcast extends React.Component{
                           <p id="forecast-day-2-name">{this.state.dates[2]}</p>
                           <div className="row">
                             <h5 id="forecast-day-2-main">{this.state.weather.data.list[2].temp.day}°</h5>
-                            <i className="wi forecast-icon" id="forecast-day-2-icon"></i>
+                            <i className={this.state.icons[2]} id="forecast-day-2-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
@@ -325,7 +357,7 @@ export default class WeatherForcast extends React.Component{
                           <p id="forecast-day-3-name"> {this.state.dates[3]}</p>
                           <div className="row">
                             <h5 id="forecast-day-3-main">{this.state.weather.data.list[3].temp.day}°</h5>
-                            <i className="wi forecast-icon" id="forecast-day-3-icon"></i>
+                            <i className={this.state.icons[3]} id="forecast-day-3-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
@@ -342,7 +374,7 @@ export default class WeatherForcast extends React.Component{
                           <p id="forecast-day-4-name"> {this.state.dates[4]}</p>
                           <div className="row">
                             <h5 id="forecast-day-4-main">{this.state.weather.data.list[4].temp.day}°</h5>
-                            <i className="wi forecast-icon" id="forecast-day-4-icon"></i>
+                            <i className={this.state.icons[4]} id="forecast-day-4-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">

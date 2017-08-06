@@ -250,11 +250,25 @@ a:hover, a:active, a:focus{
 #forecast-day-3-main,
 #forecast-day-4-main{
   font-size: 16px;
-  background: #6794a7;
   padding: 16px;
   margin-top: 8%;
 }
 
 .forecast-min-low{
-  margin-top: 6%;
+  margin-top: -2%;
+  margin-left: 10%;
+}
+
+
+#forecast-day-1-icon,
+#forecast-day-2-icon,
+#forecast-day-3-icon,
+#forecast-day-4-icon
+{
+  line-height: 4 !important;
+  font-size: 18pt;
+}
+
+#main-icon{
+      line-height: 11;
 }
