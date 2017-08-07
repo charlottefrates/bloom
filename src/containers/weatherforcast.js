@@ -1,4 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {
+     pull_weather,
+     set_data,
+     set_current,
+     set_array
+} from '../actions';
+
 import Plot from '../containers/plot';
 
 import axios from 'axios';
@@ -7,36 +15,14 @@ import axios from 'axios';
 
 /*Functional Component using ES6 class to define component*/
 
-export default class WeatherForcast extends React.Component{
 
-    constructor(props) {
-    super(props);
-    this.state = {location: '',
-                  weather:{},
-                  current_temp:'',
-                  current_humidity: '',
-                  current_wind:'',
-                  current_high:'',
-                  current_min: '',
-                  current_condition:'',
-                  dates: [],
-                  maxtemps: [],
-                  mintemps: [],
-                  descriptions:[],
-                  icons:[],
-                };
-
-    //handler binds so that mutable state is kept within the property
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.changeLocation.bind(this);
-
-  }
+class WeatherForcast extends React.Component{
 
     handleChange = (e) =>{
         e.preventDefault();
         e.currentTarget.reset();
 
-        const location = encodeURIComponent(this.state.location);
+        const location = encodeURIComponent(this.props.location);
 
         let key = '3229556f6b40c6492802319447e8181d';
         let key2 = '16feb82ad77fc7d5f39ac7507d74ffe4';
@@ -92,16 +78,15 @@ export default class WeatherForcast extends React.Component{
             //grabs response in a variable
             let list = response.data.list;
 
+            //captures set_array
             let dates = [];
             //captures reformated dt
             let reformatdate = [ ];
             //captures day name of reformated dt
             let finalname = [];
-
             let maxtemps = [];
             let mintemps = [];
             let descriptions = [];
-
             let icons = [];
 
 
@@ -142,18 +127,10 @@ export default class WeatherForcast extends React.Component{
                   finalname.push(change);
                 }
 
+                this.props.dispatch(set_data(response));
+                this.props.dispatch(set_array(finalname,maxtemps,mintemps,descriptions,icons));
 
-
-            this.setState({
-                weather:response,
-                dates: finalname,
-                maxtemps: maxtemps,
-                mintemps: mintemps,
-                descriptions:descriptions,
-                icons:icons
-              });
-
-              console.log(this.state);
+              console.log(this.props.state);
 
           })
           .catch(error => {
@@ -170,13 +147,6 @@ export default class WeatherForcast extends React.Component{
                 let maxtemp =  Math.round(response.data.main.temp_max);
                 let mintemp = Math.round(response.data.main.temp_min);
 
-                console.log('The current temperature is '+ currentTemperature + 'deg F');
-                console.log('The current condition is',condition);
-                console.log('The wind is moving '+ wind + 'mph');
-                console.log('The humidty level is '+ humidity);
-                console.log('The highest temperature is projected to be '+ maxtemp + ' deg F');
-                console.log('The lowest temperature is projected to be '+ mintemp + ' deg F');
-
                 // saving this data so that this state can be captured
                 // in second request
                 currentTemp = currentTemperature;
@@ -186,16 +156,15 @@ export default class WeatherForcast extends React.Component{
                 currentMax = maxtemp;
                 currentMin= mintemp;
 
+                this.props.dispatch(set_current(currentTemp,currentHumidity,currentWind,currentMax,currentMin,currentCondition));
 
-                this.setState({
-                  current_temp:currentTemp,
-                  current_humidity:currentHumidity,
-                  current_wind:currentWind,
-                  current_high:currentMax,
-                  current_min:currentMin,
-                  current_condition:currentCondition
+                console.log('The current temperature is '+ this.props.current_temp + ' deg F');
+                console.log('The current condition is',this.props.current_condition);
+                console.log('The wind is moving '+ this.props.current_wind + ' mph');
+                console.log('The humidty level is '+ this.props.current_humidity);
+                console.log('The highest temperature is projected to be '+ this.props.current_high + ' deg F');
+                console.log('The lowest temperature is projected to be '+ this.props.current_min + ' deg F');
 
-                })
 
           })
           .catch(error => {
@@ -212,22 +181,8 @@ export default class WeatherForcast extends React.Component{
     //utility method to capture controlled text input
     //and sets the location state
     changeLocation = (e) =>{
-        this.setState({location: e.target.value});
+        this.props.dispatch(pull_weather(e.target.value));
     }
-
-    //Event HANDLER that captures temperature on click of specific date
-    // and save it to state
-    onPlotClick = (data) => {
-    console.log(data);
-    if (data.points) {
-      this.setState({
-        selected: {
-          date: data.points[0].x,
-          temp: data.points[0].y
-        }
-      });
-    }
-    };
 
 
 
@@ -259,14 +214,14 @@ export default class WeatherForcast extends React.Component{
                     <input
                     placeholder={"State, Country"}
                     type="text"
-                    value={this.state.location}
+                    value={this.props.location}
                     onChange={this.changeLocation}
                     />
                     <input className="butt"type="submit" value="Submit" />
                   </label>
                 </form>
 
-                {(this.state.weather.data) ? (
+                {(this.props.weather) ? (
                   <div className="wrapper">
 
                   <div className="container" id="wrapper">
@@ -275,7 +230,7 @@ export default class WeatherForcast extends React.Component{
 
                     {/* <!-- Right panel --> */}
                     <div className="col-md-4 col-sm-5">
-                      <h5><spam id="cityName">{this.state.weather.data.city.name}</spam>, <spam id="cityCode">{this.state.weather.data.city.country}</spam></h5>
+                      <h5><spam id="cityName">{this.props.weather.data.city.name}</spam>, <spam id="cityCode">{this.props.weather.data.city.country}</spam></h5>
                       <h6 id="localDate">{today}</h6>
                       <h5 id="localTime">{n}</h5>
                     </div>
@@ -283,10 +238,10 @@ export default class WeatherForcast extends React.Component{
                     {/* <!-- Center panel --> */}
                     <div className="col-md-5 col-sm-7 center_one" >
                       <div className="row">
-                        <i className={this.state.icons[0]} id ="main-icon" ></i>
+                        <i className={this.props.icons[0]} id ="main-icon" ></i>
                         <div>
-                          <spam id="mainTemperature">{this.state.current_temp}°F </spam>
-                          <h6 id="tempDescription">{this.state.current_condition}</h6>
+                          <spam id="mainTemperature">{this.props.current_temp}°F </spam>
+                          <h6 id="tempDescription">{this.props.current_condition}</h6>
                         </div>
                       </div>
                     </div>
@@ -294,16 +249,16 @@ export default class WeatherForcast extends React.Component{
                     {/* <!-- Right panel -->*/}
                     <div className="col-xs-12 col-sm-12 col-md-3 row left_one" >
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Humidity: <spam id="humidity">{this.state.current_humidity}</spam>%</h6>
+                          <h6>Humidity: <spam id="humidity">{this.props.current_humidity}</spam>%</h6>
                         </div>
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Wind: <spam id="wind">{this.state.current_wind}</spam> m/s</h6>
+                          <h6>Wind: <spam id="wind">{this.props.current_wind}</spam> m/s</h6>
                         </div>
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>High: <spam id="mainTempHot">{this.state.current_high}</spam>°</h6>
+                          <h6>High: <spam id="mainTempHot">{this.props.current_high}</spam>°</h6>
                         </div>
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Low: <spam id="mainTempLow">{this.state.current_min}</spam>°</h6>
+                          <h6>Low: <spam id="mainTempLow">{this.props.current_min}</spam>°</h6>
                         </div>
                       </div>
                     </div>
@@ -319,15 +274,15 @@ export default class WeatherForcast extends React.Component{
                     <div className="col-md-3 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
-                          <p id="forecast-day-1-name">{this.state.dates[1]}</p>
+                          <p id="forecast-day-1-name">{this.props.dates[1]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-1-main">{this.state.weather.data.list[1].temp.day}°</h5>
-                            <i className={this.state.icons[1]} id="forecast-day-1-icon"></i>
+                            <h5 id="forecast-day-1-main">{this.props.weather.data.list[1].temp.day}°</h5>
+                            <i className={this.props.icons[1]} id="forecast-day-1-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-1-ht">hi {this.state.maxtemps[1]}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-1-lt">lo {this.state.mintemps[1]}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-1-ht">hi {this.props.maxtemps[1]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-1-lt">lo {this.props.mintemps[1]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -336,15 +291,15 @@ export default class WeatherForcast extends React.Component{
                     <div className="col-md-3 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
-                          <p id="forecast-day-2-name">{this.state.dates[2]}</p>
+                          <p id="forecast-day-2-name">{this.props.dates[2]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-2-main">{this.state.weather.data.list[2].temp.day}°</h5>
-                            <i className={this.state.icons[2]} id="forecast-day-2-icon"></i>
+                            <h5 id="forecast-day-2-main">{this.props.weather.data.list[2].temp.day}°</h5>
+                            <i className={this.props.icons[2]} id="forecast-day-2-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-2-ht">hi {this.state.maxtemps[2]}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-2-lt">lo {this.state.mintemps[2]}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-2-ht">hi {this.props.maxtemps[2]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-2-lt">lo {this.props.mintemps[2]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -353,15 +308,15 @@ export default class WeatherForcast extends React.Component{
                     <div className="col-md-3 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
-                          <p id="forecast-day-3-name"> {this.state.dates[3]}</p>
+                          <p id="forecast-day-3-name"> {this.props.dates[3]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-3-main">{this.state.weather.data.list[3].temp.day}°</h5>
-                            <i className={this.state.icons[3]} id="forecast-day-3-icon"></i>
+                            <h5 id="forecast-day-3-main">{this.props.weather.data.list[3].temp.day}°</h5>
+                            <i className={this.props.icons[3]} id="forecast-day-3-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-3-ht">hi {this.state.maxtemps[3]}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-3-lt">lo {this.state.mintemps[3]}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-3-ht">hi {this.props.maxtemps[3]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-3-lt">lo {this.props.mintemps[3]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -370,15 +325,15 @@ export default class WeatherForcast extends React.Component{
                     <div className="col-md-3 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
-                          <p id="forecast-day-4-name"> {this.state.dates[4]}</p>
+                          <p id="forecast-day-4-name"> {this.props.dates[4]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-4-main">{this.state.weather.data.list[4].temp.day}°</h5>
-                            <i className={this.state.icons[4]} id="forecast-day-4-icon"></i>
+                            <h5 id="forecast-day-4-main">{this.props.weather.data.list[4].temp.day}°</h5>
+                            <i className={this.props.icons[4]} id="forecast-day-4-icon"></i>
                           </div>
                         </div>
                         <div className="col-sm-4 forecast-min-low">
-                          <p><spam className="high-temperature" id="forecast-day-4-ht">hi {this.state.maxtemps[4]}</spam></p>
-                          <p><spam className="low-temperature" id="forecast-day-4-lt">lo {this.state.mintemps[4]}</spam></p>
+                          <p><spam className="high-temperature" id="forecast-day-4-ht">hi {this.props.maxtemps[4]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-4-lt">lo {this.props.mintemps[4]}</spam></p>
                         </div>
                       </div>
                     </div>
@@ -388,9 +343,9 @@ export default class WeatherForcast extends React.Component{
               </div>
 
               <Plot
-                  xData={this.state.dates}
-                  yData={this.state.maxtemps}
-                  yDataDes={this.state.descriptions}
+                  xData={this.props.dates}
+                  yData={this.props.maxtemps}
+                  yDataDes={this.props.descriptions}
                   onPlotClick={this.onPlotClick}
                   type="scatter"
                   mode="line"
@@ -404,3 +359,14 @@ export default class WeatherForcast extends React.Component{
     );
   }
 }
+
+const mapStateToProps = state => ({
+     state
+});
+
+//this tells connect to inject the location field we have in our reducer into this component
+//passing in a function as the first argument that takes the entire state,
+//and then we return what we want to inject as props into our component
+//this automatically injects dispatch to run our actions,
+//which is why we can use this.props.dispatch
+export default connect(mapStateToProps)(WeatherForcast);
