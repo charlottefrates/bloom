@@ -79,7 +79,7 @@ export default (state, action) => {
                     return{
                          ...state,
                          dates: action.dates,
-                         maxtemps:action.mintemps,
+                         maxtemps:action.maxtemps,
                          mintemps:action.mintemps,
                          descriptions:action.descriptions,
                          icons:action.icons,
