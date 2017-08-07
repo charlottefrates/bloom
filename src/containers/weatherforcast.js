@@ -5,7 +5,9 @@ import {
      pull_weather,
      set_data,
      set_current,
-     set_array
+     set_array,
+     fetchData,
+     fetchData2
 } from '../actions';
 
 
@@ -40,138 +42,13 @@ class WeatherForcast extends React.Component{
         const url = urlPrefix + location + urlSuffix + cnt;
         const urlcurrent = urlPrefixcurrent + location + urlSuffix;
 
-        //variables capturing current weather data from second API call
-        let currentTemp = '';
-        let currentCondition = '';
-        let currentWind= '';
-        let currentHumidity = '';
-        let currentMax = '';
-        let currentMin = '';
+        //API call #1
+        //gets 5 day forecast
+        this.props.dispatch(fetchData(url));
 
-        // Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
-        let weatherIconsMap = {
-          "01d": "wi-day-sunny",
-          "01n": "wi-night-clear",
-          "02d": "wi-day-cloudy",
-          "02n": "wi-night-cloudy",
-          "03d": "wi-cloud",
-          "03n": "wi-cloud",
-          "04d": "wi-cloudy",
-          "04n": "wi-cloudy",
-          "09d": "wi-showers",
-          "09n": "wi-showers",
-          "10d": "wi-day-hail",
-          "10n": "wi-night-hail",
-          "11d": "wi-thunderstorm",
-          "11n": "wi-thunderstorm",
-          "13d": "wi-snow",
-          "13n": "wi-snow",
-          "50d": "wi-fog",
-          "50n": "wi-fog"
-        };
-
-
-        //Axios - Promised based data fetching
-        // automatically converts data in JSON
-
-        //first API call
-        axios.get(url)
-          .then(response => {
-            //grabs response in a variable
-            let list = response.data.list;
-
-            //captures set_array
-            let dates = [];
-            //captures reformated dt
-            let reformatdate = [ ];
-            //captures day name of reformated dt
-            let finalname = [];
-            let maxtemps = [];
-            let mintemps = [];
-            let descriptions = [];
-            let icons = [];
-
-
-            function getFormattedDate(date){
-              let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-              return new Date(date * 1000).toLocaleDateString("en-US",options);
-            }
-
-
-            for (let i = 0; i < list.length; i++) {
-              let maxarray = Math.round(list[i].temp.max);
-              let minarray = Math.round(list[i].temp.min);
-
-              //console.log(list[i].weather[0].icon)
-
-              //weather icon from Map
-              //Accesses Object Notation (weatherIconsMap) by bracket notation that contains icon code
-              let weatherIcon = weatherIconsMap[list[i].weather[0].icon];
-
-              // adds array to variables
-              dates.push(list[i].dt);
-              maxtemps.push(maxarray);
-              mintemps.push(minarray);
-              descriptions.push(list[i].weather[0].main);
-              icons.push("wi " + weatherIcon);
-
-               }
-
-               //changes format of dates
-               for (let i = 0; i < dates.length; i++) {
-                    reformatdate.push(getFormattedDate(dates[i]));
-                  }
-
-                //show only day name
-
-                for (var i = 0; i < reformatdate.length; i++) {
-                  var change = reformatdate[i].substring(0,reformatdate[i].indexOf(','));
-                  finalname.push(change);
-                }
-
-                this.props.dispatch(set_data(response));
-                this.props.dispatch(set_array(finalname,maxtemps,mintemps,descriptions,icons));
-
-
-          })
-          .catch(error => {
-                  console.log('Error fetching and parsing data', error);
-          });
-
-          //Second API call gets current
-          axios.get(urlcurrent)
-          .then(response => {
-                let currentTemperature = Math.round(response.data.main.temp);
-                let condition = response.data.weather[0].description;
-                let wind = Math.round(response.data.wind.speed);
-                let humidity = Math.round(response.data.main.humidity);
-                let maxtemp =  Math.round(response.data.main.temp_max);
-                let mintemp = Math.round(response.data.main.temp_min);
-
-                // saving this data so that this state can be captured
-                // in second request
-                currentTemp = currentTemperature;
-                currentCondition = condition;
-                currentWind = wind;
-                currentHumidity = humidity;
-                currentMax = maxtemp;
-                currentMin= mintemp;
-
-                console.log('The current temperature is '+ currentTemp + ' deg F');
-                console.log('The current condition is',currentCondition);
-                console.log('The wind is moving '+ currentWind + ' mph');
-                console.log('The humidty level is '+ currentHumidity);
-                console.log('The highest temperature is projected to be '+ currentMax + ' deg F');
-                console.log('The lowest temperature is projected to be '+ currentMin + ' deg F');
-
-                this.props.dispatch(set_current(currentTemperature,humidity,wind,maxtemp,mintemp,condition));
-
-
-          })
-          .catch(error => {
-                  console.log('Error fetching and parsing data', error);
-          });
-
+        //API call #2
+        //gets current data
+        this.props.dispatch(fetchData2(urlcurrent));
 
     }
 
