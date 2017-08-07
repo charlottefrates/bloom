@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {connect} from 'react-redux';
 import {
      pull_weather,
@@ -6,6 +7,7 @@ import {
      set_current,
      set_array
 } from '../actions';
+
 
 import Plot from '../containers/plot';
 
@@ -15,10 +17,10 @@ import axios from 'axios';
 
 /*Functional Component using ES6 class to define component*/
 
-
 class WeatherForcast extends React.Component{
 
     handleChange = (e) =>{
+
         e.preventDefault();
         e.currentTarget.reset();
 
@@ -130,7 +132,6 @@ class WeatherForcast extends React.Component{
                 this.props.dispatch(set_data(response));
                 this.props.dispatch(set_array(finalname,maxtemps,mintemps,descriptions,icons));
 
-              console.log(this.props.state);
 
           })
           .catch(error => {
@@ -156,14 +157,14 @@ class WeatherForcast extends React.Component{
                 currentMax = maxtemp;
                 currentMin= mintemp;
 
-                this.props.dispatch(set_current(currentTemp,currentHumidity,currentWind,currentMax,currentMin,currentCondition));
+                console.log('The current temperature is '+ currentTemp + ' deg F');
+                console.log('The current condition is',currentCondition);
+                console.log('The wind is moving '+ currentWind + ' mph');
+                console.log('The humidty level is '+ currentHumidity);
+                console.log('The highest temperature is projected to be '+ currentMax + ' deg F');
+                console.log('The lowest temperature is projected to be '+ currentMin + ' deg F');
 
-                console.log('The current temperature is '+ this.props.current_temp + ' deg F');
-                console.log('The current condition is',this.props.current_condition);
-                console.log('The wind is moving '+ this.props.current_wind + ' mph');
-                console.log('The humidty level is '+ this.props.current_humidity);
-                console.log('The highest temperature is projected to be '+ this.props.current_high + ' deg F');
-                console.log('The lowest temperature is projected to be '+ this.props.current_min + ' deg F');
+                this.props.dispatch(set_current(currentTemperature,humidity,wind,maxtemp,mintemp,condition));
 
 
           })
@@ -221,7 +222,7 @@ class WeatherForcast extends React.Component{
                   </label>
                 </form>
 
-                {(this.props.weather) ? (
+                {(this.props.weather.data) ? (
                   <div className="wrapper">
 
                   <div className="container" id="wrapper">
@@ -346,7 +347,6 @@ class WeatherForcast extends React.Component{
                   xData={this.props.dates}
                   yData={this.props.maxtemps}
                   yDataDes={this.props.descriptions}
-                  onPlotClick={this.onPlotClick}
                   type="scatter"
                   mode="line"
                 />
@@ -360,9 +360,23 @@ class WeatherForcast extends React.Component{
   }
 }
 
-const mapStateToProps = state => ({
-     state
+const mapStateToProps = (state, props) => ({
+    location: state.location,
+    weather: state.weather,
+    current_temp:state.current_temp,
+    current_humidity: state.current_humidity,
+    current_wind:state.current_wind,
+    current_high:state.current_high,
+    current_min:state.current_min,
+    current_condition:state.current_condition,
+    dates:state.dates,
+    maxtemps:state.maxtemps,
+    mintemps:state.mintemps,
+    descriptions:state.descriptions,
+    icons:state.icons
+
 });
+
 
 //this tells connect to inject the location field we have in our reducer into this component
 //passing in a function as the first argument that takes the entire state,

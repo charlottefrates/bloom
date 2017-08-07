@@ -13,20 +13,19 @@ export const SET_DATA = "SET_DATA";
 export const set_data = (weather) =>({
      type: SET_DATA,
      weather
-})
-;
+});
 
 //passes current weather data
 export const SET_CURRENT= "SET_CURRENT";
 
-export const set_current = (current_temp,current_humidity,current_wind,current_high,current_min,current_condition) =>({
+export const set_current = (c_temp,c_hum,c_wind,c_high,c_min,c_con) =>({
      type: SET_CURRENT,
-     current_temp,
-     current_humidity,
-     current_wind,
-     current_high,
-     current_min,
-     current_condition
+     c_temp,
+     c_hum,
+     c_wind,
+     c_high,
+     c_min,
+     c_con
 });
 
 //passes data arrays of 5 day forecast

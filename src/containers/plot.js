@@ -3,6 +3,15 @@
 
 import React from 'react';
 
+import {connect} from 'react-redux';
+import {
+     pull_weather,
+     set_data,
+     set_current,
+     set_array
+} from '../actions';
+
+
 class Plot extends React.Component {
 
 
@@ -74,8 +83,6 @@ class Plot extends React.Component {
     Plotly.Plots.resize(gd);
   };
 
-    //Event that captures temperature on click of specific date
-    document.getElementById('plot').on('plotly_click', this.props.onPlotClick);
 
   }
 
@@ -147,8 +154,6 @@ class Plot extends React.Component {
     Plotly.Plots.resize(gd);
   };
 
-    //Event that captures temperature on click of specific date
-    document.getElementById('plot').on('plotly_click', this.props.onPlotClick);
 
 
   }
