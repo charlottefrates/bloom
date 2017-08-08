@@ -41,7 +41,7 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: this.props.mode,
       line: {
-        color: 'pink',
+        color: 'grey',
         width: 6
       }
     }],
@@ -112,7 +112,7 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: this.props.mode,
       line: {
-        color: 'pink',
+        color: 'grey',
         width: 6
       }
     }],
@@ -138,6 +138,7 @@ class Plot extends React.Component {
       width: 1,
     },
     symbol: 'circle',
+    color:'grey',
     size: 16
   }
     }],

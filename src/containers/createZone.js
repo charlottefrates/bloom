@@ -10,24 +10,24 @@ export default class CreateZone extends React.Component{
      handleCreate(e) {
          e.preventDefault();
 
-         if (!this.refs.newItemInput.value) {
+         if (!this.refs.newZoneInput.value) {
            alert('Please enter a task name.');
            return;
-         } else if (this.props.zones.map(element => element.name).indexOf(this.refs.newItemInput.value) !== -1) {
+      } else if (this.props.zones.map(element => element.name).indexOf(this.refs.newZoneInput.value) !== -1) {
            alert('This task already exists.');
-           this.refs.newItemInput.value = '';
+           this.refs.newZoneInput.value = '';
            return;
          }
 
-         this.props.createItem(this.refs.newItemInput.value);
-         this.refs.newItemInput.value = '';
+         this.props.createZone(this.refs.newZoneInput.value);
+         this.refs.newZoneInput.value = '';
        }
 
        render() {
          return (
            <div className="create-new">
              <form id="zoneform" onSubmit={this.handleCreate.bind(this)}>
-               <input type="text" placeholder="New Zone" ref="newItemInput" />
+               <input type="text" placeholder="New Zone" ref="newZoneInput" />
                <button>Create</button>
              </form>
            </div>

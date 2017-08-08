@@ -138,11 +138,11 @@ a:hover, a:active, a:focus{
 
 
 #wrapper {
-  background-color: #28688C;
+  background-color: grey;
   box-shadow: 1px 5px 25px 3px #444;
   border-radius: 10px;
   margin: 100px auto;
-  max-width: 80%;
+  max-width: 100%;
   padding: 0px;
   color: white;
 }
@@ -166,8 +166,8 @@ a:hover, a:active, a:focus{
 }
 
 .day-weather-box {
-  border: 1px solid #28688C;
-  background-color: #2E7FA1;
+  border: 1px solid #716f71;
+  background-color: #8b9093;
   border-radius: 5px;
 }
 

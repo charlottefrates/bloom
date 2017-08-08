@@ -14,57 +14,47 @@ export default class Zones extends React.Component{
 
          this.state = {
            zones:[
-                 {
-                   name: 'Zone 1',
-                   completed: false
-                 },
-                 {
-                   name: 'Zone 2',
-                   completetd: false
-                 },
-                 {
-                   name: 'Zone 3',
-                   completed: false
-                 },
-                 {
-                   name: "Zone 4",
-                   completed: false
-                 }
+                 {name: 'Zone 1'},
+                 {name: 'Zone 2'},
+                 {name: 'Zone 3'},
+                 {name: "Zone 4"},
+                 {name: "Zone 5"}
                ]
          };
        }
 
-       createItem(item) {
-         this.state.zones.unshift({
-           name: item,
-           completed: false
+       //Creates new zones
+       createZone(name) {
+         this.state.zones.push({
+           name: name,
          });
          this.setState({
            zones: this.state.zones
          });
+         console.log(name + ' was included in zones array');
+       }
+
+       //tracks index of zone
+       findZone(name) {
+         return this.state.zones.filter((element) => element.name === name)[0];
+       }
+
+       //allows for zone name edit and save
+       saveZone(oldZone, newZone) {
+         let selectedZone = this.findZone(oldZone);
+         selectedZone.name = newZone;
+         this.setState({ zones: this.state.zones });
+         console.log(oldZone + ' has been changed to ' + newZone);
          console.log(this.state);
        }
 
-       findItem(item) {
-         return this.state.zones.filter((element) => element.name === item)[0];
-       }
-
-       toggleComplete(item) {
-         let selectedItem = this.findItem(item);
-         selectedItem.completed = !selectedItem.completed;
-         this.setState({ zones: this.state.zones });
-       }
-
-       saveItem(oldItem, newItem) {
-         let selectedItem = this.findItem(oldItem);
-         selectedItem.name = newItem;
-         this.setState({ zones: this.state.zones });
-       }
-
-       deleteItem(item) {
-         let index = this.state.zones.map(element => element.name).indexOf(item);
+       //
+       deleteZone(name) {
+         let index = this.state.zones.map(element => element.name).indexOf(name);
          this.state.zones.splice(index, 1);
          this.setState({ zones: this.state.zones });
+         console.log(name + ' has been deleted');
+         console.log(this.state);
        }
 
        render() {
@@ -73,8 +63,8 @@ export default class Zones extends React.Component{
              <div className="header">
                <h1>Watering Zones</h1>
              </div>
-             <CreateZone zones={this.state.zones} createItem={this.createItem.bind(this)}/>
-             <ZoneList zones={this.state.zones} deleteItem={this.deleteItem.bind(this)} saveItem={this.saveItem.bind(this)} toggleComplete={this.toggleComplete.bind(this)}/>
+             <CreateZone zones={this.state.zones} createZone={this.createZone.bind(this)}/>
+             <ZoneList zones={this.state.zones} deleteZone={this.deleteZone.bind(this)} saveZone={this.saveZone.bind(this)} />
            </div>
          );
        }

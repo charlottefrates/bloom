@@ -22,7 +22,14 @@ const initialState = {
      maxtemps: [],
      mintemps: [],
      descriptions:[],
-     icons:[]
+     icons:[],
+     zones:[
+     {name: 'Zone 1'},
+     {name: 'Zone 2'},
+     {name: 'Zone 3'},
+     {name: "Zone 4"},
+     {name: "Zone 5"}
+          ]
 
 };
 

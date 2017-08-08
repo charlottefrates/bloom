@@ -4,7 +4,7 @@ import CreateZone from './createZone';
 import ZoneList from './zonelist';
 import Zones from './zone';
 
-export default class ZoneListItem extends React.Component{
+export default class ToDoListItem extends React.Component{
      constructor(props) {
          super(props);
 
@@ -14,11 +14,6 @@ export default class ZoneListItem extends React.Component{
        }
 
        renderName() {
-         const itemStyle = {
-           'text-decoration': this.props.completed ? 'line-through' : 'none',
-           cursor: 'pointer'
-         };
-
          if(this.state.editing) {
            return (
                <form onSubmit={this.onSaveClick.bind(this)}>
@@ -28,7 +23,7 @@ export default class ZoneListItem extends React.Component{
          }
 
          return (
-           <span style={itemStyle} onClick={this.props.toggleComplete.bind(this, this.props.name)}>{this.props.name}</span>
+           <span>{this.props.name}</span>
          );
        }
 
@@ -45,7 +40,7 @@ export default class ZoneListItem extends React.Component{
          return (
            <span>
              <button onClick={this.onEditClick.bind(this)}>Edit</button>
-             <button onClick={this.props.deleteItem.bind(this, this.props.name)}>Delete</button>
+             <button onClick={this.props.deleteZone.bind(this, this.props.name)}>Delete</button>
            </span>
          );
        }
@@ -60,7 +55,7 @@ export default class ZoneListItem extends React.Component{
 
        onSaveClick(e) {
          e.preventDefault();
-         this.props.saveItem(this.props.name, this.refs.editInput.value);
+         this.props.saveZone(this.props.name, this.refs.editInput.value);
          this.setState({ editing: false });
        }
 

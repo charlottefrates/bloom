@@ -41,7 +41,7 @@ export const set_array = (dates,maxtemps,mintemps,descriptions,icons) => ({
      icons
 })
 
-
+//7 day forecast API call
 export function fetchData(url) {
   return function thunk(dispatch) {
        // Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
@@ -139,7 +139,7 @@ export function fetchData(url) {
   }
 }
 
-
+//Current Weather API Call
 export function fetchData2(url) {
   return function thunk(dispatch) {
     //Second API call gets current
