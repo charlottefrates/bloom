@@ -1,23 +1,34 @@
 import React from 'react';
 
-import {connect} from 'react-redux';
+import ToDoListItem from './zoneListItem';
+import Zones from './zone';
+import CreateZone from './createZone';
 
-class Zones extends React.Component{
+
+//import {connect} from 'react-redux';
+
+export default class ZoneList extends React.Component{
+
+     renderItems() {
+        return this.props.zones.map(
+           (item, index) => <ToDoListItem key={index} {...item} {...this.props} />
+        );
+     }
+
+ render() {
+   return (
+     <div className="items-list">
+       {this.renderItems()}
+     </div>
+   );
+ }
 
 
-    render(){
-         return (
-              <div>
-              <h1> I like cheese. </h1>
-              </div>
-         )
-
-    }
 }
 
-const mapStateToProps = (state, props) => ({
+//const mapStateToProps = (state, props) => ({
 
-});
+//});
 
 
 //this tells connect to inject the location field we have in our reducer into this component
@@ -25,4 +36,4 @@ const mapStateToProps = (state, props) => ({
 //and then we return what we want to inject as props into our component
 //this automatically injects dispatch to run our actions,
 //which is why we can use this.props.dispatch
-export default connect(mapStateToProps)(Zones);
+//export default connect(mapStateToProps)(Zones);

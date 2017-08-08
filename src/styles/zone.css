@@ -1,0 +1,95 @@
+
+#zoneform {
+  display: inline;
+}
+
+button {
+  margin: 3px;
+  cursor: pointer;
+}
+
+.to-do-app {
+  box-sizing: border-box;
+  width: 550px;
+  margin: 50px auto 0 auto;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #252525;
+}
+
+.header {
+  background: #444;
+  padding: 7px;
+  border-radius: 3px 3px 0 0;
+}
+.header h1 {
+  font-size: 36px;
+  margin: 0;
+  color: white;
+  font-weight: lighter;
+}
+
+.create-new {
+  border-top: 1px solid #777;
+  width: 100%;
+}
+.create-new input {
+  box-sizing: border-box;
+  width: 75%;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+}
+.create-new button {
+  width: 23%;
+  background: #eee;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 18px;
+  margin: 0;
+  border: none;
+  border-left: 1px solid #999;
+}
+.create-new button:hover {
+  background: #ddd;
+}
+
+.items-list {
+  background: grey;
+  border-radius: 3px;
+}
+
+.to-do-item {
+  padding: 10px 0 10px 0;
+  margin: 1px 0 1px 0;
+  border-top: 1px solid darkgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  font-weight: lighter;
+}
+
+.name {
+  margin-left: 10px;
+}
+.name input {
+  width: 350px;
+  color: #333;
+  padding: 5px;
+  border: none;
+  border-radius: 1px;
+}
+
+.actions {
+  margin-right: 10px;
+}
+.actions button {
+  padding: 7px;
+  border-radius: 2px;
+  border: none;
+  background: #333;
+  color: white;
+  font-weight: lighter;
+}
