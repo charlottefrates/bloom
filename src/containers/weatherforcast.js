@@ -1,11 +1,9 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
+
 import {
      pull_weather,
-     set_data,
-     set_current,
-     set_array,
      fetchData,
      fetchData2
 } from '../actions';
@@ -13,7 +11,6 @@ import {
 
 import Plot from '../containers/plot';
 
-import axios from 'axios';
 
 
 
@@ -29,10 +26,10 @@ class WeatherForcast extends React.Component{
         const location = encodeURIComponent(this.props.location);
 
         let key = '3229556f6b40c6492802319447e8181d';
-        let key2 = '16feb82ad77fc7d5f39ac7507d74ffe4';
+        //let key2 = '16feb82ad77fc7d5f39ac7507d74ffe4';
 
         //to change units
-        let metric = 'metric';
+        //let metric = 'metric';
         let imperial = 'imperial'
 
         const urlPrefix = 'http://api.openweathermap.org/data/2.5/forecast/daily?q='

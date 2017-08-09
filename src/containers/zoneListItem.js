@@ -1,9 +1,5 @@
 import React from 'react';
 
-import CreateZone from './createZone';
-import ZoneList from './zonelist';
-import Zones from './zone';
-
 export default class ToDoListItem extends React.Component{
      constructor(props) {
          super(props);

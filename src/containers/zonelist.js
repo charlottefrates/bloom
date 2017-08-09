@@ -1,13 +1,12 @@
 import React from 'react';
 
 import ToDoListItem from './zoneListItem';
-import Zones from './zone';
-import CreateZone from './createZone';
 
 
 //import {connect} from 'react-redux';
 
 export default class ZoneList extends React.Component{
+
 
      renderItems() {
         return this.props.zones.map(

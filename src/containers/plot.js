@@ -3,14 +3,6 @@
 
 import React from 'react';
 
-import {connect} from 'react-redux';
-import {
-     pull_weather,
-     set_data,
-     set_current,
-     set_array
-} from '../actions';
-
 
 class Plot extends React.Component {
 
@@ -48,7 +40,7 @@ class Plot extends React.Component {
     {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Temperature Forcast',
+      title: '7-Day Temperature Forcast',
       font: {
         size: 16
     }
@@ -73,7 +65,7 @@ class Plot extends React.Component {
     {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Description Forcast',
+      title: '7-Day Description Forcast',
       font: {
         size: 16
     }
@@ -119,7 +111,7 @@ class Plot extends React.Component {
     {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Temperature Forcast',
+      title: '7-Day Temperature Forcast',
       font: {
         size: 16
     }
@@ -145,7 +137,7 @@ class Plot extends React.Component {
     {
       showlegend: false,
       displayModeBar: false,
-      title: '5-Day Description Forcast',
+      title: '7-Day Description Forcast',
       font: {
         size: 16
     }

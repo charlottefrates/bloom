@@ -1,13 +1,3 @@
-import {
-     PULL_WEATHER,
-     SET_DATA,
-     SET_CURRENT,
-     SET_ARRAY,
-     pull_weather,
-     set_data,
-     set_current,
-     set_array
-} from './actions';
 
 const initialState = {
      location: '',
