@@ -14,18 +14,18 @@ export default class Zones extends React.Component{
 
          this.state = {
            zones:[
-                 {name: 'Zone 1'},
-                 {name: 'Zone 2'},
+                 {name: 'Zone 5'},
+                 {name: 'Zone 4'},
                  {name: 'Zone 3'},
-                 {name: "Zone 4"},
-                 {name: "Zone 5"}
+                 {name: "Zone 2"},
+                 {name: "Zone 1"}
                ]
          };
        }
 
        //Creates new zones
        createZone(name) {
-         this.state.zones.push({
+         this.state.zones.unshift({
            name: name,
          });
          this.setState({

@@ -16,7 +16,8 @@ export const edit_zone = (name,zoneindex) =>({
 
 //deletes zone properties
 export const DELETE_ZONE = 'DELETE_ZONE';
-export const delete_zone = () =>({
-     type: DELETE_ZONE
+export const delete_zone = (zoneindex) =>({
+     type: DELETE_ZONE,
+     zoneindex
 
 })

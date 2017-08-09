@@ -14,11 +14,11 @@ const initialState = {
      descriptions:[],
      icons:[],
      zones:[
-     {name: 'Zone 1',editing:false},
-     {name: 'Zone 2',editing:false},
+     {name: 'Zone 5',editing:false},
+     {name: 'Zone 4',editing:false},
      {name: 'Zone 3',editing:false},
-     {name: "Zone 4",editing:false},
-     {name: "Zone 5",editing:false}
+     {name: "Zone 2",editing:false},
+     {name: "Zone 1",editing:false}
           ]
 
 };
@@ -83,11 +83,14 @@ export default (state, action) => {
                     };
 
           case 'CREATE_ZONE':
+          //index is at 0 becuase on array unshift()
+          //any new zone additions are added to the beginning of array
+          state.zone[0].name = action.name;
           return{
                ...state,
-               {zones:[...state.zones,
-                    {name:action.name}
-               ]}
+               zones:[...state.zones,
+                    {name:action.name,editing:false}
+               ]
 
           }
 
