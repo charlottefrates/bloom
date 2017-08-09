@@ -85,7 +85,7 @@ export default (state, action) => {
           case 'CREATE_ZONE':
           return{
                ...state,
-               zones:[{name:action.zone}]
+               zones:[{name:action.name}]
           };
           case 'EDIT_ZONE':
           return{};

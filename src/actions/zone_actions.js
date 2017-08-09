@@ -1,17 +1,16 @@
 //passes zone property to state
 export const CREATE_ZONE = 'CREATE_ZONE';
-export const create_zone = (zones) =>({
+export const create_zone = (name) =>({
      type:CREATE_ZONE,
-     zones
-});
+     name
 
 //passes new zone property change
 //Question: how will this action know which index?
 export const EDIT_ZONE = 'EDIT_ZONE';
 export const edit_zone = (name,bool) =>({
      type: EDIT_ZONE,
-     zones:[{name,
-          editing:bool}]
+     name,
+     bool
 
 })
 

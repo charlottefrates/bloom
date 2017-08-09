@@ -12,13 +12,13 @@ export default class Smart extends React.Component{
                     <h1> Smart Water Projection </h1>
                       </div>
                     <form id="day"action="" method="get">
-                       <input type='checkbox' name = 'days' value = 'sunday' id='sunday' className = "one" />
-                       <input type='checkbox' name = 'days' value = 'monday' id='monday' className = "two" />
-                       <input type='checkbox' name = 'days' value = 'tuesday' id='tuesday'  className = "three" />
-                       <input type='checkbox' name = 'days' value = 'wednesday 'id='wednesday'className = "four" />
-                       <input type='checkbox' name = 'days' value = 'thursday' id='thursday' className = "five" />
-                       <input type='checkbox' name = 'days' value = 'friday' id='friday' className = "six" />
-                       <input type='checkbox' name = 'days' value = 'saturday' id='saturday' className = "seven" />
+                       <input type='checkbox' name = 'days' value = 'sunday' id='sunday' className="one" />
+                       <input type='checkbox' name = 'days' value = 'monday' id='monday' className="two" />
+                       <input type='checkbox' name = 'days' value = 'tuesday' id='tuesday'  className="three" />
+                       <input type='checkbox' name = 'days' value = 'wednesday 'id='wednesday'className="four" />
+                       <input type='checkbox' name = 'days' value = 'thursday' id='thursday' className="five" />
+                       <input type='checkbox' name = 'days' value = 'friday' id='friday' className="six" />
+                       <input type='checkbox' name = 'days' value = 'saturday' id='saturday' className="seven" />
 
                        <label for="sunday" className = "one label">Sun</label>
                        <label for="monday" className = "two label">Mon</label>

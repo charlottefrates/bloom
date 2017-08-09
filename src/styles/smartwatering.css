@@ -70,7 +70,7 @@ h1{
       text-align: center;
     }
 
-    .one:checked~.one
+    #sunday:checked~.one
     {
      background: blue !important;
     }
@@ -121,7 +121,7 @@ h1{
 
     }
 
-    label:hover{
+    .label:hover{
       opacity:0.8;
       transition: opacity 100ms;
     }
