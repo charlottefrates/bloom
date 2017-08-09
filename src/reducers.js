@@ -14,11 +14,11 @@ const initialState = {
      descriptions:[],
      icons:[],
      zones:[
-     {name: 'Zone 1'},
-     {name: 'Zone 2'},
-     {name: 'Zone 3'},
-     {name: "Zone 4"},
-     {name: "Zone 5"}
+     {name: 'Zone 1',editing:false},
+     {name: 'Zone 2',editing:false},
+     {name: 'Zone 3',editing:false},
+     {name: "Zone 4",editing:false},
+     {name: "Zone 5",editing:false}
           ]
 
 };
@@ -81,6 +81,16 @@ export default (state, action) => {
                          descriptions:action.descriptions,
                          icons:action.icons,
                     };
+
+          case 'CREATE_ZONE':
+          return{
+               ...state,
+               zones:[{name:action.zone}]
+          };
+          case 'EDIT_ZONE':
+          return{};
+          case 'DELETE_ZONE':
+          return{};
 
           default:
                return state;

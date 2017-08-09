@@ -2,6 +2,7 @@ import React from 'react';
 
 import WeatherForcast from '../containers/weatherforcast';
 import Zones from '../containers/zone';
+import Smart from '../containers/smartwatering';
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
             <Zones />
             <br/>
             <WeatherForcast />
+            <Smart />
 
         </div>
     );

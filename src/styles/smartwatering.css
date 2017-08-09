@@ -1,0 +1,137 @@
+
+.maincont{
+    box-sizing: border-box;
+    width: 90%;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 5px #252525;
+    box-shadow: 0 0 5px #252525;
+  padding-bottom: 50px;
+}
+
+.secondcont{
+  box-sizing: border-box;
+    width: 86%;
+    margin-left:auto;
+     margin-right:auto;
+     margin-top:2%;
+    text-align: center;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 5px #252525;
+    box-shadow: 0 0 5px #252525;
+}
+
+.header{
+  background: #444;
+    padding: 7px;
+    border-radius: 3px 3px 0 0;
+}
+.header2{
+  background: lightgrey;
+    padding:.0157px;
+    border-radius: 3px 3px 0 0;
+}
+
+.header h1{
+  font-size: 36px;
+    margin: 0;
+    color: white;
+    font-weight: lighter;
+
+}
+
+
+.header h2{
+  font-size: 24px;
+    margin: 0;
+    color: white;
+    font-weight: lighter;
+
+}
+
+   input[type=checkbox]
+    {
+      display: none;
+    }
+
+h1{
+      position: relative;
+      margin-top:50px;
+      margin-bottom:50px;
+      text-align: center;
+
+  }
+
+    #day{
+      position: relative;
+      margin-top:50px;
+      top: -23px;
+      text-align: center;
+    }
+
+    .one:checked~.one
+    {
+     background: blue !important;
+    }
+
+    .two:checked~.two
+    {
+      background: blue !important;
+    }
+
+    .three:checked~.three
+    {
+      background: blue !important;
+    }
+
+    .seven:checked~.seven
+    {
+      background: blue !important;
+    }
+
+    .four:checked~.four
+    {
+      background: blue !important;
+    }
+
+    .five:checked~.five
+    {
+      background: blue !important;
+    }
+
+    .six:checked~.six
+    {
+      background: blue !important;
+    }
+
+
+    .label{
+      width:12%;
+      display: inline-block;
+      padding: 10px 20px;
+      background: grey;
+      color: white;
+      text-transform: uppercase;
+      font-family: arial;
+      font-size: 12pt;
+      border-right: 1px solid rgba(255, 255, 255, 0.42);
+      cursor:pointer;
+      transition: opacity 100ms;
+
+    }
+
+    label:hover{
+      opacity:0.8;
+      transition: opacity 100ms;
+    }
+
+    label.one
+    {
+      border-radius: 5px 0 0 5px;
+    }
+    label.seven
+    {
+      border-radius:  0 5px 5px 0;
+      border:none;
+    }

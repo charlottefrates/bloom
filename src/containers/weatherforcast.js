@@ -6,7 +6,7 @@ import {
      pull_weather,
      fetchData,
      fetchData2
-} from '../actions';
+} from '../actions/weather_actions';
 
 
 import Plot from '../containers/plot';

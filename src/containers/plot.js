@@ -124,13 +124,12 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: 'markers',
   marker: {
-    color: 'rgba(156, 165, 196, 0.95)',
+    color: 'grey',
     line: {
       color: 'rgba(156, 165, 196, 1.0)',
       width: 1,
     },
     symbol: 'circle',
-    color:'grey',
     size: 16
   }
     }],
