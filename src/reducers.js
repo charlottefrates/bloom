@@ -85,8 +85,12 @@ export default (state, action) => {
           case 'CREATE_ZONE':
           return{
                ...state,
-               zones:[{name:action.name}]
-          };
+               {zones:[...state.zones,
+                    {name:action.name}
+               ]}
+
+          }
+
           case 'EDIT_ZONE':
           return{};
           case 'DELETE_ZONE':

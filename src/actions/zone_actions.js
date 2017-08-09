@@ -3,15 +3,15 @@ export const CREATE_ZONE = 'CREATE_ZONE';
 export const create_zone = (name) =>({
      type:CREATE_ZONE,
      name
+})
 
 //passes new zone property change
 //Question: how will this action know which index?
 export const EDIT_ZONE = 'EDIT_ZONE';
-export const edit_zone = (name,bool) =>({
+export const edit_zone = (name,zoneindex) =>({
      type: EDIT_ZONE,
      name,
-     bool
-
+     zoneindex
 })
 
 //deletes zone properties
