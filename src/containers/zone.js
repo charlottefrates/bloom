@@ -34,7 +34,6 @@ class Zones extends React.Component{
        //
        deleteZone(id) {
             this.props.dispatch(delete_zone(this.props.id));
-
        };
 
        render() {

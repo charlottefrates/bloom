@@ -83,26 +83,27 @@ export default (state, action) => {
           }
 
           case 'EDIT_ZONE':
-          console.log('Editing new zone',state.zones);
-
-          return Object.assign({}, state, {
-               zones: state.zones.map((editing, id) => {
-                    if (id === action.id) {
-                         return {
-                              ...state,
-                              editing:!action.editing
-                         }
-                    }
-                    return state
-               })
-          });
-
-          case 'SAVE_ZONE':
-          console.log('Re-named new zone');
+          console.log(state.zones);
           return {
                ...state,
-               zones: state.zones.map((name,id) => {
-                    if (id === action.id) {
+               zones: state.zones.map((index) => {
+                    if (index.id === action.id) {
+                         return {
+                              ...state.zones,
+                              editing: !state.editing
+                         }
+
+                    }
+                    return state.zones;
+               })
+          };
+
+          case 'SAVE_ZONE':
+          console.log(state.zones);
+          return {
+               ...state,
+               zones: state.zones.map((name,index) => {
+                    if (index.id=== action.id) {
                          return{
                               ...state,
                               name:action.name
@@ -115,11 +116,11 @@ export default (state, action) => {
           case 'DELETE_ZONE':
           // filter creates a new array with all the elements that are not the id chosen
           const updatedZones = state.zones.filter(zone => zone.id !== action.id);
-          console.log(updatedZones);
+          console.log('The new state now has :',updatedZones);
           return  {
                ...state,
                zones:updatedZones
-          }
+          };
 
           default:
                return state;

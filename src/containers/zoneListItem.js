@@ -45,16 +45,18 @@ class ZoneListItem extends React.Component{
 
        onEditClick() {
             //editing must turn to true
-         this.props.dispatch(edit_zone())
+            console.log('Should edit only: ', this.props.id);
+           this.props.dispatch(edit_zone(this.props.id))
        }
 
        onCancelClick() {
+            console.log('canceled');
          return false;
        }
 
        onSaveClick(e) {
          e.preventDefault();
-         this.props.saveZone(this.props.name, this.refs.editInput.value);
+         this.props.saveZone(this.refs.editInput.value,this.props.id);
        }
 
        render() {

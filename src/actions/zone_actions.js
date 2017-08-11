@@ -19,8 +19,9 @@ export const save_zone = (name,id) =>({
 });
 
 export const EDIT_ZONE = "EDIT_ZONE";
-export const edit_zone = () =>({
-  type: EDIT_ZONE
+export const edit_zone = (id) =>({
+  type: EDIT_ZONE,
+  id
 });
 
 //deletes zone properties
