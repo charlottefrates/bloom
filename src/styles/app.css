@@ -29,8 +29,9 @@ input {
    max-width: 90%;
    padding-top: 20px;
    padding-bottom: 20px;
-   margin: 27px auto;
-   box-shadow: 0 0 5px #252525;
+   margin: 80px auto;
+   margin-bottom: 100px;
+   box-shadow: 0 0 30px #0b2c3c;
    border-radius: 5px;
 }
 
@@ -138,8 +139,8 @@ a:hover, a:active, a:focus{
 
 
 #wrapper {
-  background-color: grey;
-  box-shadow: 1px 5px 25px 3px #444;
+  background-color: #39adc7;
+  box-shadow: 1px 5px 25px 3px #0b2c3c;
   border-radius: 10px;
   margin: 100px auto;
   max-width: 100%;
@@ -166,8 +167,8 @@ a:hover, a:active, a:focus{
 }
 
 .day-weather-box {
-  border: 1px solid #716f71;
-  background-color: #8b9093;
+  border: 1px solid #3f7e8c;
+  background-color: #268da5;
   border-radius: 5px;
 }
 

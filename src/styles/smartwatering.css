@@ -5,8 +5,8 @@
     margin: 50px auto 0 auto;
     text-align: center;
     border-radius: 5px;
-    -webkit-box-shadow: 0 0 5px #252525;
-    box-shadow: 0 0 5px #252525;
+    -webkit-box-shadow: 0 0 30px #0b2c3c;
+    box-shadow:  0 0 30px #0b2c3c;
   padding-bottom: 50px;
 }
 
@@ -28,7 +28,7 @@
     border-radius: 3px 3px 0 0;
 }
 .header2{
-  background: lightgrey;
+  background: #39adc7;
     padding:.0157px;
     border-radius: 3px 3px 0 0;
 }
@@ -72,37 +72,37 @@ h1{
 
     #sunday:checked~.one
     {
-     background: blue !important;
+     background: #39adc7 !important;
     }
 
     .two:checked~.two
     {
-      background: blue !important;
+      background: #39adc7 !important;
     }
 
     .three:checked~.three
     {
-      background: blue !important;
+      background: #39adc7 !important;
     }
 
     .seven:checked~.seven
     {
-      background: blue !important;
+      background: #39adc7 !important;
     }
 
     .four:checked~.four
     {
-      background: blue !important;
+      background: #39adc7 !important;
     }
 
     .five:checked~.five
     {
-      background: blue !important;
+      background: #39adc7 !important;
     }
 
     .six:checked~.six
     {
-      background: blue !important;
+      background: #39adc7 !important;
     }
 
 

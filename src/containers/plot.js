@@ -33,7 +33,7 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: this.props.mode,
       line: {
-        color: 'grey',
+        color: '#39adc7',
         width: 6
       }
     }],
@@ -104,7 +104,7 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: this.props.mode,
       line: {
-        color: 'grey',
+        color: '#39adc7',
         width: 6
       }
     }],
@@ -124,9 +124,9 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: 'markers',
   marker: {
-    color: 'grey',
+    color: '#39adc7',
     line: {
-      color: 'rgba(156, 165, 196, 1.0)',
+      color: '#39adc7',
       width: 1,
     },
     symbol: 'circle',
