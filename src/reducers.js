@@ -84,21 +84,21 @@ export default (state, action) => {
           }
 
           case 'EDIT_ZONE':
-          console.log('Editing new zone');
-          return{
-               ...state,
-                zones: state.zones.map((editing,id) =>{
-                     if (id === action.id) {
-                       return {
-                            ...state,
-                            editing:!action.editing
-                       }
-                     }
-                return editing;
+          console.log('Editing new zone',state.zones);
 
-               }),
+          return Object.assign({}, state, {
+               zones: state.zones.map((editing, id) => {
+                    if (id === action.id) {
+                         return {
+                              ...state,
+                              editing:!action.editing
+                         }
+                         return editing;
+                    }
+               })
+          });
 
-          };
+
 
           case 'SAVE_ZONE':
           console.log('Re-named new zone');

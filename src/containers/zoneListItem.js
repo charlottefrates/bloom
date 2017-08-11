@@ -44,6 +44,7 @@ class ZoneListItem extends React.Component{
        }
 
        onEditClick() {
+            //editing must turn to true
          this.props.dispatch(edit_zone())
        }
 
