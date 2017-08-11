@@ -1,4 +1,3 @@
-
 const initialState = {
      location: '',
      weather:{},
@@ -14,11 +13,11 @@ const initialState = {
      descriptions:[],
      icons:[],
      zones:[
-     {name: 'Zone 5',editing:false},
-     {name: 'Zone 4',editing:false},
-     {name: 'Zone 3',editing:false},
-     {name: "Zone 2",editing:false},
-     {name: "Zone 1",editing:false}
+     {name: 'Zone 5',id:5,editing:false},
+     {name: 'Zone 4',id:4,editing:false},
+     {name: 'Zone 3',id:3,editing:false},
+     {name: "Zone 2",id:2,editing:false},
+     {name: "Zone 1",id:1,editing:false}
           ]
 
 };
@@ -86,18 +85,47 @@ export default (state, action) => {
           //index is at 0 becuase on array unshift()
           //any new zone additions are added to the beginning of array
           state.zone[0].name = action.name;
+          state.zone[0].id = action.id;
           return{
                ...state,
-               zones:[...state.zones,
-                    {name:action.name,editing:false}
-               ]
-
+               zones:[...state.zones,{name:action.name,id:action.id,editing:false}]
           }
 
+          case 'SAVE_ZONE':
+          //NOTE: search by id
+          return {
+               ...state,
+               zones: state.zones.map(name => {
+                    if (name.id === action.payload.id) {
+                         return action.payload.name;
+                    }
+
+                    return name;
+               }),
+          };
+
           case 'EDIT_ZONE':
-          return{};
+          return{}
+          /*
+          return{
+               ...state,
+                state.zones.map(zone =>
+                if (zone.id !== action.id) {
+                  return zone
+                }
+                 return  Object.assign({},
+                    zone, {editing: !zone.editing})
+            )
+          }
+          */
+
+
+
           case 'DELETE_ZONE':
-          return{};
+          const updatedZones = state.zones.filter(zone => zone.id !== action.id);
+          return  { ...state,
+               updatedZones }
+
 
           default:
                return state;

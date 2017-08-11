@@ -34,7 +34,7 @@ export default class Zones extends React.Component{
          console.log(name + ' was included in zones array');
        }
 
-       //tracks index of zone
+       //tracks index of zone by filtering out the name
        findZone(name) {
          return this.state.zones.filter((element) => element.name === name)[0];
        }
