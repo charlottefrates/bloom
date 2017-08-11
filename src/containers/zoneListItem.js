@@ -21,7 +21,7 @@ class ZoneListItem extends React.Component{
          }
 
          return (
-           <span>{this.props.name}</span>
+           <span id= {this.props.id}>{this.props.name}</span>
          );
        }
 
@@ -38,7 +38,7 @@ class ZoneListItem extends React.Component{
          return (
            <span>
              <button onClick={this.onEditClick.bind(this)}>Edit</button>
-             <button onClick={this.props.deleteZone.bind(this, this.props.name)}>Delete</button>
+             <button onClick={this.props.deleteZone.bind(this)}>Delete</button>
            </span>
          );
        }

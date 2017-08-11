@@ -77,7 +77,6 @@ export default (state, action) => {
           case 'CREATE_ZONE':
           //index is at 0 becuase on array unshift()
           //any new zone additions are added to the beginning of array
-          console.log('Created new zone');
           return{
                ...state,
                zones:[...state.zones,{name:action.name,id:action.id,editing:false}]
@@ -93,12 +92,10 @@ export default (state, action) => {
                               ...state,
                               editing:!action.editing
                          }
-                         return editing;
                     }
+                    return state
                })
           });
-
-
 
           case 'SAVE_ZONE':
           console.log('Re-named new zone');
@@ -117,13 +114,12 @@ export default (state, action) => {
 
           case 'DELETE_ZONE':
           // filter creates a new array with all the elements that are not the id chosen
-          const updatedZones = state.zones.filter(id => id !== action.id);
-          console.log('deleting zone ', updatedZones);
+          const updatedZones = state.zones.filter(zone => zone.id !== action.id);
+          console.log(updatedZones);
           return  {
                ...state,
                zones:updatedZones
           }
-
 
           default:
                return state;

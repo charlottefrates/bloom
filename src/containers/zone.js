@@ -17,8 +17,6 @@ import ZoneList from './zonelist';
 import  '../styles/zone.css';
 
 
-//import {connect} from 'react-redux';
-
 class Zones extends React.Component{
 
        //Creates new zones
@@ -35,7 +33,7 @@ class Zones extends React.Component{
 
        //
        deleteZone(id) {
-            this.props.dispatch(delete_zone(id));
+            this.props.dispatch(delete_zone(this.props.id));
 
        };
 
@@ -46,7 +44,7 @@ class Zones extends React.Component{
                <h1>Watering Zones</h1>
              </div>
              <CreateZone  createZone={this.createZone.bind(this)}/>
-             <ZoneList  deleteZone={this.deleteZone.bind(this)} saveZone={this.saveZone.bind(this)} />
+             <ZoneList  deleteZone={this.deleteZone} saveZone={this.saveZone.bind(this)} />
            </div>
          );
        }

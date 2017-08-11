@@ -1,4 +1,3 @@
-
 // succinct hack for generating passable unique ids
 const uid = () => Math.random().toString(34).slice(2);
 
@@ -19,15 +18,14 @@ export const save_zone = (name,id) =>({
      id
 });
 
-//bool to capture if zone is being edited
 export const EDIT_ZONE = "EDIT_ZONE";
-export const edit_zone = (id) =>({
-  type: EDIT_ZONE,
-  id
+export const edit_zone = () =>({
+  type: EDIT_ZONE
 });
 
 //deletes zone properties
 export const DELETE_ZONE = 'DELETE_ZONE';
-export const delete_zone = () =>({
-     type: DELETE_ZONE
+export const delete_zone = (id) =>({
+     type: DELETE_ZONE,
+     id
 });
