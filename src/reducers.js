@@ -96,35 +96,36 @@ export default (state, action) => {
           return {
                ...state,
                zones: state.zones.map(name => {
-                    if (name.id === action.payload.id) {
-                         return action.payload.name;
-                    }
-
+                    if (name.id === action.id) {
+                         return action.name;
+                         }
                     return name;
                }),
           };
 
           case 'EDIT_ZONE':
-          return{}
-          /*
+
           return{
                ...state,
-                state.zones.map(zone =>
-                if (zone.id !== action.id) {
-                  return zone
-                }
-                 return  Object.assign({},
-                    zone, {editing: !zone.editing})
-            )
-          }
-          */
+                zones: state.zones.map(zone =>{
+                     if (zone.id !== action.id) {
+                       return action.editing
+                       }
+                return zone;
+
+               }),
+
+          };
+
 
 
 
           case 'DELETE_ZONE':
           const updatedZones = state.zones.filter(zone => zone.id !== action.id);
-          return  { ...state,
-               updatedZones }
+          return  {
+               ...state,
+               zones:updatedZones
+          }
 
 
           default:
