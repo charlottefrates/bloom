@@ -26,7 +26,7 @@ export default class Zones extends React.Component{
        //Creates new zones
        createZone(name) {
          this.state.zones.unshift({
-           name: name,
+           name: name
          });
          this.setState({
            zones: this.state.zones
@@ -43,7 +43,9 @@ export default class Zones extends React.Component{
        saveZone(oldZone, newZone) {
          let selectedZone = this.findZone(oldZone);
          selectedZone.name = newZone;
-         this.setState({ zones: this.state.zones });
+         this.setState({
+              zones: this.state.zones
+         });
          console.log(oldZone + ' has been changed to ' + newZone);
          console.log(this.state);
        }
@@ -51,8 +53,12 @@ export default class Zones extends React.Component{
        //
        deleteZone(name) {
          let index = this.state.zones.map(element => element.name).indexOf(name);
+         //removes 1 item at specified index position
+         //array.splics(start,deleteCount)
          this.state.zones.splice(index, 1);
-         this.setState({ zones: this.state.zones });
+         this.setState({
+              zones: this.state.zones
+         });
          console.log(name + ' has been deleted');
          console.log(this.state);
        }

@@ -40,7 +40,7 @@ class WeatherForcast extends React.Component{
         const urlcurrent = urlPrefixcurrent + location + urlSuffix;
 
         //API call #1
-        //gets 5 day forecast
+        //gets 7 day forecast
         this.props.dispatch(fetchData(url));
 
         //API call #2
@@ -245,6 +245,7 @@ const mapStateToProps = (state, props) => ({
     mintemps:state.mintemps,
     descriptions:state.descriptions,
     icons:state.icons
+    //zones: state.zones
 
 });
 

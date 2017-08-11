@@ -21,9 +21,10 @@ export const save_zone = (name,id) =>({
 
 //bool to capture if zone is being edited
 export const EDIT_ZONE = "EDIT_ZONE";
-export const edit_zone = (id) =>({
+export const edit_zone = (id,editing) =>({
   type: EDIT_ZONE,
-  id
+  id,
+  editing
 });
 
 //deletes zone properties
@@ -33,8 +34,3 @@ export const delete_zone = (id) =>({
      id
 
 });
-
-
-export function findZone(name) {
-  return function thunk(dispatch) {this.state.zones.filter((element) => element.name === name)[0];}
-  };

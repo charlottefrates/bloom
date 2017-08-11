@@ -86,42 +86,47 @@ export default (state, action) => {
           //any new zone additions are added to the beginning of array
           state.zone[0].name = action.name;
           state.zone[0].id = action.id;
+          console.log('Created new zone');
           return{
                ...state,
                zones:[...state.zones,{name:action.name,id:action.id,editing:false}]
           }
 
+          case 'EDIT_ZONE':
+          console.log('Editing new zone');
+          return{
+               ...state,
+                zones: state.zones.map((editing,id) =>{
+                     if (id === action.id) {
+                       return {
+                            ...state,
+                            editing:!action.editing
+                       }
+                     }
+                return editing;
+
+               }),
+
+          };
+
           case 'SAVE_ZONE':
-          //NOTE: search by id
+          console.log('Re-named new zone');
           return {
                ...state,
-               zones: state.zones.map(name => {
-                    if (name.id === action.id) {
-                         return action.name;
+               zones: state.zones.map((name,id) => {
+                    if (id === action.id) {
+                         return{
+                              ...state,
+                              name:action.name
+                         }
                          }
                     return name;
                }),
           };
 
-          case 'EDIT_ZONE':
-
-          return{
-               ...state,
-                zones: state.zones.map(zone =>{
-                     if (zone.id !== action.id) {
-                       return action.editing
-                       }
-                return zone;
-
-               }),
-
-          };
-
-
-
-
           case 'DELETE_ZONE':
-          const updatedZones = state.zones.filter(zone => zone.id !== action.id);
+          // filter creates a new array with all the elements that are not the id chosen
+          const updatedZones = state.zones.filter(id => id !== action.id);
           return  {
                ...state,
                zones:updatedZones
