@@ -16,7 +16,7 @@ import Plot from '../containers/plot';
 
 /*Functional Component using ES6 class to define component*/
 
-class WeatherForcast extends React.Component{
+class WeatherForecast extends React.Component{
 
     handleChange = (e) =>{
 
@@ -255,4 +255,4 @@ const mapStateToProps = (state, props) => ({
 //and then we return what we want to inject as props into our component
 //this automatically injects dispatch to run our actions,
 //which is why we can use this.props.dispatch
-export default connect(mapStateToProps)(WeatherForcast);
+export default connect(mapStateToProps)(WeatherForecast);

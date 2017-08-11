@@ -12,14 +12,7 @@ const initialState = {
      mintemps: [],
      descriptions:[],
      icons:[],
-     zones:[
-     {name: 'Zone 5',id:5,editing:false},
-     {name: 'Zone 4',id:4,editing:false},
-     {name: 'Zone 3',id:3,editing:false},
-     {name: "Zone 2",id:2,editing:false},
-     {name: "Zone 1",id:1,editing:false}
-          ]
-
+     zones:[]
 };
 
 
@@ -84,8 +77,6 @@ export default (state, action) => {
           case 'CREATE_ZONE':
           //index is at 0 becuase on array unshift()
           //any new zone additions are added to the beginning of array
-          state.zone[0].name = action.name;
-          state.zone[0].id = action.id;
           console.log('Created new zone');
           return{
                ...state,
@@ -127,6 +118,7 @@ export default (state, action) => {
           case 'DELETE_ZONE':
           // filter creates a new array with all the elements that are not the id chosen
           const updatedZones = state.zones.filter(id => id !== action.id);
+          console.log('deleting zone ', updatedZones);
           return  {
                ...state,
                zones:updatedZones

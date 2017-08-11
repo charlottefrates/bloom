@@ -1,16 +1,18 @@
 import React from 'react';
 
-export default class ToDoListItem extends React.Component{
-     constructor(props) {
-         super(props);
+import {connect} from 'react-redux';
+import {
+     create_zone,
+     save_zone,
+     edit_zone,
+     delete_zone
+} from '../actions/zone_actions';
 
-         this.state = {
-           editing: false,
-         };
-       }
+
+class ZoneListItem extends React.Component{
 
        renderName() {
-         if(this.state.editing) {
+         if(this.props.editing) {
            return (
                <form onSubmit={this.onSaveClick.bind(this)}>
                  <input type="text" ref="editInput" defaultValue={this.props.name} />
@@ -24,7 +26,7 @@ export default class ToDoListItem extends React.Component{
        }
 
        renderButtons() {
-         if (this.state.editing) {
+         if (this.props.editing) {
            return (
              <span>
                <button onClick={this.onSaveClick.bind(this)}>Save</button>
@@ -42,17 +44,16 @@ export default class ToDoListItem extends React.Component{
        }
 
        onEditClick() {
-         this.setState({ editing: true });
+         this.props.dispatch(edit_zone())
        }
 
        onCancelClick() {
-         this.setState({ editing: false });
+         return false;
        }
 
        onSaveClick(e) {
          e.preventDefault();
          this.props.saveZone(this.props.name, this.refs.editInput.value);
-         this.setState({ editing: false });
        }
 
        render() {
@@ -69,3 +70,10 @@ export default class ToDoListItem extends React.Component{
        }
 
 }
+
+const mapStateToProps = (state, props) => ({
+     zones: state.zones
+});
+
+
+export default connect(mapStateToProps)(ZoneListItem);

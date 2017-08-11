@@ -15,7 +15,7 @@ export const create_zone = (name,id) =>({
 export const SAVE_ZONE = 'SAVE_ZONE';
 export const save_zone = (name,id) =>({
      type: SAVE_ZONE,
-     name
+     name,
      id
 });
 
