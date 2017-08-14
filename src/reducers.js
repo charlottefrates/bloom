@@ -103,7 +103,7 @@ export default (state, action) => {
         }
         */
 
-
+        /*
           return {
                ...state,
                zones: state.zones.map((index) => {
@@ -114,6 +114,17 @@ export default (state, action) => {
                })
 
           };
+     */
+     return Object.assign({}, state, {
+    zones: state.zones.map((zone, index) => {
+      if (zone.id === action.id) {
+        return Object.assign({}, zone, {
+          editing: !zone.editing
+        })
+      }
+      return zone
+})
+});
 
 
 
