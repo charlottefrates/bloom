@@ -63,6 +63,7 @@ class ZoneListItem extends React.Component{
 
        onSaveClick(e) {
          e.preventDefault();
+         debugger;
          this.props.saveZone(this.refs.editInput.value,this.props.id);
        }
 

@@ -82,26 +82,6 @@ export default (state, action) => {
 
           case 'EDIT_ZONE':
           console.log(state);
-          /*
-          let zoneArray = state.zones.map( (item, index) => {
-               let isEditing = action.editing;
-               if(index !== action.index) {
-                    // This isn't the item we care about - keep it as-is
-               return item;
-         }
-
-        // Otherwise, this is the one we want - return an updated value
-             return {
-                 ...item,
-                 editing:!isEditing
-            };
-        });
-
-        return{
-             ...state,
-             zones: zoneArray
-        }
-        */
 
         /*
           return {
@@ -131,10 +111,14 @@ export default (state, action) => {
 
           case 'SAVE_ZONE':
           console.log(state.zones);
+
           return {
                ...state,
                zones: state.zones.map((name,index) => {
-                    if (index.id=== action.id) {
+                    console.log(name);
+                    console.log(action);
+                    console.log(index);
+                    if (name.id === action.id) {
                          return{
                               name:action.name
                          }

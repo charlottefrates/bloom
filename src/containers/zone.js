@@ -27,8 +27,8 @@ class Zones extends React.Component{
 
 
        //allows for zone name edit and save
-       saveZone(oldZone, newZone) {
-            this.props.dispatch(save_zone(newZone));
+       saveZone(newZone,id) {
+            this.props.dispatch(save_zone(newZone,id));
        };
 
        //
