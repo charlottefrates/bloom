@@ -1,12 +1,6 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {
-     create_zone,
-     save_zone,
-     edit_zone,
-     delete_zone
-} from '../actions/zone_actions';
 
 
 import ZoneListItem from './zoneListItem';
@@ -18,18 +12,18 @@ class ZoneList extends React.Component{
 
 
      renderItems() {
-        return this.props.zones.map(
+         return this.props.zones.map(
            (item, index) => <ZoneListItem key={index} {...item} {...this.props} />
-        );
+          );
      }
 
- render() {
-   return (
-     <div className="items-list">
-       {this.renderItems()}
-     </div>
-   );
- }
+     render() {
+          return (
+          <div className="items-list">
+            {this.renderItems()}
+          </div>
+          );
+     }
 
 
 }

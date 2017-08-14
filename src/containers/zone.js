@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {
      create_zone,
      save_zone,
-     edit_zone,
      delete_zone
 } from '../actions/zone_actions';
 
