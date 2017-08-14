@@ -7,19 +7,37 @@ import '../styles/smartwatering.css';
 
 class Smart extends React.Component{
 
+    getInitialState () {
+        return {
+      selectedOption: 'option1'
+        };
+    };
+
+    handleOptionChange(changeEvent) {
+        console.log('changed')
+    };
+
+
+  handleFormSubmit(formSubmitEvent) {
+    formSubmitEvent.preventDefault();
+
+    console.log('You have selected:', this.state.selectedOption);
+  };
+
 
     zoneList (){
         return this.props.zones.map(
             (item, i) =>
                                 <div className="radio">
-                                <label>
-                                <input type="radio" checked={false} key={i} {...item}  />
+                                <label >
+                                <input type="radio" key={i} {...item} onChange={this.handleOptionChange}/>
+                                {item.name}
                                 </label>
                                 </div>
 
 
         )
-    }
+    };
 
 
 
@@ -55,6 +73,9 @@ class Smart extends React.Component{
                         <form>
                         {this.zoneList()}
                         </form>
+                        <br/>
+
+
                       </div>
 
                       <div className="secondcont">

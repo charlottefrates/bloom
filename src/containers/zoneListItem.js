@@ -9,10 +9,8 @@ import {
 class ZoneListItem extends React.Component{
 
        renderName() {
-          console.log(this.props);
           //for (var i = 0; i < this.props.zones.length; i++) {
               const isEditing = this.props.editing;
-               console.log(isEditing);
 
                if(isEditing) {
                  return (
