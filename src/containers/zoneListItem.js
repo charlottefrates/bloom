@@ -12,13 +12,20 @@ import {
 class ZoneListItem extends React.Component{
 
        renderName() {
-         if(this.props.editing) {
-           return (
-               <form onSubmit={this.onSaveClick.bind(this)}>
-                 <input type="text" ref="editInput" defaultValue={this.props.name} />
-               </form>
-           );
-         }
+          console.log(this.props);
+          //for (var i = 0; i < this.props.zones.length; i++) {
+              const isEditing = this.props.editing;
+               console.log(isEditing);
+
+               if(isEditing) {
+                 return (
+                     <form onSubmit={this.onSaveClick.bind(this)}>
+                       <input type="text" ref="editInput" defaultValue={this.props.name} />
+                     </form>
+                 );
+               }
+
+          //}
 
          return (
            <span id= {this.props.id}>{this.props.name}</span>

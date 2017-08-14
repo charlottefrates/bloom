@@ -75,28 +75,48 @@ export default (state, action) => {
                     };
 
           case 'CREATE_ZONE':
-          //index is at 0 becuase on array unshift()
-          //any new zone additions are added to the beginning of array
           return{
                ...state,
                zones:[...state.zones,{name:action.name,id:action.id,editing:false}]
           }
 
           case 'EDIT_ZONE':
-          console.log(state.zones);
+          console.log(state);
+          /*
+          let zoneArray = state.zones.map( (item, index) => {
+               let isEditing = action.editing;
+               if(index !== action.index) {
+                    // This isn't the item we care about - keep it as-is
+               return item;
+         }
+
+        // Otherwise, this is the one we want - return an updated value
+             return {
+                 ...item,
+                 editing:!isEditing
+            };
+        });
+
+        return{
+             ...state,
+             zones: zoneArray
+        }
+        */
+
+
           return {
                ...state,
                zones: state.zones.map((index) => {
                     if (index.id === action.id) {
-                         return {
-                              ...state.zones,
-                              editing: !state.editing
-                         }
-
+                              index.editing = !index.editing;
                     }
-                    return state.zones;
+                  return index;
                })
+
           };
+
+
+
 
           case 'SAVE_ZONE':
           console.log(state.zones);
@@ -105,7 +125,6 @@ export default (state, action) => {
                zones: state.zones.map((name,index) => {
                     if (index.id=== action.id) {
                          return{
-                              ...state,
                               name:action.name
                          }
                          }
