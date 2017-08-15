@@ -30,10 +30,39 @@ export const delete_zone = (id) =>({
      type: DELETE_ZONE,
      id
 });
+//captures selected zones from projection component
+export const SELECT_DAYS = 'SELECT_DAYS';
+export const select_days = (data) =>({
+     type:SELECT_DAYS,
+     data
+});
 
 //captures selected zones from projection component
 export const SELECT_ZONE = 'SELECT_ZONE';
-export const select_zone = (name) =>({
+export const select_zone = (data) =>({
      type:SELECT_ZONE,
-     name
+     data
+});
+
+
+//captures time of watering
+export const SET_TIME= "SET_TIME";
+export const set_time = (min) =>({
+     type: SET_TIME,
+     min
+});
+
+//captures amount of water
+export const SET_WATERING= "SET_WATERING";
+export const set_watering = (gal) =>({
+     type: SET_WATERING,
+     gal
+});
+
+
+//captures projected water use
+export const SET_PROJECTED= "SET_PROJECTED";
+export const set_projected = (projected) =>({
+     type: SET_PROJECTED,
+     projected
 });

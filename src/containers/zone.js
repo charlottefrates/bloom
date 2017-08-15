@@ -21,7 +21,6 @@ class Zones extends React.Component{
        //Creates new zones
        createZone(name) {
             this.props.dispatch(create_zone(name));
-         console.log(name + ' was included in zones array');
        }
 
 

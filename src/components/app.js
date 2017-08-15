@@ -9,10 +9,10 @@ export default function App() {
 
     return (
         <div>
-            <Zones />
-            <br/>
-            <WeatherForecast />
-            <Smart />
+          <WeatherForecast />
+          <Zones />
+          <br/>
+          <Smart />
         </div>
     );
 }

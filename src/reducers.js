@@ -13,7 +13,11 @@ const initialState = {
      descriptions:[],
      icons:[],
      zones:[],
-     selectedOptions:[]
+     selectedDays:[],
+     selectedOptions:[],
+     rate:'',
+     time: '',
+     projectedUse:''
 };
 
 
@@ -25,15 +29,13 @@ export default (state, action) => {
 
           case 'PULL_WEATHER':
                state.location = action.location;
-                    //NOTE: passing in a new,empty object({}) as the 1st arg and the current state as second
-                    // we create a carbon copy of the state
-                    //can also use Object.assign( {} , state,{location: action.location}) instead of spread operator
                     return {
                          ...initialState, location: action.location
                     };
 
           case 'SET_DATA':
                state.weather = action.weather;
+                    console.log('SET_DATA')
                     console.log(state.weather);
                     return{
                          ...state, weather: action.weather
@@ -107,8 +109,6 @@ export default (state, action) => {
           });
 
 
-
-
           case 'SAVE_ZONE':
           console.log(state.zones);
 
@@ -136,12 +136,46 @@ export default (state, action) => {
                zones:updatedZones
           };
 
-          case 'SELECT_ZONE':
+          case 'SELECT_DAYS':
+          state.selectedDays = action.data;
           return{
                ...state,
-               selectedOptions:[...state.selectedOptions,{name:action.name}]
-          }
+               selectedDays:action.data
+          };
 
+          case 'SELECT_ZONE':
+          state.selectedOptions = action.data;
+          return{
+               ...state,
+               selectedOptions:action.data
+          };
+
+          case 'SET_TIME':
+          //state.rate = action.gallon;
+          state.time = action.min;
+          console.log('You will be watering for ' + state.time + ' min');
+          return{
+               ...state,
+               //rate:action.gallon,
+               time:action.min
+          };
+
+          case 'SET_WATERING':
+          state.rate = action.gal;
+          console.log('gallon/min set to ' + state.rate);
+          return{
+               ...state,
+               rate:action.gal,
+          };
+
+          case 'SET_PROJECTED':
+          state.projectedUse = action.projected;
+          console.log('SET_ARRAY');
+          console.log(state.projectedUse);
+               return{
+                    ...state,
+                    projectedUse: action.projected
+               };
 
           default:
                return state;
