@@ -12,7 +12,8 @@ const initialState = {
      mintemps: [],
      descriptions:[],
      icons:[],
-     zones:[]
+     zones:[],
+     selectedOptions:[]
 };
 
 
@@ -83,7 +84,7 @@ export default (state, action) => {
           case 'EDIT_ZONE':
           console.log(state);
 
-        /*
+         /*
           return {
                ...state,
                zones: state.zones.map((index) => {
@@ -92,19 +93,18 @@ export default (state, action) => {
                     }
                   return index;
                })
-
           };
-     */
-     return Object.assign({}, state, {
-    zones: state.zones.map((zone, index) => {
-      if (zone.id === action.id) {
-        return Object.assign({}, zone, {
-          editing: !zone.editing
-        })
-      }
-      return zone
-})
-});
+          */
+          return Object.assign({}, state, {
+              zones: state.zones.map((zone, index) => {
+                if (zone.id === action.id) {
+                  return Object.assign({}, zone, {
+                    editing: !zone.editing
+                    })
+                    }
+                    return zone
+               })
+          });
 
 
 
@@ -135,6 +135,13 @@ export default (state, action) => {
                ...state,
                zones:updatedZones
           };
+
+          case 'SELECT_ZONE':
+          return{
+               ...state,
+               selectedOptions:[...state.selectedOptions,{name:action.name}]
+          }
+
 
           default:
                return state;

@@ -30,3 +30,10 @@ export const delete_zone = (id) =>({
      type: DELETE_ZONE,
      id
 });
+
+//captures selected zones from projection component
+export const SELECT_ZONE = 'SELECT_ZONE';
+export const select_zone = (name) =>({
+     type:SELECT_ZONE,
+     name
+});
