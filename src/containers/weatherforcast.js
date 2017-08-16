@@ -256,6 +256,7 @@ class WeatherForecast extends React.Component{
 
               <Plot
                   xData={this.props.dates}
+                  yDataLow ={this.props.mintemps}
                   yData={this.props.maxtemps}
                   yDataDes={this.props.descriptions}
                   type="scatter"

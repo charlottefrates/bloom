@@ -26,25 +26,39 @@ class Plot extends React.Component {
 
     var gd = gd3.node();
 
-    Plotly.newPlot('plot',
-    [{
+    var hightemp = {
       x: this.props.xData,
       y: this.props.yData,
       type: this.props.type,
       mode: this.props.mode,
+      name: 'high-temperature',
       line: {
         color: '#39adc7',
         width: 6
       }
-    }],
-    {
+    };
+
+      var lowtemp ={
+        x: this.props.xData,
+        y: this.props.yDataLow,
+        type: this.props.type,
+        mode: this.props.mode,
+        name:'low-temperature',
+        line: {
+          color: 'grey',
+          width: 6
+        }
+      };
+
+      var data = [hightemp,lowtemp];
+
+    Plotly.newPlot('plot',data, {
       showlegend: false,
       displayModeBar: false,
       title: '7-Day Temperature Forcast',
       font: {
         size: 16
-    }
-    });
+    }});
 
     Plotly.newPlot('plot2',
     [{
@@ -63,7 +77,7 @@ class Plot extends React.Component {
   }
     }],
     {
-      showlegend: false,
+      showlegend: true,
       displayModeBar: false,
       title: '7-Day Description Forcast',
       font: {
@@ -97,25 +111,39 @@ class Plot extends React.Component {
     var gd = gd3.node();
 
 
-    Plotly.newPlot('plot',
-    [{
+    var hightemp = {
       x: this.props.xData,
       y: this.props.yData,
       type: this.props.type,
       mode: this.props.mode,
+      name: 'high-temperature',
       line: {
         color: '#39adc7',
         width: 6
       }
-    }],
-    {
-      showlegend: false,
+    };
+
+      var lowtemp ={
+        x: this.props.xData,
+        y: this.props.yDataLow,
+        type: this.props.type,
+        mode: this.props.mode,
+        name:'low-temperature',
+        line: {
+          color: 'grey',
+          width: 6
+        }
+      };
+
+      var data = [hightemp,lowtemp];
+
+    Plotly.newPlot('plot',data, {
+      showlegend: true,
       displayModeBar: false,
       title: '7-Day Temperature Forcast',
       font: {
         size: 16
-    }
-    });
+    }});
 
     Plotly.newPlot('plot2',
     [{
