@@ -18,21 +18,42 @@ class Smart extends React.Component{
 
   //Renders zone list names into checkboxes
   zoneList (){
-      return this.props.zones.map(
-          (item, i) =>
-                              <div className="zoneCheck">
-                              <label >
-                              <input type="checkbox" className = "checkbox" key={i} {...item} onChange={event=>this.handleOptionChange(event)}  value={item.name} />
-                              {item.name}
-                              </label>
-                              </div>
-
+    return this.props.zones.map(
+      (item, i) =>
+        <div className="zoneCheck">
+          <label >
+            <input type="checkbox" className = "checkbox" key={i} {...item} onChange={event=>this.handleOptionChange(event)}  value={item.name} />
+            {item.name}
+          </label>
+        </div>
 
       )
   };
 
+  iconList (){
+    return this.props.icons.map(
+      (item, i) =>
+        <div className = "labelIcon ">
+        <span className={item} key={i}> </span>
+        </div>
+      )
+  }
+
+  dayList(){
+    return this.props.dates.map(
+      (item,i) =>
+
+        <label for={item} className = "label ">
+          <input className = "days" type='checkbox' name = 'days' value ={item} key={i} className="one" onChange={event=>this.handleDayChange(event,0)}/>
+          {item}
+        </label>
+
+
+    )
+  };
+
   //makes an array of seleted day options
-  handleDayChange(e) {
+  handleDayChange(e,i) {
         // current array of options
         const options = this.props.selectedDays;
         let index
@@ -48,9 +69,10 @@ class Smart extends React.Component{
 
         // update the state with the new array of options
         this.props.dispatch(select_days(options));
-        console.log(this.props.selectedDays);
-
+        console.log(options);
         console.log('There are ' + this.props.selectedDays.length + ' days selected');
+
+
 
   };
 
@@ -109,46 +131,14 @@ class Smart extends React.Component{
   render(){
          return (
               <div className='maincont'>
-                      <div className="header">
-                    <h1> Smart Water Projection </h1>
-                      </div>
-                    <form id="day">
-                      <label for={this.props.dates[0]} className = "one label">
-                        <input type='checkbox' name = 'days' value ={this.props.dates[0]} id='sunday' className="one" onChange={event=>this.handleDayChange(event)}/>
-                        <span className={this.props.icons[0]}> {this.props.dates[0]} </span>
-                      </label>
-
-                      <label for={this.props.dates[1]} className = "two label">
-                        <input type='checkbox' name = 'days' value ={this.props.dates[1]} id='monday' className="two" onChange={event=>this.handleDayChange(event)}/>
-                        <span className={this.props.icons[1]}>  {this.props.dates[1]} </span>
-                      </label>
-
-                      <label for={this.props.dates[2]} className = "three label" >
-                        <input type='checkbox' name = 'days' value ={this.props.dates[2]} id='tuesday'  className="three" onChange={event=>this.handleDayChange(event)}/>
-                        <span className={this.props.icons[2]}> {this.props.dates[2]} </span>
-                      </label>
-
-                      <label for={this.props.dates[3]} className = "four label" >
-                        <input type='checkbox' name = 'days' value ={this.props.dates[3]}id='wednesday'className="four" onChange={event=>this.handleDayChange(event)}/>
-                        <span className={this.props.icons[3]}> {this.props.dates[3]} </span>
-                      </label>
-
-                      <label for={this.props.dates[4]} className = "five label" >
-                        <input type='checkbox' name = 'days' value ={this.props.dates[4]} id='thursday' className="five" onChange={event=>this.handleDayChange(event)}/>
-                         <span className={this.props.icons[4]}> {this.props.dates[4]} </span>
-                      </label>
-
-                      <label for="friday" className ="six label" >
-                        <input type='checkbox' name = 'days' value ={this.props.dates[5]} id='friday' className="six" onChange={event=>this.handleDayChange(event)}/>
-                        <span className={this.props.icons[5]}> {this.props.dates[5]} </span>
-                      </label>
-
-                      <label for={this.props.dates[6]} className= "seven label">
-                        <input type='checkbox' name = 'days' value ={this.props.dates[6]} id='saturday' className="seven" onChange={event=>this.handleDayChange(event)}/>
-                        <span className={this.props.icons[6]}> {this.props.dates[6]} </span>
-                      </label>
-
-                     </form>
+                        <div className="header">
+                          <h1> Smart Water Projection </h1>
+                        </div>
+                        <form id="day">
+                        {this.iconList()}
+                        {this.dayList()}
+                        </form>
+                        <br/>
 
                       <div className="secondcont">
                         <div className="header2">
@@ -178,7 +168,7 @@ class Smart extends React.Component{
                         <div className="header2">
                           <h2> Projected Water use </h2>
                         </div>
-                        <h4> Based on your selections you will be using </h4>
+                        <h4> Based on your selections and settings you will be using </h4>
                           {this.projectedWaterUse()}
                          <h3> {this.props.projectedUse}</h3>
                          <h4> gallons of water </h4>

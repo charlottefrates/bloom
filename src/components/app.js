@@ -9,9 +9,8 @@ export default function App() {
 
     return (
         <div>
-          <WeatherForecast />
           <Zones />
-          <br/>
+          <WeatherForecast />
           <Smart />
         </div>
     );

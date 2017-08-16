@@ -8,6 +8,7 @@
     -webkit-box-shadow: 0 0 30px #0b2c3c;
     box-shadow:  0 0 30px #0b2c3c;
   padding-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .secondcont{
@@ -79,7 +80,7 @@ h1{
       text-align: center;
     }
 
-    .checkbox[type=checkbox]:checked  + .label {
+    .label[type=checkbox]:checked  + .days {
       background: #39adc7 !important; }
 
     .label{
@@ -100,6 +101,21 @@ h1{
        transition: opacity 100ms;
 
     }
+
+    .labelIcon{
+      width: 13%;
+    display: inline-block;
+    background: grey;
+    color: #39adc7;
+    text-transform: uppercase;
+    font-family: arial;
+    font-size: 22pt;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.42);
+    }
+
 
     .label:hover{
       opacity:0.8;

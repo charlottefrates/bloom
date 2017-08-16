@@ -30,7 +30,7 @@ export default (state, action) => {
           case 'PULL_WEATHER':
                state.location = action.location;
                     return {
-                         ...initialState, location: action.location
+                         ...state, location: action.location
                     };
 
           case 'SET_DATA':
@@ -86,7 +86,7 @@ export default (state, action) => {
           case 'EDIT_ZONE':
           console.log(state);
 
-         /*
+
           return {
                ...state,
                zones: state.zones.map((index) => {
@@ -96,7 +96,8 @@ export default (state, action) => {
                   return index;
                })
           };
-          */
+
+          /*
           return Object.assign({}, state, {
               zones: state.zones.map((zone, index) => {
                 if (zone.id === action.id) {
@@ -107,6 +108,9 @@ export default (state, action) => {
                     return zone
                })
           });
+          */
+
+
 
 
           case 'SAVE_ZONE':
