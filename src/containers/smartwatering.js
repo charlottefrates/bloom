@@ -11,18 +11,25 @@ import {
 } from '../actions/zone_actions';
 
 
-
 import '../styles/smartwatering.css';
 
+import $ from 'jquery';
+
 class Smart extends React.Component{
+
+  componentDidUpdate() {
+    $( '#day' ).on( 'click', 'input:checkbox', function () {
+      $( this ).parent().toggleClass( 'checked', this.checked );
+    });
+  }
 
   //Renders zone list names into checkboxes
   zoneList (){
     return this.props.zones.map(
       (item, i) =>
         <div className="zoneCheck">
-          <label >
-            <input type="checkbox" className = "checkbox" key={i} {...item} onChange={event=>this.handleOptionChange(event)}  value={item.name} />
+          <label className='toclick'>
+            <input type="checkbox" className="zone"  key={i} {...item} onChange={event=>this.handleOptionChange(event)}  value={item.name} />
             {item.name}
           </label>
         </div>
@@ -45,8 +52,8 @@ class Smart extends React.Component{
     return this.props.dates.map(
       (item,i) =>
 
-        <label for={item} className = "label ">
-          <input className = "days" type='checkbox' name = 'days' value ={item} key={i} className="one" onChange={event=>this.handleDayChange(event,0)}/>
+        <label for={item} className = "label">
+          <input className = "days" type='checkbox' value={item} name = 'days' key={i} className="one" onChange={event=>this.handleDayChange(event,0)}/>
           {item}
         </label>
 

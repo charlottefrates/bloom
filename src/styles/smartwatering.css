@@ -65,6 +65,11 @@
       display: none;
     }
 
+    input.zone[type=checkbox]
+     {
+       display: inline-grid;
+     }
+
 h1{
       position: relative;
       margin-top:50px;
@@ -80,7 +85,7 @@ h1{
       text-align: center;
     }
 
-    .label[type=checkbox]:checked  + .days {
+    .checked  {
       background: #39adc7 !important; }
 
     .label{
