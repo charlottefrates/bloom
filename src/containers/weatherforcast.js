@@ -101,14 +101,14 @@ class WeatherForecast extends React.Component{
                     <div className="row">
 
                     {/* <!-- Right panel --> */}
-                    <div className="col-md-4 col-sm-5">
+                    <div className="col-md-4 col-sm-5 change3">
                       <h5><spam id="cityName">{this.props.weather.data.city.name}</spam>, <spam id="cityCode">{this.props.weather.data.city.country}</spam></h5>
                       <h6 id="localDate">{today}</h6>
                       <h5 id="localTime">{n}</h5>
                     </div>
 
                     {/* <!-- Center panel --> */}
-                    <div className="col-md-5 col-sm-7 center_one" >
+                    <div className="col-md-5 col-sm-7 center_one change4" >
                       <div className="row">
                         <i className={this.props.icons[0]} id ="main-icon" ></i>
                         <div>
@@ -119,7 +119,7 @@ class WeatherForecast extends React.Component{
                     </div>
 
                     {/* <!-- Right panel -->*/}
-                    <div className="col-xs-12 col-sm-12 col-md-3 row left_one" >
+                    <div className="col-xs-12 col-sm-12 col-md-4 row left_one" >
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
                           <h6>Humidity: <spam id="humidity">{this.props.current_humidity}</spam>%</h6>
                         </div>
@@ -143,7 +143,7 @@ class WeatherForecast extends React.Component{
                   <div className="row forcast_one">
 
                     {/*<!-- Day 1 -->*/}
-                    <div className="col-md-3 col-sm-6 day-weather-box">
+                    <div className="col-md-4 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-1-name">{this.props.dates[1]}</p>
@@ -160,7 +160,7 @@ class WeatherForecast extends React.Component{
                     </div>
 
                     {/*<!-- Day 2 -->*/}
-                    <div className="col-md-3 col-sm-6 day-weather-box">
+                    <div className="col-md-4 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-2-name">{this.props.dates[2]}</p>
@@ -177,7 +177,7 @@ class WeatherForecast extends React.Component{
                     </div>
 
                     {/*<!-- Day 3 -->*/}
-                    <div className="col-md-3 col-sm-6 day-weather-box">
+                    <div className="col-md-4 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-3-name"> {this.props.dates[3]}</p>
@@ -192,9 +192,12 @@ class WeatherForecast extends React.Component{
                         </div>
                       </div>
                     </div>
+                    </div>
 
+                    <div className="container-fluid change1">
+                    <div className="row forcast_one container change2">
                     {/*<!-- Day 4 -->*/}
-                    <div className="col-md-3 col-sm-6 day-weather-box">
+                    <div className="col-md-4 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-4-name"> {this.props.dates[4]}</p>
@@ -209,6 +212,43 @@ class WeatherForecast extends React.Component{
                         </div>
                       </div>
                     </div>
+
+                    {/*<!-- Day 5 -->*/}
+                    <div className="col-md-4 col-sm-6 day-weather-box">
+                      <div className="col-sm-12 day-weather-inner-box">
+                        <div className="col-sm-8 forecast-main">
+                          <p id="forecast-day-3-name"> {this.props.dates[5]}</p>
+                          <div className="row">
+                            <h5 id="forecast-day-3-main">{this.props.weather.data.list[5].temp.day}°</h5>
+                            <i className={this.props.icons[5]} id="forecast-day-3-icon"></i>
+                          </div>
+                        </div>
+                        <div className="col-sm-4 forecast-min-low">
+                          <p><spam className="high-temperature" id="forecast-day-3-ht">hi {this.props.maxtemps[5]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-3-lt">lo {this.props.mintemps[5]}</spam></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/*<!-- Day 6 -->*/}
+                    <div className="col-md-4 col-sm-6 day-weather-box">
+                      <div className="col-sm-12 day-weather-inner-box">
+                        <div className="col-sm-8 forecast-main">
+                          <p id="forecast-day-3-name"> {this.props.dates[6]}</p>
+                          <div className="row">
+                            <h5 id="forecast-day-3-main">{this.props.weather.data.list[6].temp.day}°</h5>
+                            <i className={this.props.icons[6]} id="forecast-day-3-icon"></i>
+                          </div>
+                        </div>
+                        <div className="col-sm-4 forecast-min-low">
+                          <p><spam className="high-temperature" id="forecast-day-3-ht">hi {this.props.maxtemps[6]}</spam></p>
+                          <p><spam className="low-temperature" id="forecast-day-3-lt">lo {this.props.mintemps[6]}</spam></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    </div>
+
 
                   </div>
                 </div>

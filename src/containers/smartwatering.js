@@ -30,6 +30,7 @@ class Smart extends React.Component{
       )
   };
 
+  //Renders  weather icons
   iconList (){
     return this.props.icons.map(
       (item, i) =>
@@ -39,6 +40,7 @@ class Smart extends React.Component{
       )
   }
 
+  //Renders days
   dayList(){
     return this.props.dates.map(
       (item,i) =>

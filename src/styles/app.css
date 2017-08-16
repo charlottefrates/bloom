@@ -145,7 +145,7 @@ a:hover, a:active, a:focus{
   margin: 100px auto;
   max-width: 100%;
   padding: 0px;
-  color: white;
+  color: #444444;
 }
 
 #current-weather{
@@ -153,6 +153,7 @@ a:hover, a:active, a:focus{
 }
 
 #mainTemperature{
+     color: #444444;
   display: inline-block;
   margin-left: 5%;
   margin-right: auto;
@@ -161,25 +162,38 @@ a:hover, a:active, a:focus{
 }
 
 #tempDescription {
-  font-size: 13px;
-  margin-top: -12px;
-  text-align: center;
+     color: #444444;
+  font-size: 18px;
+    margin-top: -40px;
+    text-align: center;
 }
 
 .day-weather-box {
   border: 1px solid #3f7e8c;
   background-color: #268da5;
-  border-radius: 5px;
 }
 
 .day-weather-box p{
   margin-bottom: 0;
 }
 
+.change1{
+  padding: 0px;
+margin-left: -15px;
+margin-right: -15px;
+
+}
+
+.change2{
+  padding: 0;
+    margin: 0;
+
+}
+
 .side-weather-info {
   font-size: 22px;
   padding: 0px 36px;
-  margin: -7px;
+  margin: -20px;
 }
 
 .day-weather-inner-box {
@@ -202,7 +216,7 @@ a:hover, a:active, a:focus{
 }
 
 .center_one{
-     margin: 10px auto;
+     margin: -50px auto;
 }
 
 .center_two{
@@ -213,13 +227,24 @@ a:hover, a:active, a:focus{
   font-size: 1.5rem;
 }
 
+.change3{
+  color:#444444;
+      margin: 5px auto;
+}
+
+.change4{
+  margin-right: 17%;
+top: 60px;
+}
 
 .left_one{
+  color:#444444;
   text-align: right;
+  left:70%;
+  top:-110px;
 }
 
 .forcast_one{
-  padding: 2px;
 }
 
 #cityName,
@@ -240,6 +265,7 @@ a:hover, a:active, a:focus{
 #forecast-day-3-name,
 #forecast-day-4-name
 {
+  color:#444444;
   margin-top: 0px;
     margin-left: -8px;
     font-weight: bold;
@@ -265,10 +291,15 @@ a:hover, a:active, a:focus{
 #forecast-day-3-icon,
 #forecast-day-4-icon
 {
-  line-height: 4 !important;
-  font-size: 18pt;
+  line-height: 1 !important;
+font-size: 22pt;
+margin-left: 30%;
 }
 
 #main-icon{
-      line-height: 11;
+     color:#444444;
+  margin-right: 6%;
+margin-left: -7%;
+line-height: 4;
+font-size: 40pt;
 }
