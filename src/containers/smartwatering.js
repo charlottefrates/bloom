@@ -124,7 +124,7 @@ class Smart extends React.Component{
       (item,i) =>
 
         <label for={item} className = "label">
-          <input className = "days" type='checkbox' value={item} name = 'days' key={i} className="one" onChange={event=>this.handleDayChange(event,0)}/>
+          <input type='checkbox' value={item} name = 'days' key={i} className="one days" onChange={event=>this.handleDayChange(event)}/>
           {item}
         </label>
 
@@ -133,7 +133,7 @@ class Smart extends React.Component{
   };
 
   //makes an array of seleted day options
-  handleDayChange(e,i) {
+  handleDayChange(e) {
         // current array of options
         const options = this.props.selectedDays;
         let index
