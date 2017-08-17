@@ -5,18 +5,25 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from './store';
 
+import App from './components/app';
+
 //styling
 import './styles/app.css';
 import './styles/weather-icons-master/css/weather-icons.css';
 
-//For React DOM render
-import App from './components/app';
 
 import registerServiceWorker from './registerServiceWorker';
+
+//<Route path="signin" component={Signin} />
+//<Route path="signout" component={Signout} />
+//<Route path="signup" component={Signup} />
+//<Route path="bloom" component={RequireAuth(Bloom)} />
+
 
 ReactDOM.render(
      <Provider store={store}>
      <App />
       </Provider>,
-     document.getElementById('root'));
+     document.getElementById('root')
+);
 registerServiceWorker();

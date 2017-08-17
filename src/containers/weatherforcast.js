@@ -77,6 +77,7 @@ class WeatherForecast extends React.Component{
 
 
         return (
+             <div className="main-content">
             <div>
                 {/*~~~~~ Weather Component Form captures location entry upon submit ~~~~~*/}
 
@@ -104,7 +105,7 @@ class WeatherForecast extends React.Component{
                     <div className="col-md-4 col-sm-5 change3">
                       <h5><spam id="cityName">{this.props.weather.data.city.name}</spam>, <spam id="cityCode">{this.props.weather.data.city.country}</spam></h5>
                       <h6 id="localDate">{today}</h6>
-                      <h5 id="localTime">{n}</h5>
+                      <h5 id="localTime"></h5>
                     </div>
 
                     {/* <!-- Center panel --> */}
@@ -267,6 +268,7 @@ class WeatherForecast extends React.Component{
                   ) : null }
 
 
+            </div>
             </div>
     );
   }

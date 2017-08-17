@@ -1,17 +1,27 @@
 import React from 'react';
 
-import WeatherForecast from '../containers/weatherforcast';
-import Zones from '../containers/zone';
-import Smart from '../containers/smartwatering';
+//React Router
+import {BrowserRouter as Router,Route, Link} from 'react-router-dom';
+import {browserHistory} from 'react-router';
+
+
+import Home from './home';
+import Bloom from './bloom';
+
+
+
 
 
 export default function App() {
 
     return (
+        <Router history={browserHistory}>
         <div>
-          <Zones />
-          <WeatherForecast />
-          <Smart />
+        <Route exact path="/" component={Home} />
+        <Route  path="/bloom" component={Bloom} />
         </div>
+        </Router>
     );
+
+
 }

@@ -20,7 +20,7 @@ class Smart extends React.Component{
   //captures updates
   componentDidUpdate() {
       $( '#day' ).on( 'click', 'input:checkbox', function () {
-        $( this ).parent().toggleClass( 'checked', this.checked );
+        $( this ).closest('label').toggleClass( 'checked', this.checked );
       });
   }
 
@@ -142,6 +142,7 @@ class Smart extends React.Component{
 
   render(){
          return (
+              <div className="main-content">
               <div className='maincont'>
 
 
@@ -203,6 +204,7 @@ class Smart extends React.Component{
                       </div>
 
 
+                      </div>
                       </div>
 
          )
