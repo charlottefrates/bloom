@@ -22,76 +22,6 @@ class Smart extends React.Component{
       $( '#day' ).on( 'click', 'input:checkbox', function () {
         $( this ).parent().toggleClass( 'checked', this.checked );
       });
-
-      //makes an array of seleted day options
-      function handleDayChange(e,i) {
-            // current array of options
-            const options = this.props.selectedDays;
-            let index
-            // check if the check box is checked or unchecked
-            if (e.target.checked) {
-              // add the value of the checkbox to options array
-              options.push(e.target.value)
-            } else {
-              // or remove the value from the unchecked checkbox from the array
-              index = options.indexOf(e.target.value)
-              options.splice(index, 1)
-            }
-
-            // update the state with the new array of options
-            this.props.dispatch(select_days(options));
-            console.log(options);
-            console.log('There are ' + this.props.selectedDays.length + ' days selected');
-
-
-
-      };
-
-
-      //makes an array of seleted zone options
-      function handleOptionChange(e) {
-            // current array of options
-            const options = this.props.selectedOptions;
-            let index
-            // check if the check box is checked or unchecked
-            if (e.target.checked) {
-              // add the value of the checkbox to options array
-              options.push(e.target.value)
-            } else {
-              // or remove the value from the unchecked checkbox from the array
-              index = options.indexOf(e.target.value)
-              options.splice(index, 1)
-            }
-
-            // update the state with the new array of options
-            this.props.dispatch(select_zone(options));
-            console.log(this.props.selectedOptions);
-
-            console.log('There are ' + this.props.selectedOptions.length + ' zones selected');
-
-      };
-
-      //changes watering rate
-      function changeRate (e){
-            this.props.dispatch(set_watering(e.target.value));
-      }
-
-      //changes time
-      function changeTime(e){
-            this.props.dispatch(set_time(e.target.value));
-      }
-
-      function projectedWaterUse (){
-        let days = this.props.selectedDays.length;
-        let zones = this.props.selectedOptions.length;
-        let rate = this.props.rate;
-        let time = this.props.time;
-        let projectedUse = days * zones * rate * time;
-
-        this.props.dispatch(set_projected(projectedUse));
-        console.log('Based on your selections your are projected to use ' + this.props.projectedUse + " gallons of water");
-
-      }
   }
 
   //Renders zone list names into checkboxes
@@ -213,36 +143,46 @@ class Smart extends React.Component{
   render(){
          return (
               <div className='maincont'>
+
+
                         <div className="header">
                           <h1> Smart Water Projection </h1>
                         </div>
                         <br/>
+
+                        <div className="secondcont">
+                        <div className="header2">
+                          <h3> Day Selection </h3>
+                        </div>
+                        <br/>
+                        <p> Select the days you would like to water. </p>
                         <form id="day">
                         {this.iconList()}
                         {this.dayList()}
                         </form>
                         <br/>
+                        </div>
 
                       <div className="secondcont">
                         <div className="header2">
-                          <h2> Zones </h2>
+                          <h3> Zone Selection </h3>
                         </div>
                         <br/>
+                        <p> Select each zone independently OR select all the zones you would like turned on <br/> for your selected days of watering. </p>
                         <form>
                         {this.zoneList()}
                         </form>
                         <br/>
-
-
                       </div>
 
                       <div className="secondcont">
                         <div className="header2">
-                          <h2> Watering Time </h2>
+                          <h3> Watering Time </h3>
                         </div>
                         <br/>
+                        <p> How many gallons would you like to use and how long would you like to water each zone(s)? </p>
                         <form >
-                          gallon/min: <input className="smartTime"type="text" name="rate"  onChange={event=>this.changeRate(event)}/><br/>
+                          gallon/min: <input className="smartTime align"type="text" name="rate"  onChange={event=>this.changeRate(event)}/><br/>
                           min: <input type="text" className="smartTime"name="time"  onChange={event=>this.changeTime(event)}/><br/>
                         </form>
                          <br/>
@@ -251,7 +191,7 @@ class Smart extends React.Component{
 
                       <div className="secondcont">
                         <div className="header2">
-                          <h2> Projected Water use </h2>
+                          <h3> Projected Water Use </h3>
                         </div>
                         <br/>
                         <h4> Based on your selections and settings you will be using </h4>

@@ -22,9 +22,17 @@
     -webkit-box-shadow: 0 0 5px #252525;
     box-shadow: 0 0 5px #252525;
 }
+p{
+  padding-left:20px;
+  padding-right:20px;
+}
 
 .checkbox[type=checkbox] {
     display: inline !important;
+}
+
+.align{
+         margin-right: 45px;
 }
 
 .smartTime[type=text]{
