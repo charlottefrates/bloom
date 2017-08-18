@@ -16,7 +16,9 @@ export default function App() {
         <div>
         <Route exact path="/" component={Home} />
         <Route exact path="/bloom" component={Bloom} />
-
+        <Route exact path="/signout" component={Home} />
+        <Route exact path="/signin" component={Home}/>
+        <Route exact path="/signup" component={Home}/>
         </div>
         </Router>
     );

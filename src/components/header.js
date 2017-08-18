@@ -12,7 +12,8 @@ export default function Header() {
           <li> <NavLink to="/weather">Weather Analytics</NavLink> </li>
           <li> <NavLink to="/smart">Smart Projection</NavLink> </li>
           <li> <NavLink to="/history">History</NavLink> </li>
-          <li> <NavLink exact to="/signout">SignOut</NavLink> </li>
+          {/*<li> <NavLink to="/signout">Sign Out</NavLink> </li>*/}
+          <li onClick={() => this.props.history.push('/')} className="signout"> SignOut </li>
         </ul>
       </header>
 

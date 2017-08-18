@@ -17,17 +17,13 @@ export default function Bloom() {
 
     return (
 
-        <Router>
+        <Router >
         <div className="container">
         <Header />
         <Route path="/zone" component={Zones} />
         <Route path="/weather" component={WeatherForecast} />
         <Route path="/smart" component={Smart} />
-        <Route path="/signout" component={Home}/>
-        <Route path="/signin" component={Home}/>
-        <Route path="/signup" component={Home}/>
-
-
+        <Route exact path="/signout" component={Home} />
         </div>
         </Router>
 

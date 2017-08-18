@@ -19,6 +19,25 @@ body {
      margin-left: 47%;
 }
 
+.signout{
+font-size: .95em;
+color: #737474;
+text-align: center;
+text-transform: uppercase;
+display: block;
+padding: 1em;
+-o-transition: .2s;
+transition: .2s;
+text-decoration: none;
+float: none;
+line-height: 50px;
+}
+
+.signout:hover{
+  color: #fff;
+  background: #787c7d
+}
+
 h1,h2,h3 {
   text-align: center;
   color:white;
@@ -380,7 +399,8 @@ header {
   transition: .2s;
 }
 .main-nav a:hover,
-.main-nav .active {
+.main-nav .active
+ {
   color: #fff;
   background: #787c7d;
 }

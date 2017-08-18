@@ -13,9 +13,7 @@ export default class Home extends React.Component {
             <Router>
             <div>
             <h1 className="black">Hello landing page</h1>
-            <button className="tempMargin" onClick={() => this.props.history.push('/bloom')}> Enter Bloom  </button>
-            <Route exact path="/bloom" component={Bloom} />
-
+            <button className="tempMargin" onClick={() =>this.props.history.push('/bloom')}> Enter Bloom  </button>
             </div>
             </Router>
         );
