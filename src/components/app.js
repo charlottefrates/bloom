@@ -15,7 +15,6 @@ export default function App() {
         <Router history={browserHistory}>
         <div>
         <Route exact path="/" component={Home} />
-
         <Route exact path="/bloom" component={Bloom} />
 
         </div>
