@@ -19,9 +19,27 @@ class Smart extends React.Component{
 
   //captures updates
   componentDidUpdate() {
+
+      //highlights the selcted days
       $( '#day' ).on( 'click', 'input:checkbox', function () {
         $( this ).closest('label').toggleClass( 'checked', this.checked );
       });
+
+      //recalculates based on form changes
+      let projectedWaterUse = ()=>{
+        let days = this.props.selectedDays.length;
+        let zones = this.props.selectedOptions.length;
+        let rate = this.props.rate;
+        let time = this.props.time;
+        let projectedUse = days * zones * rate * time;
+
+        this.props.dispatch(set_projected(projectedUse));
+        console.log('Based on your selections your are projected to use ' + this.props.projectedUse + " gallons of water");
+
+      }
+
+
+
   }
 
   //Renders zone list names into checkboxes
@@ -151,6 +169,8 @@ class Smart extends React.Component{
                         </div>
                         <br/>
 
+                        <p> For {this.props.location} </p>
+
                         <div className="secondcont">
                         <div className="header2">
                           <h3> Day Selection </h3>
@@ -197,7 +217,7 @@ class Smart extends React.Component{
                         <br/>
                         <h4> Based on your selections and settings you will be using </h4>
                           {this.projectedWaterUse()}
-                         <h3> {this.props.projectedUse}</h3>
+                         <h3 className="bluebold"> {this.props.projectedUse}</h3>
                          <h4> gallons of water </h4>
                          <br/>
 
@@ -213,6 +233,7 @@ class Smart extends React.Component{
 
 
 const mapStateToProps = (state, props) => ({
+    location:state.location,
     zones: state.zones,
     dates: state.dates,
     descriptions:state.descriptions,

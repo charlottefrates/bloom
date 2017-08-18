@@ -196,7 +196,7 @@ class WeatherForecast extends React.Component{
                     </div>
 
                     <div className="container-fluid change1">
-                    <div className="row forcast_one container change2">
+                    <div className="row forcast_one change2">
                     {/*<!-- Day 4 -->*/}
                     <div className="col-md-4 col-sm-6 day-weather-box">
                       <div className="col-sm-12 day-weather-inner-box">

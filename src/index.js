@@ -14,16 +14,11 @@ import './styles/weather-icons-master/css/weather-icons.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
-//<Route path="signin" component={Signin} />
-//<Route path="signout" component={Signout} />
-//<Route path="signup" component={Signup} />
-//<Route path="bloom" component={RequireAuth(Bloom)} />
-
 
 ReactDOM.render(
      <Provider store={store}>
      <App />
-      </Provider>,
+     </Provider>,
      document.getElementById('root')
 );
 registerServiceWorker();

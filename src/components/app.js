@@ -9,16 +9,15 @@ import Home from './home';
 import Bloom from './bloom';
 
 
-
-
-
 export default function App() {
 
     return (
         <Router history={browserHistory}>
         <div>
         <Route exact path="/" component={Home} />
-        <Route  path="/bloom" component={Bloom} />
+
+        <Route exact path="/bloom" component={Bloom} />
+
         </div>
         </Router>
     );
