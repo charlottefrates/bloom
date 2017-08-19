@@ -24,6 +24,8 @@ export default function Bloom() {
         <Route path="/weather" component={WeatherForecast} />
         <Route path="/smart" component={Smart} />
         <Route exact path="/signout" component={Home} />
+
+
         </div>
         </Router>
 
