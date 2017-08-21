@@ -8,6 +8,10 @@ import {browserHistory} from 'react-router';
 import Home from './home';
 import Bloom from './bloom';
 
+//styling
+import '../styles/app.css';
+
+
 
 export default function App() {
 
@@ -16,7 +20,6 @@ export default function App() {
         <div>
         <Route exact path="/" component={Home} />
         <Route exact path="/bloom" component={Bloom} />
-        <Route exact path="/signout" component={Home} />
         <Route exact path="/signin" component={Home}/>
         <Route exact path="/signup" component={Home}/>
         </div>

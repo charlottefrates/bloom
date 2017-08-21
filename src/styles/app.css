@@ -4,11 +4,7 @@ html, #root, .appContainer, .homeContainer {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: #222;
-  height: 100%;
-  background-color: #e8edf2;
+
 }
 
 .black{
@@ -38,10 +34,13 @@ line-height: 50px;
   background: #787c7d
 }
 
+/*
 h1,h2,h3 {
   text-align: center;
   color:white;
 }
+*/
+
 
 form {
   text-align: center;
@@ -373,7 +372,7 @@ hr {
   max-width: 90%;
   padding-top: 0;
   padding-bottom: 2em;
-  margin: 0 auto 2em;
+  margin: 40px auto 2em;
   background: white;
   border-radius: .5em;
   border-color: grey;
@@ -412,7 +411,7 @@ header {
 
 @media (min-width: 0) and (max-width: 768px) {
   body {
-    padding-top: .8em;
+    margin: 0;
   }
   .home a {
     border-color: transparent;
@@ -427,7 +426,7 @@ header {
 }
 @media (min-width: 769px) {
   body {
-    padding-top: 3em;
+   margin: 0;
   }
   .media > div {
     width: 85.1%;

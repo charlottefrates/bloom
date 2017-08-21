@@ -11,6 +11,7 @@ import {
 
 import Plot from '../containers/plot';
 
+import '../styles/weather-icons-master/css/weather-icons.css';
 
 
 

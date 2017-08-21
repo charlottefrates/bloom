@@ -1,0 +1,231 @@
+* {
+     box-sizing: border-box;
+}
+
+video#blooming {
+     /*
+    TOP
+    position: relative;
+    top: 50%;
+    left: 38%;
+    padding: 0;
+    height: 800px;
+    height: %30;
+    background-size: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    */
+     position: relative;
+     top: 120%;
+     left: 12%;
+     padding: 0;
+     height: 800px;
+     height: %30;
+     background-size: cover;
+     transform: translate(-50%, -50%);
+     z-index: 1;
+}
+
+.landingpage-container {
+     height: 100vh;
+     min-height: 800px;
+     position: relative;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     background-position: 50% 50%;
+}
+
+.landingpage-details-container {
+     color: #0c0c0c;
+     text-align: center;
+     position: absolute;
+     top: 63%;
+     margin-left: 65%;
+     margin-right: auto;
+     width: 400px;
+     padding: 15px;
+     background: rgba(245, 245, 220, 0.57);
+     border-radius: 8px;
+}
+
+h1.welcome-header {
+     color: #040404 !important;
+     font-size: 72px !important;
+}
+
+.landingpage-details-container h2 {
+     font-weight: 300;
+}
+
+.about-page {
+     height: 100vh;
+     min-height: 700px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.about-card-landing, .about-header-container {
+     text-align: center;
+     margin-bottom: 400px;
+     z-index: 1;
+}
+
+.about-card-landings-container-1 {
+     padding-bottom: 20%;
+     margin-left: 20%;
+     width: 45%;
+     display: flex;
+     justify-content: space-around;
+     margin-top: -25%;
+}
+
+.about-card-landings-container-2 {
+     padding-bottom: 6%;
+     margin-left: 20%;
+     width: 45%;
+     display: flex;
+     justify-content: space-around;
+     margin-bottom: 13%;
+}
+
+.about-card-landing {
+     background-color: #687932;
+     box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+     color: #fff;
+     width: 61%;
+     height: 300px;
+     padding: 10px;
+     margin-left: 25px;
+     margin-right: 25px;
+}
+
+.short-line {
+     display: inline-block;
+     border-width: 0;
+     height: 2px;
+     margin: 2em 0;
+     width: 50px;
+     background-color: #fff;
+}
+
+.cd-fixed-bg {
+     min-height: 100%;
+     background-size: cover;
+     background-attachment: fixed;
+     background-repeat: no-repeat;
+     background-position: center center;
+     margin: 0 auto;
+     border: 0;
+}
+
+.cd-fixed-bg.cd-bg-1 {
+     background-image: url("sprinklers.jpg");
+}
+
+.cd-fixed-bg.cd-bg-3 {
+     background-image: url("sprinklers2.jpg");
+}
+
+#sign-up {
+     width: 100%;
+     margin-top: 30%;
+     height: 600px;
+     padding-top: 90px;
+     text-align: center;
+     position: relative;
+     overflow: hidden;
+}
+
+.rowwer {
+     max-width: 1000px;
+     padding-left: 20px;
+     padding-right: 20px;
+     margin-top: -40px;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.sign-up-title {
+     margin-top: 0;
+     margin-bottom: 30px;
+     font-size: 30px;
+     line-height: 35px;
+}
+
+.sign-up-box {
+     width: 600px;
+     height: 400px;
+     padding-left: 40px;
+     padding-right: 40px;
+     margin: 0 auto;
+     border-radius: 4px;
+     text-align: center;
+}
+
+.register fieldset {
+    border: none;
+    padding: 0;
+}
+
+.register input {
+    width: 320px;
+    border: 2px solid black;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding: 2px 0;
+    font-size: 20px;
+    background-color: transparent;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+input[type="text"].placeholder::-webkit-input-placeholder {
+  color: black;
+}
+
+input[type="password"].placeholder::-webkit-input-placeholder {
+  color: black;
+}
+
+
+.col-12-landing {
+     padding-top: 30px;
+     background: rgba(245, 245, 220, 0.57)
+}
+
+
+/* ===================================== NAVIGATION =================================== */
+
+.navigation-bar {
+     left: 0;
+     position: relative;
+     right: 0;
+     top: 0;
+     z-index: 1000;
+     color: white;
+}
+
+.navigation-bar.is-visible {
+     opacity: 1;
+     -webkit-transform: translate(0, 0);
+     -webkit-transition: -webkit-transform .2s, background .3s, color .3s;
+}
+
+.navigation-bar ul {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+}
+
+.navigation-bar ul li {
+     float: right;
+     display: inline-flex;
+     padding: 1em;
+     margin-right: 1%;
+}

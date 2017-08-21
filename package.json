@@ -15,7 +15,8 @@
     "react-scripts": "1.0.10",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "thunk": "0.0.1"
+    "thunk": "0.0.1",
+    "video-react": "^0.8.6"
   },
   "scripts": {
     "start": "react-scripts start",
