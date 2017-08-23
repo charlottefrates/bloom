@@ -17,7 +17,17 @@ import $ from 'jquery';
 
 class Smart extends React.Component{
 
-  //captures updates
+  //captures highlighted updates based on selection
+  componentDidMount() {
+
+      //highlights the selcted days
+      $( '#day' ).on( 'click', 'input:checkbox', function () {
+        $( this ).closest('label').toggleClass( 'checked', this.checked );
+      });
+
+  };
+
+  //captures highlighted updates based on selection
   componentDidUpdate() {
 
       //highlights the selcted days
@@ -25,23 +35,12 @@ class Smart extends React.Component{
         $( this ).closest('label').toggleClass( 'checked', this.checked );
       });
 
-      //recalculates based on form changes
-      let projectedWaterUse = ()=>{
-        let days = this.props.selectedDays.length;
-        let zones = this.props.selectedOptions.length;
-        let rate = this.props.rate;
-        let time = this.props.time;
-        let projectedUse = days * zones * rate * time;
+  };
+/*
+  shouldComponentUpdate(nextProps, nextState){
 
-        this.props.dispatch(set_projected(projectedUse));
-        console.log('Based on your selections your are projected to use ' + this.props.projectedUse + " gallons of water");
-
-      }
-
-
-
-  }
-
+  };
+*/
   //Renders zone list names into checkboxes
   zoneList (){
     return this.props.zones.map(
@@ -97,6 +96,8 @@ class Smart extends React.Component{
 
         // update the state with the new array of options
         this.props.dispatch(select_days(options));
+        console.log(this.props.selectedDays);
+        console.log(this.props);
         console.log(options);
         console.log('There are ' + this.props.selectedDays.length + ' days selected');
 
@@ -203,9 +204,10 @@ class Smart extends React.Component{
                         <br/>
                         <p> How many gallons would you like to use and how long would you like to water each zone(s)? </p>
                         <form >
-                          gallon/min: <input className="smartTime align"type="text" name="rate"  onChange={event=>this.changeRate(event)}/><br/>
-                          min: <input type="text" className="smartTime"name="time"  onChange={event=>this.changeTime(event)}/><br/>
+                          gallon/min: <input className="smartTime align"type="text" name="rate"  onChange={this.changeRate}/><br/>
+                          min: <input type="text" className="smartTime"name="time"  onChange={this.changeTime}/><br/>
                         </form>
+                        <button onClick={this.projectedWaterUse.bind(this)}> Check </button>
                          <br/>
 
                       </div>
@@ -216,7 +218,6 @@ class Smart extends React.Component{
                         </div>
                         <br/>
                         <h4> Based on your selections and settings you will be using </h4>
-                          {this.projectedWaterUse()}
                          <h3 className="bluebold"> {this.props.projectedUse}</h3>
                          <h4> gallons of water </h4>
                          <br/>

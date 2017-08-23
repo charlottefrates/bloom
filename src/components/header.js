@@ -8,7 +8,8 @@ import Home from './home';
 
 class Header extends React.Component {
     onLogout = () =>{
-    this.props.history.push('/signout');
+    //this.props.history.push('/signout');
+    window.location.href='/';
      //<Redirect push to="/signout"/>
     };
 

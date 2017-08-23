@@ -7,9 +7,6 @@ import store from './store';
 
 import App from './components/app';
 
-//styling
-import './styles/app.css';
-import './styles/weather-icons-master/css/weather-icons.css';
 
 
 import registerServiceWorker from './registerServiceWorker';

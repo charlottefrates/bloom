@@ -3,6 +3,9 @@ import React from 'react';
 //React Router
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
+//html 5 video
+//import { DefaultPlayer as Video } from 'react-html5video';
+
 //For React DOM render
 import Bloom from './bloom';
 
@@ -32,7 +35,7 @@ export default class Home extends React.Component {
 
             <div className="cd-fixed-bg cd-bg-2">
         		<div className="about-page">
-        			<video ref="vidRef" id="blooming"src="blooming.mp4" autoplay></video>
+        			<video id="blooming"src="blooming.mp4" preload="yes" controlsList="nodownload" autoPlay></video>
 
         		   	<div className="about-header-container">
         					<h2>How It Works</h2>

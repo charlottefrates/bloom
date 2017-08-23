@@ -52,7 +52,7 @@ p {
 }
 
 .header2 {
-     background: #39adc7;
+     background: #687932;
      padding: .0157px;
      border-radius: 3px 3px 0 0;
 }
@@ -94,7 +94,7 @@ h1 {
 }
 
 .checked {
-     background: #39adc7 !important;
+     background: #687932 !important;
 }
 
 .label {
@@ -118,7 +118,7 @@ h1 {
 .labelIcon {
      width: 13%;
      display: inline-block;
-     color: #39adc7;
+     color: #687932;
      text-transform: uppercase;
      font-family: arial;
      font-size: 22pt;

@@ -59,14 +59,14 @@ button {
 }
 
 .items-list {
-     background: #39adc7;
+     background: #687932;
      border-radius: 3px;
 }
 
-.to-do-item {
+.to-do-item {#175817
      padding: 10px 0 10px 0;
      margin: 1px 0 1px 0;
-     border-top: 1px solid #268da5;
+     border-top: 1px solid #5e6d2f;
      display: flex;
      justify-content: space-between;
      align-items: center;

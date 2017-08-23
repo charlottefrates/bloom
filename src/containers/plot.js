@@ -33,7 +33,7 @@ class Plot extends React.Component {
       mode: this.props.mode,
       name: 'high-temperature',
       line: {
-        color: '#39adc7',
+        color: '#4e630c',
         width: 6
       }
     };
@@ -45,7 +45,7 @@ class Plot extends React.Component {
         mode: this.props.mode,
         name:'low-temperature',
         line: {
-          color: 'grey',
+          color: '#99d2ae',
           width: 6
         }
       };
@@ -118,7 +118,7 @@ class Plot extends React.Component {
       mode: this.props.mode,
       name: 'high-temperature',
       line: {
-        color: '#39adc7',
+        color: '#4e630c',
         width: 6
       }
     };
@@ -130,7 +130,7 @@ class Plot extends React.Component {
         mode: this.props.mode,
         name:'low-temperature',
         line: {
-          color: 'grey',
+          color: '#99d2ae',
           width: 6
         }
       };
@@ -152,9 +152,9 @@ class Plot extends React.Component {
       type: this.props.type,
       mode: 'markers',
   marker: {
-    color: '#39adc7',
+    color: '#4e630c',
     line: {
-      color: '#39adc7',
+      color: '#4e630c',
       width: 1,
     },
     symbol: 'circle',
