@@ -1,19 +1,47 @@
 // server/server.js
 const express = require('express');
+const app = express();
 const morgan = require('morgan');
 const path = require('path');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash    = require('connect-flash');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const configDB = require('./config/database.js');
 
-const app = express();
+// connect to our database
+mongoose.connect(configDB.url, {
+  useMongoClient: true
+});
+
+require('./config/passport')(passport); // pass passport for configuration
+
+
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+app.use(cookieParser()); // read cookies (needed for auth)
+//app.use(bodyParser.json()); // get information from html forms
+app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()) // parse application/json
+
+app.use(session({ secret: 'bloom',resave: true,saveUninitialized: true})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+
+
 
 // Serve static assets
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-// Always return the main index.html, so react-router render the route in the client
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-});
+
+//routes
+// load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, passport);
+
 
 module.exports = app;
