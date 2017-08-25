@@ -4,5 +4,5 @@
 //http://mongoosejs.com/docs/connections.html#use-mongo-client
 
 module.exports = {
-	'url':'mongodb://localhost/'
+	'url':'mongodb://localhost/bloom'
 };
