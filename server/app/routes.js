@@ -3,7 +3,10 @@
 const path = require('path');
 const morgan = require('morgan');
 
+
 const User = require('./models/users');
+const {Bloom} = require('./models/bloom');
+
 
 
 module.exports = function(app, passport) {
@@ -39,6 +42,7 @@ module.exports = function(app, passport) {
 
 
      // process the login form
+     /*
      app.post('/login', passport.authenticate('local-login', {
           successRedirect: '/bloom', // redirect to the secure profile section
           failureRedirect: '/', // redirect back to the signup page if there is an error
@@ -47,12 +51,25 @@ module.exports = function(app, passport) {
 
 
      }));
+     */
 
+     app.post('/login', function(req, res, next) {
+          passport.authenticate('local-login',
+          function(err, user, info) {
+               if (err) { return next(err); }
+               if (!user) { return res.render('account'); }
+               req.logIn(user, function(err) {
+                    if (err) { return next(err); }
+                    return res.json("You have successfully logged in.");
+                  });
+          })(req, res, next);
+     });
      // =====================================
      // SIGNUP ==============================
      // =====================================
 
      // process the signup form
+     /*
      app.post('/signup',
      passport.authenticate('local-signup', {
           successRedirect: '/bloom', // redirect to the secure profile section
@@ -63,6 +80,19 @@ module.exports = function(app, passport) {
           res.json;
      }
      );
+     */
+
+     app.post('/signup',
+     function(req, res, next) {
+          passport.authenticate('local-signup',
+          function(err, user, info) {
+             if (err) { return next(err); }
+             req.logIn(user, function(err) {
+                  if (err) { return next(err); }
+                  return res.json('Sign-up successful.');
+             });
+          })(req, res, next);
+     });
 
 
      // =====================================
@@ -91,6 +121,64 @@ module.exports = function(app, passport) {
      // =====================================
      // Bloom Section ===================
      // =====================================
+
+     app.get('/bloom', (req, res) => {
+          let user = req.user;
+          let userid = user._id;
+          console.log(user);
+          console.log(userid);
+
+          Bloom
+               .find( {user_id: userid})
+               .sort({
+                    created: 1
+               }) //sorts recent date first
+               .exec()
+               .then(entries => {
+                    res.json(entries.map(entry => entry.apiRepr()));
+               })
+               .catch(err => {
+                    console.error(err);
+                    res.status(500).json({
+                         error: 'something went terribly wrong'
+                    });
+               });
+     });
+
+     //NOTE: NEW grab all entries despite user
+     app.get('/all', (req, res) => {
+          Bloom
+               .find( )
+               .sort({
+                    created: 1
+               }) //sorts recent date first
+               .exec()
+               .then(entries => {
+                    res.json(entries.map(entry => entry.apiRepr()));
+               })
+               .catch(err => {
+                    console.error(err);
+                    res.status(500).json({
+                         error: 'something went terribly wrong'
+                    });
+               });
+     });
+
+
+       //grabs pre-existing entry JSON data
+       app.get('/:id/json', (req, res) => {
+           Bloom
+                .findById(req.params.id)
+                .exec()
+                .then(entry => res.json(entry.apiRepr()))
+                .catch(err => {
+                     console.error(err);
+                     res.status(500).json({
+                          error: 'something went horribly awry'
+                     });
+                });
+      });
+
 
 
 
