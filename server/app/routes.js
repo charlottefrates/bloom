@@ -49,21 +49,27 @@ module.exports = function(app, passport) {
           //failureMessage: "Invalid username or password",
           failureFlash: true // allow flash messages
 
-
      }));
      */
 
      app.post('/login', function(req, res, next) {
-          passport.authenticate('local-login',
-          function(err, user, info) {
-               if (err) { return next(err); }
-               if (!user) { return res.render('account'); }
-               req.logIn(user, function(err) {
-                    if (err) { return next(err); }
-                    return res.json("You have successfully logged in.");
-                  });
-          })(req, res, next);
+          passport.authenticate('local', function(err, user, info) {
+               if (err) {
+                    return next(err); // will generate a 500 error
+               }
+               // Generate a JSON response reflecting authentication status
+               if (! user) {
+                    return res.send(401,{ success : false, message : 'authentication failed' });
+               }
+              req.login(user, function(err){
+                if(err){
+                  return next(err);
+                }
+                return res.send({ success : true, message : 'authentication succeeded' });
+              });
+            })(req, res, next);
      });
+
      // =====================================
      // SIGNUP ==============================
      // =====================================
@@ -89,7 +95,7 @@ module.exports = function(app, passport) {
              if (err) { return next(err); }
              req.logIn(user, function(err) {
                   if (err) { return next(err); }
-                  return res.json('Sign-up successful.');
+                  return res.json({ success : true, message : 'Sign-up successful' });
              });
           })(req, res, next);
      });

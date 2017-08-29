@@ -1,13 +1,15 @@
 import React from 'react';
 
 //React Router
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link,NavLink} from 'react-router-dom';
 
 //html 5 video
 //import { DefaultPlayer as Video } from 'react-html5video';
 
 //For React DOM render
 import Bloom from './bloom';
+
+
 
 import '../styles/landing.css';
 
@@ -21,7 +23,11 @@ export default class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-1">
         		<nav className="navigation-bar is-visible" data-nav-status="toggle">
                     <ul>
-            	       <li onClick={() =>this.props.history.push('/bloom')}>Sign In</li>
+            	       <li onClick={() =>this.props.history.push('/bloom')}>ENTER</li>
+                       <li onClick={() =>this.props.history.push('/signin')}> Log In</li>
+                       <li onClick={() =>this.props.history.push('/signup')}> Sign Up </li>
+                       <li> About </li>
+
                     </ul>
                 </nav>
 
@@ -82,15 +88,7 @@ export default class Home extends React.Component {
         					<div className="col-12-landing">
         						<h2 className="sign-up-title">Start Tracking Your Water Zones now</h2>
         						<div className="sign-up-box">
-        							<form className="register" action="/users" method="post" autocomplete="off">
-                                    <fieldset name="register-info">
-                                        <input type="text" className="placeholder" name="name" id="firstName" placeholder="First Name" required=""/>
-                                        <input type="text" className="placeholder" name="name" id="lastName" placeholder="Last Name" required=""/>
-                                        <input type="text" className="placeholder" name="username" id="username" placeholder="Username" required=""/>
-                                        <input type="password" className="placeholder" name="password" id="password" placeholder="Password" required=""/>
-                                    </fieldset>
-        								<button type="submit" className="sign-up-button" onClick={() =>this.props.history.push('/bloom')}>Sign Up</button>
-        							</form>
+                                <button type="submit" className="sign-up-button" onClick={() =>this.props.history.push('/signup')}>Register</button>
         						</div>
         					</div>
         				</div>

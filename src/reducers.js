@@ -17,7 +17,9 @@ const initialState = {
      selectedOptions:[],
      rate:'',
      time: '',
-     projectedUse:''
+     projectedUse:'',
+     error: '',
+     authenticated: false
 };
 
 
@@ -180,6 +182,15 @@ export default (state, action) => {
                     ...state,
                     projectedUse: action.projected
                };
+
+          case 'AUTH_USER':
+           return { ...state, error: '', authenticated: true };
+
+          case 'UNAUTH_USER':
+           return { ...state, authenticated: false };
+
+          case 'AUTH_ERROR':
+           return { ...state, error: action.payload };
 
           default:
                return state;
