@@ -48,6 +48,6 @@ export function registerUser({ firstName,lastName,username,password }) {
 export function logoutUser() {
   return function (dispatch) {
     dispatch({ type: UNAUTH_USER });
-    window.location.href = CLIENT_ROOT_URL + '/login';
+    window.location.href = '/';
   }
   }
