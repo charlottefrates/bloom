@@ -13,6 +13,7 @@ export function loginUser({ username, password }) {
   // Submit email/password to the sever
   axios.post(`${API_URL}/signin`, { username, password })
     .then(response => {
+        console.log(response);
       // If request is good...
       // - Update state to indicate user is authenticated
       dispatch({ type: AUTH_USER, user: response.data.user });
@@ -30,6 +31,7 @@ export function registerUser({ firstName,lastName,username,password }) {
   return function (dispatch) {
   axios.post(`${API_URL}/signup`, { firstName,lastName,username,password})
     .then(response => {
+      console.log(response);
       dispatch({ type: AUTH_USER, user: response.data.user });
       browserHistory.push('/bloom');
     })
