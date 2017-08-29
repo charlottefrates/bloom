@@ -2,54 +2,88 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import cookie from 'react-cookie';
 
-export const AUTH_USER = 'auth_user',
-             UNAUTH_USER = 'unauth_user',
-             AUTH_ERROR = 'auth_error',
-             API_URL = 'http://localhost:9000';
+export const API_URL = 'http://localhost:9000';
 
 
-export function loginUser({ username, password }) {
-  return function(dispatch) {
-  // Submit email/password to the sever
-  axios.post(`${API_URL}/signin`, { username, password })
-    .then(response => {
-        console.log(response);
-      // If request is good...
-      // - Update state to indicate user is authenticated
-      dispatch({ type: AUTH_USER, user: response.data.user });
-      browserHistory.push('/bloom');
+export const CREATE_NEW_USER_ERROR = 'CREATE_NEW_USER_ERROR';
+export const createNewUserError = error => ({
+               type: CREATE_NEW_USER_ERROR,
+               error
+             });
+
+export const CREATE_NEW_USER_SUCCESS = 'CREATE_NEW_USER_SUCCESS';
+export const createNewUserSuccess = user => ({
+               type: CREATE_NEW_USER_SUCCESS,
+               user
+             });
+
+export const SIGN_IN_USER_ERROR = 'SIGN_IN_USER_ERROR';
+             export const signInUserError = error => ({
+               type: SIGN_IN_USER_ERROR,
+               error
+             });
+
+export const SIGN_IN_USER_SUCCESS = 'SIGN_IN_USER_SUCCESS';
+             export const signInUserSuccess = user => ({
+               type: SIGN_IN_USER_SUCCESS,
+               user
+             });
+
+
+  export const signInUser = (username, password) => {
+  	return dispatch => {
+  		const url = `${API_URL}/signin`;
+    return fetch(url, {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(username, password)
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.json()
+          .then(error => dispatch(signInUserError(error.message)));
+        }
+        return response.json()
+        .then(user => {
+          browserHistory.push('/bloom');
+          dispatch(signInUserSuccess(user));
+        });
+      });
+  	};
+  };
+
+
+export const createNewUser = user => {
+  return dispatch => {
+    const url = `${API_URL}/signup`;
+    return fetch(url, {
+      method: 'post',
+      headers: {
+        'Content-type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify(user)
     })
-    .catch(() => {
-      // If request is bad...
-      // - Show an error to the user
-      dispatch(authError('Bad login info'));
+    .then(response => {
+      if (!response.ok) {
+        return response.json()
+        .then(error => dispatch(createNewUserError(error.message)));
+      }
+        return response.json()
+        .then(user => {
+          browserHistory.push('/bloom');
+          dispatch(createNewUserSuccess(user));
+        });
     });
-  }
-  }
-
-export function registerUser({ firstName,lastName,username,password }) {
-  return function (dispatch) {
-  axios.post(`${API_URL}/signup`, { firstName,lastName,username,password})
-    .then(response => {
-      console.log(response);
-      dispatch({ type: AUTH_USER, user: response.data.user });
-      browserHistory.push('/bloom');
-    })
-    .catch(response => dispatch(authError()));
-}
-  }
+  };
+};
 
 
-  export function authError(error) {
-    return {
-      type: AUTH_ERROR,
-      payload: error
-    }
-  }
 
 export function logoutUser() {
   return function (dispatch) {
-    dispatch({ type: UNAUTH_USER });
+    dispatch({ type: CREATE_NEW_USER_ERROR });
     window.location.href = '/';
   }
   }

@@ -18,7 +18,7 @@ const initialState = {
      rate:'',
      time: '',
      projectedUse:'',
-     error: '',
+     userError: false,
      authenticated: false
 };
 
@@ -182,15 +182,31 @@ export default (state, action) => {
                     ...state,
                     projectedUse: action.projected
                };
+          case 'CREATE_NEW_USER_ERROR':
+               return {
+                    ...state,
+                    userError: true,
+                    signUpUserError: action.error
+               };
 
-          case 'AUTH_USER':
-           return { ...state, error: '', authenticated: true };
+          case "CREATE_NEW_USER_SUCCESS":
+              return {
+                   ...state,
+                   currentUser: action.user,
+                   userError: false,
+                   authenticated: true
+              };
+         case 'SIGN_IN_USER_ERROR':
+              return Object.assign({}, state, {
+                userError: true,
+                signInUserError: action.error
+              });
 
-          case 'UNAUTH_USER':
-           return { ...state, authenticated: false };
-
-          case 'AUTH_ERROR':
-           return { ...state, error: action.payload };
+         case 'SIGN_IN_USER_SUCCESS':
+              return Object.assign({}, state, {
+                currentUser: action.user,
+                userError: true,           
+              });
 
           default:
                return state;
