@@ -18,6 +18,7 @@ export function loginUser({ username, password }) {
       // - Update state to indicate user is authenticated
       dispatch({ type: AUTH_USER, user: response.data.user });
       browserHistory.push('/bloom');
+      //window.location.href = 'http://localhost:3000/bloom';
     })
     .catch(() => {
       // If request is bad...

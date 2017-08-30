@@ -10,14 +10,15 @@ import * as actions from '../actions/authentication_actions';
   event.preventDefault();
 
   console.log({
-      first_name: this.first_name.value,
-      last_name: this.last_name.value,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
       username: this.username.value,
       password: this.password.value,
     })
+
   this.props.dispatch(registerUser({
-      first_name: this.first_name.value,
-      last_name: this.last_name.value,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
       username: this.username.value,
       password: this.password.value,
     }));
@@ -37,8 +38,8 @@ import * as actions from '../actions/authentication_actions';
               <div className="sign-up-box-2">
                 <form  className="register" onSubmit={(event) => this.handleUserFormSubmit(event)}>
                               <fieldset name="register-info">
-                                <input  ref={element => {this.first_name = element; return this.first_name; }} type="text" className="placeholder" name="firstName" id="firstName"  placeholder="first name" required=""/>
-                                <input  ref={element => {this.last_name = element; return this.last_name; }} type="text" className="placeholder" name="lastName" id="lastName"  placeholder="last name" required=""/>
+                                <input  ref={element => {this.firstName = element; return this.firstName; }} type="text" className="placeholder" name="firstName" id="firstName"  placeholder="first name" required=""/>
+                                <input  ref={element => {this.lastName = element; return this.lastName; }} type="text" className="placeholder" name="lastName" id="lastName"  placeholder="last name" required=""/>
                                 <input  ref={element => {this.username = element; return this.username; }} type="text" className="placeholder" name="username" id="username"  placeholder="username" required=""/>
                                 <input  ref={element => {this.password = element; return this.password; }} type="password" className="placeholder" name="password" id="password" placeholder="password" required=""/>
                               </fieldset>

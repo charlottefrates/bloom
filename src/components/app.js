@@ -1,6 +1,4 @@
 import React from 'react';
-//to be called after user autherization
-import RequireAuth from './require_auth'
 
 //React Router
 import {BrowserRouter as Router,Route, Link} from 'react-router-dom';

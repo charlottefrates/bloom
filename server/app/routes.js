@@ -196,7 +196,7 @@ module.exports = function(app, passport) {
                     projected: req.body.projected,
                     created: req.body.created,
                     //TODO: Capture USER ID!!!
-                    //user_id:user._id
+                    user_id:user._id
                })
                .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
                .catch(err => {
