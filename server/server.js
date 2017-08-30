@@ -19,7 +19,6 @@ mongoose.connect(configDB.url, {
 require('./config/passport')(passport); // pass passport for configuration
 
 
-
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 app.use(cookieParser()); // read cookies (needed for auth)

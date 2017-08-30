@@ -74,19 +74,6 @@ module.exports = function(app, passport) {
      // SIGNUP ==============================
      // =====================================
 
-     // process the signup form
-     /*
-     app.post('/signup',
-     passport.authenticate('local-signup', {
-          successRedirect: '/bloom', // redirect to the secure profile section
-          failureRedirect: '/', // redirect back to the signup page if there is an error
-          failureFlash: true // allow flash messages
-     }),
-     (req,res) =>{
-          res.json;
-     }
-     );
-     */
 
      app.post('/signup',
      function(req, res, next) {
@@ -185,19 +172,57 @@ module.exports = function(app, passport) {
                 });
       });
 
+      app.post('/new', (req, res) => {
+          let user = req.user;
+          console.log(user);
+          console.log(req);
+          console.log(res);
+          const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected'];
+          for (let i = 0; i < requiredFields.length; i++) {
+               const field = requiredFields[i];
+               if (!(field in req.body)) {
+                    const message = `Missing \`${field}\` in request body`
+                    console.error(message);
+                    return res.status(400).send(message);
+               }
+          }
+          console.log(req.session);
+          Bloom
+               .create({
+                    zones: req.body.zones,
+                    days: req.body.zones,
+                    gal_min: req.body.gal_min,
+                    min: req.body.min,
+                    projected: req.body.projected,
+                    created: req.body.created,
+                    //TODO: Capture USER ID!!!
+                    //user_id:user._id
+               })
+               .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
+               .catch(err => {
+                    console.error(err);
+                    res.status(500).json({
+                         error: 'Something went wrong'
+                    });
+               });
+     });
 
+     app.delete('/delete/:id', (req, res) => {
+          Bloom
+               .findByIdAndRemove(req.params.id)
+               .exec()
+               .then(() => {
+                    res.status(204).json({
+                                  message: 'success'
+                             });
+                        })
+               .catch(err => {
+                     console.error(err);
+                             res.status(500).json({
+                                  error: 'something went terribly wrong'
+                             });
+                        });
+              });
 
 
 };
-
-
-// route middleware to make sure
-function isLoggedIn(req, res, next) {
-
-     // if user is authenticated in the session, carry on
-     if (req.isAuthenticated())
-          return next();
-
-     // if they aren't redirect them to the home page
-     res.redirect('/');
-}
