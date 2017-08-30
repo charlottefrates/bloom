@@ -25,33 +25,6 @@ module.exports = function(app, passport) {
      // LOGIN ===============================
      // =====================================
 
-     //templates with ejs file after npm install ejs
-     app.set('view engine', 'ejs');
-
-     // show the login form
-     // .render allows for the "injection" of flash messages
-     app.get('/login', function(req, res) {
-
-          res.render('login', { message: req.flash('loginMessage') });
-
-          //Orginally loads static html file
-         //res.sendFile(path.join(__dirname, '../views', 'login.html'));
-
-     });
-
-
-
-     // process the login form
-     /*
-     app.post('/login', passport.authenticate('local-login', {
-          successRedirect: '/bloom', // redirect to the secure profile section
-          failureRedirect: '/', // redirect back to the signup page if there is an error
-          //failureMessage: "Invalid username or password",
-          failureFlash: true // allow flash messages
-
-     }));
-     */
-
      app.post('/login', function(req, res, next) {
           passport.authenticate('local-login', function(err, user, info) {
                if (err) {

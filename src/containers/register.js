@@ -6,13 +6,6 @@ import { registerUser } from '../actions/authentication_actions';
   handleUserFormSubmit(event) {
   event.preventDefault();
 
-  console.log({
-      firstName: this.firstName.value,
-      lastName: this.lastName.value,
-      username: this.username.value,
-      password: this.password.value,
-    })
-
   this.props.dispatch(registerUser({
       firstName: this.firstName.value,
       lastName: this.lastName.value,

@@ -16,6 +16,7 @@ import '../styles/landing.css';
 
 export default class Home extends React.Component {
 
+
     render() {
         return (
             <Router>
@@ -40,7 +41,7 @@ export default class Home extends React.Component {
 
             <div className="cd-fixed-bg cd-bg-2">
         		<div className="about-page">
-        			<video id="blooming"src="blooming.mp4" preload="yes" controlsList="nodownload" autoPlay></video>
+        			<video id="blooming" src="file:///users/charlottefrates/Desktop/Projects/bloom/src/components/blooming.mp4" preload="yes" controlsList="nodownload" autoplay></video>
 
         		   	<div className="about-header-container">
         					<h2>How It Works</h2>
@@ -87,7 +88,7 @@ export default class Home extends React.Component {
         					<div className="col-12-landing">
         						<h2 className="sign-up-title">Start Tracking Your Water Zones now</h2>
         						<div className="sign-up-box">
-                                <button type="submit" className="sign-up-button" onClick={() =>this.props.history.push('/signup')}>Register</button>
+                                <button className="sign-up-button" onClick={() =>this.props.history.push('/signin')} >Sign Up</button>
         						</div>
         					</div>
         				</div>

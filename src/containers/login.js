@@ -9,13 +9,6 @@ class Login extends Component {
 handleUserFormSubmit(event) {
   event.preventDefault();
 
-  console.log({
-      username: this.username.value,
-      password: this.password.value,
-    })
-
-
-
   this.props.dispatch(loginUser({
       username: this.username.value,
       password: this.password.value,

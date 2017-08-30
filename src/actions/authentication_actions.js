@@ -24,6 +24,7 @@ export function loginUser({ username, password }) {
     .catch(() => {
       // If request is bad...
       // - Show an error to the user
+      alert('Bad login info. Try again');
       dispatch(authError('Bad login info'));
     });
   }

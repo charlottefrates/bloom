@@ -190,6 +190,8 @@ export default (state, action) => {
            return { ...state, authenticated: false };
 
           case 'AUTH_ERROR':
+          console.log(state);
+          console.log(state.error);
            return { ...state, error: action.payload };
 
           default:
