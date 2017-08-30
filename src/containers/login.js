@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router';
 import { loginUser } from '../actions/authentication_actions';
 
 
 
 
-export default class Login extends Component {
+class Login extends Component {
+handleUserFormSubmit(event) {
+  event.preventDefault();
+
+  console.log({
+      username: this.username.value,
+      password: this.password.value,
+    })
+
+
+
+  this.props.dispatch(loginUser({
+      username: this.username.value,
+      password: this.password.value,
+    }));
+
+  }
 
   render() {
 
@@ -19,12 +33,12 @@ export default class Login extends Component {
             <div className="col-12-landing-2">
               <h2 className="sign-up-title">Log In</h2>
               <div className="sign-up-box-2">
-                <form className="register" action="/users" method="post" autocomplete="off">
+                <form className="register" onSubmit={(event) => this.handleUserFormSubmit(event)}>
                               <fieldset name="register-info">
-                                  <input type="text" className="placeholder" name="username" id="username" placeholder="Username" required=""/>
-                                  <input type="password" className="placeholder" name="password" id="password" placeholder="Password" required=""/>
+                                  <input ref={element => {this.username = element; return this.username; }} type="text" className="placeholder" name="username" id="username" placeholder="Username" required=""/>
+                                  <input ref={element => {this.password = element; return this.password; }} type="password" className="placeholder" name="password" id="password" placeholder="Password" required=""/>
                               </fieldset>
-                  <button type="submit" className="sign-up-button" onClick={() =>this.props.history.push('/bloom')}>Sign In</button>
+                  <button type="submit" className="sign-up-button">Sign In</button>
                 </form>
               </div>
             </div>
@@ -38,3 +52,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default connect(null)(Login);

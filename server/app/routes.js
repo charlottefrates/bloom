@@ -53,7 +53,7 @@ module.exports = function(app, passport) {
      */
 
      app.post('/login', function(req, res, next) {
-          passport.authenticate('local', function(err, user, info) {
+          passport.authenticate('local-login', function(err, user, info) {
                if (err) {
                     return next(err); // will generate a 500 error
                }
@@ -196,7 +196,7 @@ module.exports = function(app, passport) {
                     projected: req.body.projected,
                     created: req.body.created,
                     //TODO: Capture USER ID!!!
-                    user_id:user._id
+                    //user_id:user._id
                })
                .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
                .catch(err => {

@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import {Router,NavLink} from 'react-router-dom';
 import { registerUser } from '../actions/authentication_actions';
-import * as actions from '../actions/authentication_actions';
 
  class Register extends React.Component {
   handleUserFormSubmit(event) {

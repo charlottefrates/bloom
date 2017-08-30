@@ -23,7 +23,6 @@ export default class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-1">
         		<nav className="navigation-bar is-visible" data-nav-status="toggle">
                     <ul>
-            	       <li onClick={() =>this.props.history.push('/bloom')}>ENTER</li>
                        <li onClick={() =>this.props.history.push('/signin')}> Log In</li>
                        <li onClick={() =>this.props.history.push('/signup')}> Sign Up </li>
                        <li> About </li>

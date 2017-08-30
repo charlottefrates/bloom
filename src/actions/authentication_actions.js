@@ -11,14 +11,15 @@ export const AUTH_USER = 'auth_user',
 export function loginUser({ username, password }) {
   return function(dispatch) {
   // Submit email/password to the sever
-  axios.post(`${API_URL}/signin`, { username, password })
+  axios.post(`${API_URL}/login`, { username, password })
     .then(response => {
         console.log(response);
       // If request is good...
       // - Update state to indicate user is authenticated
       dispatch({ type: AUTH_USER, user: response.data.user });
-      browserHistory.push('/bloom');
-      //window.location.href = 'http://localhost:3000/bloom';
+      //TODO: NOT WORKING!
+      //browserHistory.push('/bloom');
+      window.location.href = '/bloom';
     })
     .catch(() => {
       // If request is bad...
@@ -34,7 +35,9 @@ export function registerUser({ firstName,lastName,username,password }) {
     .then(response => {
       console.log(response);
       dispatch({ type: AUTH_USER, user: response.data.user });
-      browserHistory.push('/bloom');
+      //TODO: NOT WORKING!
+      //browserHistory.push('/bloom');
+      window.location.href = '/bloom';
     })
     .catch(response => dispatch(authError()));
 }
