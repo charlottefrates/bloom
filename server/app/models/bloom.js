@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const bloomSchema = mongoose.Schema({
-     zones: String,
-     days: String,
-     gal_min: String,
-     min: String,
-     projected: String,
+     zones: [String],
+     days: [String],
+     gal_min: Number,
+     min: Number,
+     projected: Number,
      user_id: String,
      created: {
           type: Date,
