@@ -21,8 +21,9 @@ export default class Home extends React.Component {
         return (
             <Router>
             <div>
+
             <div className="cd-fixed-bg cd-bg-1">
-        		<nav className="navigation-bar is-visible" data-nav-status="toggle">
+            <nav className="navigation-bar is-visible" data-nav-status="toggle">
                     <ul>
                        <li onClick={() =>this.props.history.push('/signin')}> Log In</li>
                        <li onClick={() =>this.props.history.push('/signup')}> Sign Up </li>
@@ -30,7 +31,6 @@ export default class Home extends React.Component {
 
                     </ul>
                 </nav>
-
         	     <div className="landingpage-container">
         	        <div className="landingpage-details-container">
         	             <h1 className="welcome-header">Bloom</h1>
@@ -40,8 +40,9 @@ export default class Home extends React.Component {
         	</div>
 
             <div className="cd-fixed-bg cd-bg-2">
+
         		<div className="about-page">
-        			<video id="blooming" src="file:///users/charlottefrates/Desktop/Projects/bloom/src/components/blooming.mp4" preload="yes" controlsList="nodownload" autoplay></video>
+        			<video id="blooming" src="file:///users/charlottefrates/Desktop/Projects/bloom/src/components/blooming.mp4"autoplay={true}></video>
 
         		   	<div className="about-header-container">
         					<h2>How It Works</h2>
