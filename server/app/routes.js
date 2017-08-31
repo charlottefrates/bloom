@@ -59,7 +59,6 @@ module.exports = function(app, passport) {
                 if(err){
                   return next(err);
                 }else {
-
                   // if user is found and password is right
                   // create a token
                   let token = jwt.sign(user, app.get('superSecret'), {
@@ -70,7 +69,8 @@ module.exports = function(app, passport) {
                   res.json({
                     success: true,
                     message: 'Enjoy your token!',
-                    token: token
+                    token: token,
+                    user: user.local.username
                   });
                 }
 
