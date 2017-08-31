@@ -288,9 +288,9 @@ const mapStateToProps = (state, props) => ({
     maxtemps:state.maxtemps,
     mintemps:state.mintemps,
     descriptions:state.descriptions,
-    icons:state.icons
-    //zones: state.zones
-
+    icons:state.icons,
+    zones: state.zones,
+    authenticated: state.authenticated
 });
 
 

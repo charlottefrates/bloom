@@ -1,11 +1,15 @@
 // config/passport.js
-
+const jwt = require('jsonwebtoken');
+const passportJWT = require("passport-jwt");
+const ExtractJwt = passportJWT.ExtractJwt;
+const JwtStrategy = passportJWT.Strategy;
 
 // load all the things we need
-var LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 
 // load up the user model
-var User = require('../app/models/users');
+const User = require('../app/models/users');
+
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -118,6 +122,8 @@ module.exports = function(passport) {
                     if (!user.validatePassword(password))
                          return done(null, false, { message: 'Opps! Wrong Password' }); // create the loginMessage and save it to session as flashdata
 
+
+
                     //req.session.user = user.local.username;
                     req.session.firstName = user.local.firstName;
                     req.session.lastName = user.local.lastName;
@@ -127,5 +133,6 @@ module.exports = function(passport) {
                });
 
           }));
+
 
 };

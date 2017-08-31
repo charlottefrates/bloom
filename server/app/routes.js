@@ -2,10 +2,13 @@
 
 const path = require('path');
 const morgan = require('morgan');
+const jwt = require('jsonwebtoken');
+
 
 
 const User = require('./models/users');
 const {Bloom} = require('./models/bloom');
+
 
 
 
@@ -18,29 +21,6 @@ module.exports = function(app, passport) {
      // Always return the main index.html, so react-router render the route in the client
      app.get('/', (req, res) => {
        res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
-     });
-
-
-     // =====================================
-     // LOGIN ===============================
-     // =====================================
-
-     app.post('/login', function(req, res, next) {
-          passport.authenticate('local-login', function(err, user, info) {
-               if (err) {
-                    return next(err); // will generate a 500 error
-               }
-               // Generate a JSON response reflecting authentication status
-               if (! user) {
-                    return res.send(401,{ success : false, message : 'authentication failed' });
-               }
-              req.login(user, function(err){
-                if(err){
-                  return next(err);
-                }
-                return res.send({ success : true, message : 'authentication succeeded' });
-              });
-            })(req, res, next);
      });
 
      // =====================================
@@ -58,6 +38,46 @@ module.exports = function(app, passport) {
                   return res.json({ success : true, message : 'Sign-up successful' });
              });
           })(req, res, next);
+     });
+
+
+     // =====================================
+     // LOGIN ===============================
+     // =====================================
+     //NOTE CREATES TOKIN!
+
+     app.post('/login', function(req, res, next) {
+          passport.authenticate('local-login', function(err, user, info) {
+               if (err) {
+                    return next(err); // will generate a 500 error
+               }
+               // Generate a JSON response reflecting authentication status
+               if (! user) {
+                    return res.send(401,{ success : false, message : 'authentication failed' });
+               }
+              req.login(user, function(err){
+                if(err){
+                  return next(err);
+                }else {
+
+                  // if user is found and password is right
+                  // create a token
+                  let token = jwt.sign(user, app.get('superSecret'), {
+                    expiresIn : 60*60*24 // expires in 24 hours
+                  });
+
+                  // return the information including token as JSON
+                  res.json({
+                    success: true,
+                    message: 'Enjoy your token!',
+                    token: token
+                  });
+                }
+
+                //return res.send({ success : true, message : 'authentication succeeded' });
+
+              });
+            })(req, res, next);
      });
 
 
@@ -147,7 +167,7 @@ module.exports = function(app, passport) {
 
       app.post('/new', (req, res) => {
           let user = req.user;
-          console.log(user);
+          console.log('THIS IS IT',user);
           console.log(req);
           console.log(res);
           const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected'];

@@ -37,8 +37,8 @@ export function registerUser({ firstName,lastName,username,password }) {
       console.log(response);
       dispatch({ type: AUTH_USER, user: response.data.user });
       //TODO: NOT WORKING!
-      //browserHistory.push('/bloom');
-      window.location.href = '/bloom';
+      browserHistory.push('/bloom');
+      //window.location.href = '/bloom';
     })
     .catch(response => dispatch(authError()));
 }

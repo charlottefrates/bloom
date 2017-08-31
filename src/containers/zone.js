@@ -51,7 +51,8 @@ class Zones extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-     zones: state.zones
+     zones: state.zones,
+     authenticated: state.authenticated
 });
 
 

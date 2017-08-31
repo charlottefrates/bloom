@@ -5,11 +5,13 @@ const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const flash    = require('connect-flash');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const configDB = require('./config/database.js');
+
+const expressJwt = require('express-jwt');
+const jwt = require('jsonwebtoken');
 
 // connect to our database
 mongoose.connect(configDB.url, {
@@ -27,9 +29,12 @@ app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-f
 app.use(bodyParser.json()) // parse application/json
 
 app.use(session({ secret: 'bloom',resave: true,saveUninitialized: true})); // session secret
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+
+app.set('superSecret', configDB.secret); // secret variable
+
 
 //Enables CORS on Express JS for multi server use
 //https://enable-cors.org/server_expressjs.html

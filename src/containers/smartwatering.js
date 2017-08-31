@@ -243,7 +243,8 @@ const mapStateToProps = (state, props) => ({
     selectedOptions: state.selectedOptions,
     rate: state.rate,
     time: state.time,
-    projectedUse: state.projectedUse
+    projectedUse: state.projectedUse,
+    authenticated: state.authenticated
 });
 
 

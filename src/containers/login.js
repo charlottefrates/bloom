@@ -46,4 +46,10 @@ handleUserFormSubmit(event) {
   }
 }
 
-export default connect(null)(Login);
+const mapStateToProps = (state, props) => ({
+     authenticated: state.authenticated
+});
+
+
+
+export default connect(mapStateToProps)(Login);

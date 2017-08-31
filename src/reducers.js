@@ -184,9 +184,12 @@ export default (state, action) => {
                };
 
           case 'AUTH_USER':
-           return { ...state, error: '', authenticated: true };
+          alert('authorized');
+          console.log(state);
+           return { ...state, error: '', authenticated: true,user: action.user };
 
           case 'UNAUTH_USER':
+          console.log(state);
            return { ...state, authenticated: false };
 
           case 'AUTH_ERROR':
