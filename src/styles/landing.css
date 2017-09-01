@@ -82,8 +82,8 @@ z-index: 1;
 }
 
 .about-header-container{
-    bottom: 112%;
-position: relative;
+     /*bottom: 112%; WITHOUT VIDEO*/
+     position: relative;
 }
 
 .about-card-landings-container-1 {
@@ -94,7 +94,8 @@ position: relative;
     display: flex;
     -ms-flex-pack: distribute;
     justify-content: space-around;
-    margin-top: -50%;
+    /*margin-top: -50%;WITH video*/
+    margin-top: -3%;
 }
 
 .about-card-landings-container-2 {

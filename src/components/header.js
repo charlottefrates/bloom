@@ -14,11 +14,7 @@ import {
 
 class Header extends React.Component {
     onLogout = () =>{
-         alert('logging out');
          this.props.dispatch(logoutUser());
-    //this.props.history.push('/signout');
-    //window.location.href='/';
-     //<Redirect push to="/signout"/>
     };
 
 

@@ -53,7 +53,8 @@ module.exports = function(app, passport) {
                }
                // Generate a JSON response reflecting authentication status
                if (! user) {
-                    return res.send(401,{ success : false, message : 'authentication failed' });
+               
+                    return res.send(401,{ success : false, message : 'authentication failed'});
                }
               req.login(user, function(err){
                 if(err){

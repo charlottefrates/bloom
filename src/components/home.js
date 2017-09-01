@@ -42,7 +42,7 @@ export default class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-2">
 
         		<div className="about-page">
-        			<video id="blooming" src="file:///users/charlottefrates/Desktop/Projects/bloom/src/components/blooming.mp4"autoplay={true}></video>
+        			{/*}<video id="blooming" src="file:///users/charlottefrates/Desktop/Projects/bloom/src/components/blooming.mp4"autoplay={true}></video>*/}
 
         		   	<div className="about-header-container">
         					<h2>How It Works</h2>

@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication_actions';
 
-
-
-
 class Login extends Component {
-handleUserFormSubmit(event) {
+
+  handleUserFormSubmit(event) {
   event.preventDefault();
 
   this.props.dispatch(loginUser({
@@ -15,6 +13,7 @@ handleUserFormSubmit(event) {
     }));
 
   }
+
 
   render() {
 
@@ -47,7 +46,8 @@ handleUserFormSubmit(event) {
 }
 
 const mapStateToProps = (state, props) => ({
-     authenticated: state.authenticated
+     authenticated: state.authenticated,
+     error: state.error
 });
 
 

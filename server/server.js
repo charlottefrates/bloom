@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const flash    = require('connect-flash');
+
 const session = require('express-session');
 const configDB = require('./config/database.js');
 
@@ -32,6 +34,7 @@ app.use(session({ secret: 'bloom',resave: true,saveUninitialized: true})); // se
 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.set('superSecret', configDB.secret); // secret variable
 

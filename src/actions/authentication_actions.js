@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import cookie from 'react-cookie';
+import { push } from 'react-router-redux'
 
 export const AUTH_USER = 'auth_user',
              UNAUTH_USER = 'unauth_user',
@@ -25,15 +26,15 @@ export function loginUser({ username, password }) {
       //sessionStorage = persisted only in current tab
       // localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify({token: response.data.token, _id: response.data.user._id}))
-      //TODO: NOT WORKING!
-      //this.context.router.history.push('/bloom');
-      browserHistory.push('/bloom');
-      //window.location.href = '/bloom';
+      //NOTE dispatching browserHistory doesnt work for react router 4
+      //browserHistory.push('/bloom');
+      //dispatch(push('/bloom')); /* dispatch an action that changes the browser history */
+      window.location.href = '/bloom';
     })
     .catch(() => {
       // If request is bad...
       // - Show an error to the user
-      //alert('Bad login info. Try again');
+      alert('Bad login info. Try again');
       dispatch(authError('Bad login info'));
     });
   }
@@ -45,9 +46,9 @@ export function registerUser({ firstName,lastName,username,password }) {
     .then(response => {
       console.log(response);
       dispatch({ type: 'AUTH_USER', user: response.data.user });
-      //TODO: NOT WORKING!
-      browserHistory.push('/bloom');
-      //window.location.href = '/bloom';
+      //NOTE dispatching browserHistory doesnt work for react router 4
+      //browserHistory.push('/signin');
+      window.location.href = '/signin';
     })
     .catch(response => dispatch(authError()));
 }
@@ -63,7 +64,7 @@ export function registerUser({ firstName,lastName,username,password }) {
 
 export function logoutUser() {
   return function (dispatch) {
-    localStorage.removeItem('token');
+    localStorage.clear();
     dispatch({ type: 'UNAUTH_USER' });
     //window.location.href = '/';
   }
