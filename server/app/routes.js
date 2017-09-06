@@ -195,7 +195,7 @@ module.exports = function(app, passport) {
           Bloom
                .create({
                     zones: req.body.zones,
-                    days: req.body.zones,
+                    days: req.body.days,
                     gal_min: req.body.gal_min,
                     min: req.body.min,
                     projected: req.body.projected,
