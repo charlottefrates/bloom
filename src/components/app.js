@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 //React Router
-import {BrowserRouter as Router,Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
 import {browserHistory} from 'react-router';
 
 import RequireAuth from './require_auth'
@@ -17,11 +16,12 @@ import Login from '../containers/login'
 //styling
 import '../styles/app.css';
 
-const user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('accessToken'));
 
 // If we have a token, consider the user to be signed in
 if (user) {
   console.log('token present', localStorage);
+  console.log(user.token);
   // we need to update application state
   store.dispatch({ type: 'AUTH_USER', user });
 

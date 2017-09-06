@@ -1,15 +1,7 @@
 import React from 'react';
 
 //React Router
-import {BrowserRouter as Router, Route, Link,NavLink} from 'react-router-dom';
-
-//html 5 video
-//import { DefaultPlayer as Video } from 'react-html5video';
-
-//For React DOM render
-import Bloom from './bloom';
-
-
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import '../styles/landing.css';
 
@@ -42,11 +34,10 @@ export default class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-2">
 
         		<div className="about-page">
-        			{/*}<video id="blooming" src="file:///users/charlottefrates/Desktop/Projects/bloom/src/components/blooming.mp4"autoplay={true}></video>*/}
+        			<video id="blooming" src="http://localhost:3000/blooming.mp4" autoPlay loop></video>
 
         		   	<div className="about-header-container">
         					<h2>How It Works</h2>
-        					<hr className="short-line" />
         			</div>
 
         			<div className="about-card-landings-container-1">
@@ -87,9 +78,9 @@ export default class Home extends React.Component {
         			<div id="sign-up">
         				<div className="rowwer">
         					<div className="col-12-landing">
-        						<h2 className="sign-up-title">Start Tracking Your Water Zones now</h2>
+        						<h2 className="sign-up-title">Start Tracking Your Watering Zones now</h2>
         						<div className="sign-up-box">
-                                <button className="sign-up-button" onClick={() =>this.props.history.push('/signin')} >Sign Up</button>
+                                <button className="sign-up-button" onClick={() =>this.props.history.push('/signup')} >Sign Up</button>
         						</div>
         					</div>
         				</div>

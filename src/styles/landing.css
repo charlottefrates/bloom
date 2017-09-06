@@ -3,27 +3,14 @@
 }
 
 video#blooming {
-     /*
-    TOP
-    position: relative;
-    top: 50%;
-    left: 38%;
-    padding: 0;
-    height: 800px;
-    height: %30;
-    background-size: cover;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    */
      position: relative;
-     top: 120%;
-     left: 12%;
+     top: 60%;
+     left: 7%;
      padding: 0;
-     height: 800px;
+     height: 700px;
      height: %30;
      background-size: cover;
      transform: translate(-50%, -50%);
-     z-index: 100;
 }
 
 .landingpage-container {
@@ -82,7 +69,7 @@ z-index: 1;
 }
 
 .about-header-container{
-     /*bottom: 112%; WITHOUT VIDEO*/
+     top: -700px;
      position: relative;
 }
 
@@ -94,8 +81,8 @@ z-index: 1;
     display: flex;
     -ms-flex-pack: distribute;
     justify-content: space-around;
-    /*margin-top: -50%;WITH video*/
-    margin-top: -3%;
+    margin-top: -40%;
+    /*margin-top: -3%;*/
 }
 
 .about-card-landings-container-2 {

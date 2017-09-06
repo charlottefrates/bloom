@@ -1,7 +1,5 @@
 import React from 'react';
-import { NavLink,Route , withRouter } from 'react-router-dom';
-import { Redirect } from 'react-router';
-import Home from './home';
+import { NavLink} from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -23,12 +21,11 @@ class Header extends React.Component {
 
         <header>
           <ul className="main-nav">
-            <li> <NavLink to="/zone" >Watering Zones</NavLink> </li>
+            <li> <NavLink to="/zone" activeClassName="active">Watering Zones</NavLink> </li>
             <li> <NavLink to="/weather">Weather Analytics</NavLink> </li>
             <li> <NavLink to="/smart">Smart Projection</NavLink> </li>
             <li> <NavLink to="/history">History</NavLink> </li>
             <li onClick={this.onLogout} className="signout"> SignOut </li>
-
           </ul>
         </header>
 

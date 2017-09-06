@@ -10,6 +10,10 @@ import {
      set_projected
 } from '../actions/zone_actions';
 
+import {
+  saveProjection
+} from '../actions/history_actions';
+
 
 import '../styles/smartwatering.css';
 
@@ -156,6 +160,17 @@ class Smart extends React.Component{
   //TODO: submit to server for water tracking entry
   handleFormSubmit(formSubmitEvent) {
     formSubmitEvent.preventDefault();
+    //saveProjection({ zones, days, gal_min, min, projected })
+
+    let save = {
+      "zones": this.props.selectedOptions,
+      "days": this.props.selectedDays,
+      "gal_min": this.props.rate,
+      "min":this.props.time,
+      "projected": this.props.projectedUse
+    };
+    console.log(save);
+    this.props.dispatch(saveProjection(save));
   };
 
 
@@ -207,8 +222,10 @@ class Smart extends React.Component{
                           gallon/min: <input className="smartTime align"type="text" name="rate"  onChange={this.changeRate}/><br/>
                           min: <input type="text" className="smartTime"name="time"  onChange={this.changeTime}/><br/>
                         </form>
-                        <button onClick={this.projectedWaterUse.bind(this)}> Check </button>
+                        <br/>
+                        <button onClick={this.projectedWaterUse.bind(this)}> Calculate Use  </button>
                          <br/>
+                          <br/>
 
                       </div>
 
@@ -223,7 +240,9 @@ class Smart extends React.Component{
                          <br/>
 
                       </div>
-
+                       <br/>
+                        <br/>
+                      <button onClick={this.handleFormSubmit.bind(this)}> Save Projection </button>
 
                       </div>
                       </div>

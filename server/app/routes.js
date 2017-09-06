@@ -26,16 +26,36 @@ module.exports = function(app, passport) {
      // =====================================
      // SIGNUP ==============================
      // =====================================
-
+     //NOTE CREATES ACCESS TOKIN!
 
      app.post('/signup',
      function(req, res, next) {
+          debugger;
+          console.log('check');
           passport.authenticate('local-signup',
           function(err, user, info) {
+               console.log(user);
              if (err) { return next(err); }
              req.logIn(user, function(err) {
-                  if (err) { return next(err); }
-                  return res.json({ success : true, message : 'Sign-up successful' });
+                 console.log(err);
+                  if (err) {
+                    return next(err);
+               }else {
+                 // if user is found and password is right
+                 // create a token
+                 let token = jwt.sign(user, app.get('superSecret'), {
+                   expiresIn : 60*60*24 // expires in 24 hours
+                 });
+
+                 // return the information including token as JSON
+                 return res.json({
+                   success: true,
+                   message: 'Enjoy your token!',
+                   token: token,
+                   user: user.local.username
+                 });
+            }
+                  //return res.json({ success : true, message : 'Sign-up successful' });
              });
           })(req, res, next);
      });
@@ -44,22 +64,23 @@ module.exports = function(app, passport) {
      // =====================================
      // LOGIN ===============================
      // =====================================
-     //NOTE CREATES TOKIN!
+     //NOTE CREATES ACCESS TOKIN!
 
      app.post('/login', function(req, res, next) {
+          console.log('check');
           passport.authenticate('local-login', function(err, user, info) {
                if (err) {
                     return next(err); // will generate a 500 error
                }
                // Generate a JSON response reflecting authentication status
                if (! user) {
-               
                     return res.send(401,{ success : false, message : 'authentication failed'});
                }
               req.login(user, function(err){
                 if(err){
                   return next(err);
-                }else {
+             }else {
+                     console.log('check');
                   // if user is found and password is right
                   // create a token
                   let token = jwt.sign(user, app.get('superSecret'), {
@@ -67,13 +88,13 @@ module.exports = function(app, passport) {
                   });
 
                   // return the information including token as JSON
-                  res.json({
+                   return res.json({
                     success: true,
                     message: 'Enjoy your token!',
                     token: token,
                     user: user.local.username
                   });
-                }
+             }
 
                 //return res.send({ success : true, message : 'authentication succeeded' });
 
@@ -92,16 +113,6 @@ module.exports = function(app, passport) {
          .exec()
          .then(users => res.json(users.map(user => user.apiRepr())))
          .catch(err => console.log(err) && res.status(500).json({message: 'Internal server error'}));
-     });
-
-
-     // =====================================
-     // LOGOUT ==============================
-     // =====================================
-     app.get('/logout', function(req, res) {
-          console.log("Logging off");
-          req.logout();
-          res.redirect('/');
      });
 
 
@@ -190,7 +201,7 @@ module.exports = function(app, passport) {
                     projected: req.body.projected,
                     created: req.body.created,
                     //TODO: Capture USER ID!!!
-                    //user_id:user._id
+                    //user_id:user
                })
                .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
                .catch(err => {

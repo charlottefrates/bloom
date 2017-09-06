@@ -18,6 +18,7 @@ const initialState = {
      rate:'',
      time: '',
      projectedUse:'',
+     entries:{},
      error: '',
      authenticated: false
 };
@@ -99,22 +100,6 @@ export default (state, action) => {
                })
           };
 
-          /*
-          return Object.assign({}, state, {
-              zones: state.zones.map((zone, index) => {
-                if (zone.id === action.id) {
-                  return Object.assign({}, zone, {
-                    editing: !zone.editing
-                    })
-                    }
-                    return zone
-               })
-          });
-          */
-
-
-
-
           case 'SAVE_ZONE':
           console.log(state.zones);
 
@@ -193,6 +178,14 @@ export default (state, action) => {
           console.log(state);
           console.log(state.error);
            return { ...state, error: action.payload };
+
+           case 'SAVE_ENTRY':
+                state.entries = action.entries;
+                     console.log('SAVE_ENTRY')
+                     console.log(state.entries);
+                     return{
+                          ...state, entries: action.entries
+                     };
 
           default:
                return state;

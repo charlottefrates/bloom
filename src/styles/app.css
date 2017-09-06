@@ -165,6 +165,7 @@ a:hover, a:active, a:focus{
 
 .active {
   color: white;
+  background: orange;
   text-decoration: none;
   opacity: 1;
 }
@@ -401,7 +402,7 @@ header {
 .main-nav .active
  {
   color: #fff;
-  background: #787c7d;
+  background: #4e630c;
 }
 
 

@@ -1,7 +1,4 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
-import cookie from 'react-cookie';
-import { push } from 'react-router-redux'
 
 export const AUTH_USER = 'auth_user',
              UNAUTH_USER = 'unauth_user',
@@ -20,12 +17,8 @@ export function loginUser({ username, password }) {
       // If request is good...
       // - Update state to indicate user is authenticated
       dispatch({ type: 'AUTH_USER', user: response.data.user });
-      //store JWT Token to browser session storage
-      //If you use localStorage instead of sessionStorage, then this w/
-      //persisted across tabs and new windows.
-      //sessionStorage = persisted only in current tab
-      // localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', JSON.stringify({token: response.data.token, _id: response.data.user._id}))
+      localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
+      localStorage.setItem('userId',JSON.stringify({ _id: response.data.user}));
       //NOTE dispatching browserHistory doesnt work for react router 4
       //browserHistory.push('/bloom');
       //dispatch(push('/bloom')); /* dispatch an action that changes the browser history */
@@ -46,11 +39,15 @@ export function registerUser({ firstName,lastName,username,password }) {
     .then(response => {
       console.log(response);
       dispatch({ type: 'AUTH_USER', user: response.data.user });
+      localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
+      localStorage.setItem('userId',JSON.stringify({ _id: response.data.user}));
       //NOTE dispatching browserHistory doesnt work for react router 4
       //browserHistory.push('/signin');
-      window.location.href = '/signin';
+      window.location.href = '/bloom';
     })
-    .catch(response => dispatch(authError()));
+    .catch(response => {
+      dispatch(authError());
+    });
 }
   }
 
@@ -66,6 +63,6 @@ export function logoutUser() {
   return function (dispatch) {
     localStorage.clear();
     dispatch({ type: 'UNAUTH_USER' });
-    //window.location.href = '/';
+    window.location.href = '/';
   }
   }
