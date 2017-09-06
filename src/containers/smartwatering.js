@@ -160,7 +160,12 @@ class Smart extends React.Component{
   //TODO: submit to server for water tracking entry
   handleFormSubmit(formSubmitEvent) {
     formSubmitEvent.preventDefault();
+
     //saveProjection({ zones, days, gal_min, min, projected })
+    if(!this.props.projectedUse){
+      alert('There is no projected water-use to save.')
+      return false;
+    }
 
     let save = {
       "zones": this.props.selectedOptions,
@@ -169,8 +174,10 @@ class Smart extends React.Component{
       "min":this.props.time,
       "projected": this.props.projectedUse
     };
+
     console.log(save);
     this.props.dispatch(saveProjection(save));
+    alert('Your projection has been saved.');
   };
 
 

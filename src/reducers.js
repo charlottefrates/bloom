@@ -18,7 +18,7 @@ const initialState = {
      rate:'',
      time: '',
      projectedUse:'',
-     entries:{},
+     entries:[],
      error: '',
      authenticated: false
 };
@@ -179,13 +179,17 @@ export default (state, action) => {
           console.log(state.error);
            return { ...state, error: action.payload };
 
-           case 'SAVE_ENTRY':
+          case 'SAVE_ENTRY':
                 state.entries = action.entries;
                      console.log('SAVE_ENTRY')
                      console.log(state.entries);
                      return{
                           ...state, entries: action.entries
                      };
+          case 'FETCH_PROJECTIONS':
+                 return { ...state, entries: action.payload.data };
+          case 'DELETE_PROJECTION':
+                 return { ...state, entries: state.entries.filter(projection => projection.id !== action.id)}
 
           default:
                return state;

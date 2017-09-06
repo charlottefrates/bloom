@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:9000';
+export const API_URL = 'http://localhost:9000',
+             FETCH_PROJECTIONS = 'fetch_projections',
+             DELETE_PROJECTION = 'delete_projections';
 
 //passes full projection data response
 export const SAVE_ENTRY = "SAVE_ENTRY";
@@ -21,4 +23,28 @@ export function saveProjection(entry) {
                  console.log('Error fetching and parsing data', error);
          });
   }
-  }
+};
+
+  export function fetchProjections() {
+    return (dispatch, getState) => {
+      //const id = getState().auth.user._id;
+      const request = axios.get(`${API_URL}/all`);
+
+      return dispatch({
+        type: 'FETCH_PROJECTIONS',
+        payload: request
+      });
+    }
+
+  };
+
+  export function deleteProjection(id) {
+    return(dispatch) => {
+      const request = axios.delete(`${API_URL}/delete/${id}`)
+        .then(() => dispatch(projectionDeleted(id)))
+    }
+
+    const projectionDeleted = (id) => ({
+      type: 'DELETE_PROJECTION', id
+    })
+  };

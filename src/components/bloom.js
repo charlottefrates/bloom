@@ -8,8 +8,7 @@ import Header from '../containers/header';
 import WeatherForecast from '../containers/weatherforcast';
 import Zones from '../containers/zone';
 import Smart from '../containers/smartwatering';
-
-
+import History from '../containers/history';
 
 
 export default function Bloom() {
@@ -22,7 +21,7 @@ export default function Bloom() {
         <Route path="/zone" component={Zones} />
         <Route path="/weather" component={WeatherForecast} />
         <Route path="/smart" component={Smart} />
-
+        <Route path="/history" component={History} />
         </div>
         </Router>
 
