@@ -18,11 +18,12 @@ class History extends React.Component{
   }
 
   onDeleteClick = (id) => {
+    console.log(id);
     this.props.dispatch(deleteProjection(id));
   }
 
   renderProjections() {
-    return this.props.map((entry, index) => {
+    return this.props.entries.map((entry, index) => {
       return (
         <div className="entry" key={index}>
           <div className="zones">

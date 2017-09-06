@@ -17,7 +17,7 @@ export function saveProjection(entry) {
   axios.post(`${API_URL}/new`, entry)
     .then(response => {
         console.log(response);
-      //dispatch(set_data(response));
+
     })
     .catch(error => {
                  console.log('Error fetching and parsing data', error);
@@ -28,21 +28,34 @@ export function saveProjection(entry) {
   export function fetchProjections() {
     return (dispatch, getState) => {
       //const id = getState().auth.user._id;
-      const request = axios.get(`${API_URL}/all`);
+    axios.get(`${API_URL}/all`)
+    .then(response => {
+        console.log(response);
+        dispatch({
+          type: 'FETCH_PROJECTIONS',
+          payload: response
+        });
 
-      return dispatch({
-        type: 'FETCH_PROJECTIONS',
-        payload: request
-      });
+    })
+    .catch(error => {
+                 console.log('Error fetching and parsing data', error);
+         });
+  }
     }
 
-  };
 
   export function deleteProjection(id) {
     return(dispatch) => {
-      const request = axios.delete(`${API_URL}/delete/${id}`)
-        .then(() => dispatch(projectionDeleted(id)))
-    }
+       axios.delete(`${API_URL}/delete/${id}`)
+       .then(response => {
+           console.log(response);
+           dispatch(projectionDeleted(id));
+
+       })
+       .catch(error => {
+                    console.log('Error deleting data', error);
+            });
+     }
 
     const projectionDeleted = (id) => ({
       type: 'DELETE_PROJECTION', id
