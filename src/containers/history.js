@@ -23,6 +23,7 @@ class History extends React.Component{
     this.props.dispatch(deleteProjection(id));
   }
 
+
   renderProjections() {
     return this.props.entries.map((entry, index) => {
       return (
@@ -32,10 +33,10 @@ class History extends React.Component{
         </div>
 
           <div className="zones">
-          Waterting Zones : {entry.zones}
+          Waterting Zones : {entry.zones.join(', ')}
           </div>
           <div className="days">
-            Days Watered : {entry.days}
+            Days Watered : {entry.days.join(', ')}
           </div>
           <div className="gal_min">
              Gallon/min : {entry.gal_min}
@@ -47,7 +48,7 @@ class History extends React.Component{
             Projected Water Use : {entry.projected}
           </div>
           <button onClick={() => this.onDeleteClick(entry.id)} className="deleteButton">delete</button>
-          
+
         </div>
       );
     });
