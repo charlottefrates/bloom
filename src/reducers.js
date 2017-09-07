@@ -189,7 +189,14 @@ export default (state, action) => {
           case 'FETCH_PROJECTIONS':
                  return { ...state, entries: action.payload.data };
           case 'DELETE_PROJECTION':
-                 return { ...state, entries: state.entries.filter(projection => projection.id !== action.id)}
+               // filter creates a new array with all the elements that are not the id chosen
+               const updatedEnteries = state.entries.filter(projection => projection.id !== action.id);
+               console.log('The new state now has :',updatedEnteries);
+               return  {
+                    ...state,
+                    entries:updatedEnteries
+               };
+
 
           default:
                return state;

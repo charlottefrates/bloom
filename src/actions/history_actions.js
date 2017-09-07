@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const API_URL = 'http://localhost:9000',
              FETCH_PROJECTIONS = 'fetch_projections',
-             DELETE_PROJECTION = 'delete_projections';
+             DELETE_PROJECTION = 'delete_projection';
 
 //passes full projection data response
 export const SAVE_ENTRY = "SAVE_ENTRY";
@@ -57,7 +57,9 @@ export function saveProjection(entry) {
             });
      }
 
-    const projectionDeleted = (id) => ({
-      type: 'DELETE_PROJECTION', id
-    })
   };
+
+
+  export const projectionDeleted = (id) => ({
+    type: 'DELETE_PROJECTION', id
+  })

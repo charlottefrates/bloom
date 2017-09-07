@@ -11,8 +11,9 @@ import Smart from '../containers/smartwatering';
 import History from '../containers/history';
 
 
-export default function Bloom() {
+export default class Bloom extends React.Component {
 
+render(){
     return (
 
         <Router >
@@ -26,4 +27,5 @@ export default function Bloom() {
         </Router>
 
     );
+}
 }

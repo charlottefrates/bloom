@@ -9,6 +9,7 @@ import {
   deleteProjection
 } from '../actions/history_actions';
 
+import '../styles/history.css';
 
 import $ from 'jquery';
 
@@ -26,26 +27,27 @@ class History extends React.Component{
     return this.props.entries.map((entry, index) => {
       return (
         <div className="entry" key={index}>
+        <div className="created">
+          {entry.created}
+        </div>
+
           <div className="zones">
-          {entry.zones}
+          Waterting Zones : {entry.zones}
           </div>
           <div className="days">
-            {entry.days}
+            Days Watered : {entry.days}
           </div>
           <div className="gal_min">
-            {entry.gal_min}
+             Gallon/min : {entry.gal_min}
           </div>
           <div className="min">
-            {entry.min}
+            Minutes Watered : {entry.min}
           </div>
           <div className="projected">
-            {entry.projected}
-          </div>
-          <div className="created">
-            {entry.created}
+            Projected Water Use : {entry.projected}
           </div>
           <button onClick={() => this.onDeleteClick(entry.id)} className="deleteButton">delete</button>
-          <i className="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i>
+          
         </div>
       );
     });
@@ -58,7 +60,7 @@ class History extends React.Component{
               <div className="main-content">
               <div className="row">
               <div className="col-12">
-              <h1 className="postsHeader">Bloom Projections</h1>
+              <h1 className="postsHeader"></h1>
                 <div className="postContainer">
                 {this.renderProjections()}
                 </div>

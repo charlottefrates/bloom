@@ -46,13 +46,13 @@ export default class Home extends React.Component {
         							<img className="about-icon-landing" role="presentation" src="assets/images/review.png" />
         							<h3>Add Customized Watering Zones</h3>
         							<hr className="short-line cards-line" />
-        							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum ipsa obcaecati repellat. Iure, delectus minima minus quod itaque omnis numquam illo, animi mollitia nulla corporis, voluptas rem ut? Quis, sit.</p>
+        							<p> Bloom lets you organize every zone in your yard by assigning it a unique name of your choice.</p>
         					</div>
         					<div className="about-card-landing">
         							<img className="about-icon-landing" role="presentation" src="assets/images/filter.png" />
         							<h3>Check Current Weather</h3>
         							<hr className="short-line cards-line" />
-        							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, nulla eligendi minima, cupiditate dignissimos explicabo veritatis. Delectus enim dolorum, ab esse ea maxime consectetur, iusto nesciunt nobis, aliquam assumenda. Nihil.</p>
+        							<p>Bloom provides current weather forecasts from a highly trusted weather service to help in generating an optimized watering plan for your yard.</p>
         					</div>
 
         			</div>
@@ -62,13 +62,13 @@ export default class Home extends React.Component {
         						<img className="about-icon-landing" role="presentation" src="assets/images/local.png" />
         						<h3>Project Your Water Usage</h3>
         						<hr className="short-line cards-line" />
-        						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quod, et suscipit aliquam explicabo perferendis fuga temporibus aut officia modi ullam ex corrupti minima, cupiditate animi necessitatibus accusamus assumenda vitae. </p>
+        						<p> Project the right watering schedule for your lawn, so you can put an end to over watering.</p>
         					</div>
         					<div className="about-card-landing">
         						<img className="about-icon-landing" role="presentation" src="assets/images/local.png" />
         						<h3>Save Projections</h3>
         						<hr className="short-line cards-line" />
-        						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quod, et suscipit aliquam explicabo perferendis fuga temporibus aut officia modi ullam ex corrupti minima, cupiditate animi necessitatibus accusamus assumenda vitae. </p>
+        						<p>Compare and contrast historical projections to get a better understanding of your water use through time.</p>
         					</div>
         			</div>
 

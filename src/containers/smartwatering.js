@@ -178,6 +178,8 @@ class Smart extends React.Component{
     console.log(save);
     this.props.dispatch(saveProjection(save));
     alert('Your projection has been saved.');
+    // automatically routes to history after save
+    this.props.history.push('/history');
   };
 
 
