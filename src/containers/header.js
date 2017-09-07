@@ -7,6 +7,7 @@ import {
     logoutUser
 } from '../actions/authentication_actions';
 
+import $ from 'jquery';
 
 
 

@@ -10,8 +10,8 @@ import {
 } from '../actions/history_actions';
 
 import '../styles/history.css';
-
 import $ from 'jquery';
+
 
 class History extends React.Component{
   componentDidMount() {
@@ -31,7 +31,9 @@ class History extends React.Component{
         <div className="created">
           {entry.created}
         </div>
-
+        <div className="projected">
+          Projected Water Use : {entry.projected}
+        </div>
           <div className="zones">
           Waterting Zones : {entry.zones.join(', ')}
           </div>
@@ -43,9 +45,6 @@ class History extends React.Component{
           </div>
           <div className="min">
             Minutes Watered : {entry.min}
-          </div>
-          <div className="projected">
-            Projected Water Use : {entry.projected}
           </div>
           <button onClick={() => this.onDeleteClick(entry.id)} className="deleteButton">delete</button>
 

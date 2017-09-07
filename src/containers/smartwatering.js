@@ -40,11 +40,7 @@ class Smart extends React.Component{
       });
 
   };
-/*
-  shouldComponentUpdate(nextProps, nextState){
 
-  };
-*/
   //Renders zone list names into checkboxes
   zoneList (){
     return this.props.zones.map(
