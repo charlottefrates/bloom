@@ -1,12 +1,65 @@
 import React from 'react';
-
-//React Router
+import { connect } from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
-
+import $ from 'jquery';
 import '../styles/landing.css';
+import '../styles/nav.css';
+
+import {
+    logoutUser
+} from '../actions/authentication_actions';
+
+class Home extends React.Component {
 
 
-export default class Home extends React.Component {
+    componentDidMount() {
+      $('.brand').hover(function() {
+        $('.brandLogo').toggleClass('hide fadeInLeft')
+      });
+
+      $('.handle').on('click', function() {
+        $('nav ul').toggleClass('showing');
+      });
+    }
+
+    onLogout = () =>{
+          this.props.dispatch(logoutUser());
+     };
+
+
+    renderLinks() {
+      if (this.props.authenticated) {
+        // show a link to sign out
+        return [
+          <div>
+
+            <li onClick={() =>this.props.history.push('/bloom')} className="signup li" >
+              Enter Bloom
+            </li>
+            {/*<li onClick={this.onLogout} className="signin li" >
+              sign out
+            </li>*/}
+            </div>
+        ]
+      }
+      else {
+        // show a link to sign in or sign up
+        return [
+          <div>
+
+            <li onClick={() =>this.props.history.push('/signup')} className="signup li" >
+              sign up
+            </li>
+
+
+            <li onClick={() =>this.props.history.push('/signin')} className="signin li" >
+              sign in
+            </li>
+            </div>
+
+        ]
+      };
+    }
 
 
     render() {
@@ -15,15 +68,17 @@ export default class Home extends React.Component {
             <div>
 
             <div className="cd-fixed-bg cd-bg-1">
-            <nav className="navigation-bar is-visible" data-nav-status="toggle">
-                    <ul>
-                       <li onClick={() =>this.props.history.push('/signin')}> Log In</li>
-                       <li onClick={() =>this.props.history.push('/signup')}> Sign Up </li>
-                       <li> About </li>
 
-                    </ul>
-                </nav>
-        	     <div className="landingpage-container">
+            <nav className="navigation-bar is-visible" data-nav-status="toggle">
+                <ul className="ul">
+                  {this.renderLinks()}
+                </ul>
+                <div className="handle">
+                  menu
+                </div>
+            </nav>
+
+        	    <div className="landingpage-container">
         	        <div className="landingpage-details-container">
         	             <h1 className="welcome-header">Bloom</h1>
         	             <h2>A Smart Water Tracker</h2>
@@ -92,3 +147,11 @@ export default class Home extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+  return {
+    authenticated: state.authenticated
+  };
+}
+
+export default connect(mapStateToProps)(Home);

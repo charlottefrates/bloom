@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  position: relative;
+}
+
+.ul {
+  text-align: right;
+  list-style: none;
+  color: white;
+  font-size: 24px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 16px;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.4s;
+  -webkit-transform: max-height 0.4s;
+  -ms-transform: max-height 0.4s;
+  -moz-transform: max-height 0.4s;
+  -o-transform: max-height 0.4s;
+}
+
+.signup {
+  margin-right: 12px;
+}
+
+.signin {
+  margin-right: 90px;
+}
+
+.li {
+  display: in.line-block;
+  background-color: rgba(245, 245, 220, 0.57);
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+  font-size: 26px;
+}
+
+.li:hover {
+  background-color: #687932;
+  cursor: pointer;
+  font-size: 32px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.brandLogo {
+  float: right;
+  width: 32px;
+  height: 32px;
+  margin-left: 7px;
+  margin-top: 2px;
+}
+
+.hide {
+  display: none;
+}
+
+.handle {
+  width: 100%;
+  background-color: #77c2c2;
+  text-align: left;
+  font-size: 26px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position: relative;
+  top: 205px;
+  color: white;
+  display: none;
+  box-sizing: border-box;
+}
+
+.handleLogo {
+  width: 26px;
+  position: relative;
+  top: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+  .brandLogo {
+    display: none;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+
+  ul {
+    display: block;
+    top: 0;
+    padding-left: 0;
+    text-align: left;
+    max-height: 0;
+  }
+
+  .showing {
+    max-height: 20em;
+    margin-top: 51px;
+  }
+
+  li:hover {
+    font-size: 26px;
+  }
+
+  .brand:hover {
+    font-size: 26px;
+  }
+
+  li {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .brand {
+    position: relative;
+    left: auto;
+  }
+
+  .handle {
+    position: absolute;
+    top: 0;
+    display: block;
+  }
+}
