@@ -20,6 +20,9 @@ class Home extends React.Component {
       $('.handle').on('click', function() {
         $('nav ul').toggleClass('showing');
       });
+
+
+
     }
 
     onLogout = () =>{
@@ -47,6 +50,10 @@ class Home extends React.Component {
         return [
           <div>
 
+          <li className="brand">
+          BLOOM<img src="" className="brandLogo hide animated" />
+          </li>
+
             <li onClick={() =>this.props.history.push('/signup')} className="signup li" >
               sign up
             </li>
@@ -66,21 +73,20 @@ class Home extends React.Component {
         return (
             <Router>
             <div>
-
-            <div className="cd-fixed-bg cd-bg-1">
-
             <nav className="navigation-bar is-visible" data-nav-status="toggle">
                 <ul className="ul">
                   {this.renderLinks()}
                 </ul>
                 <div className="handle">
-                  menu
+                  Menu
                 </div>
             </nav>
 
+
+            <div className="cd-fixed-bg cd-bg-1">
         	    <div className="landingpage-container">
         	        <div className="landingpage-details-container">
-        	             <h1 className="welcome-header">Bloom</h1>
+        	             {/*<h1 className="welcome-header">Bloom</h1>*/}
         	             <h2>A Smart Water Tracker</h2>
         	        </div>
         	   	</div>

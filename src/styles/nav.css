@@ -34,16 +34,16 @@ nav {
 
 .li {
   display: in.line-block;
-  background-color: rgba(245, 245, 220, 0.57);
   padding: 10px 15px;
   transition: all 0.3s ease;
-  font-size: 26px;
+  font-size: 20px;
+  color: #323e0c;
 }
 
 .li:hover {
   background-color: #687932;
   cursor: pointer;
-  font-size: 32px;
+  font-size: 25px;
 }
 
 a {
@@ -51,6 +51,19 @@ a {
   text-decoration: none;
 }
 
+
+.brand {
+  padding: 20px 15px !important;
+  color: #323e0c;
+  position: absolute;
+  left: 90px;
+  transition: all 0.3s ease;
+}
+
+.brand:hover {
+  background-color: #687932;
+  font-size: 32px;
+}
 
 .brandLogo {
   float: right;
@@ -66,14 +79,15 @@ a {
 
 .handle {
   width: 100%;
-  background-color: #77c2c2;
+  background-color: white;
   text-align: left;
   font-size: 26px;
-  padding: 10px 15px;
+  padding: 30px 15px;
+  padding-bottom: 15px;
   cursor: pointer;
   position: relative;
   top: 205px;
-  color: white;
+  color: #687932;
   display: none;
   box-sizing: border-box;
 }
@@ -110,6 +124,25 @@ a {
     margin-top: 51px;
   }
 
+  ul.showing{
+    text-align: right;
+    list-style: none;
+    color: white;
+    font-size: 24px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 76px;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.4s;
+    -webkit-transform: max-height 0.4s;
+    -ms-transform: max-height 0.4s;
+    -moz-transform: max-height 0.4s;
+    -o-transform: max-height 0.4s;
+
+  }
+
   li:hover {
     font-size: 26px;
   }
@@ -124,8 +157,7 @@ a {
   }
 
   .brand {
-    position: relative;
-    left: auto;
+    display: none !important;
   }
 
   .handle {
