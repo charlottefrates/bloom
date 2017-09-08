@@ -14,7 +14,13 @@ export const save_entry = (projection) =>({
 export function saveProjection(entry) {
   return function(dispatch) {
   // Submit projection to the sever
-  axios.post(`${API_URL}/new`, entry)
+  //NOTE: Adding {withCredentials:true} throws a CORS error
+  axios({
+          method: 'post',
+          url: `${API_URL}/new`,
+          //withCredentials:true,
+          data: entry
+        })
     .then(response => {
         console.log(response);
 

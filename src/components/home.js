@@ -21,14 +21,29 @@ class Home extends React.Component {
         $('nav ul').toggleClass('showing');
       });
 
+      $('.brand').on('click',function(event){
+                               event.preventDefault();
 
+                               var page = $("html, body");
+
+                               page.on(function(){page.stop();});
+
+                               page.animate({ scrollTop: $(".about-page").offset().top -65}, 900, function(){
+                                   page.off();
+                               });
+
+                               return false;
+                               //scroll in to view more questions
+                              // $('html, body').animate({
+                                  //  scrollTop: $("#question_container").offset().top
+                               //}, 300);
+      })
 
     }
 
     onLogout = () =>{
           this.props.dispatch(logoutUser());
      };
-
 
     renderLinks() {
       if (this.props.authenticated) {
@@ -37,7 +52,7 @@ class Home extends React.Component {
           <div>
 
             <li onClick={() =>this.props.history.push('/bloom')} className="signup li" >
-              Enter Bloom
+              Welcome back {localStorage.getItem('userId').replace(/\"/g, " ")}! Enter Bloom
             </li>
             {/*<li onClick={this.onLogout} className="signin li" >
               sign out
@@ -51,16 +66,16 @@ class Home extends React.Component {
           <div>
 
           <li className="brand">
-          BLOOM<img src="" className="brandLogo hide animated" />
+          BLOOM
           </li>
 
             <li onClick={() =>this.props.history.push('/signup')} className="signup li" >
-              sign up
+              Sign-Up
             </li>
 
 
             <li onClick={() =>this.props.history.push('/signin')} className="signin li" >
-              sign in
+              Sign-In
             </li>
             </div>
 

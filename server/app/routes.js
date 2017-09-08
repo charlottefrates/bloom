@@ -179,9 +179,7 @@ module.exports = function(app, passport) {
 
       app.post('/new', (req, res) => {
           let user = req.user;
-          console.log('THIS IS IT',user);
-          console.log(req);
-          console.log(res);
+          console.log(JSON.stringify(req.headers));
           const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected'];
           for (let i = 0; i < requiredFields.length; i++) {
                const field = requiredFields[i];

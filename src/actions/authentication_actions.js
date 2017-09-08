@@ -18,7 +18,7 @@ export function loginUser({ username, password }) {
       // - Update state to indicate user is authenticated
       dispatch({ type: 'AUTH_USER', user: response.data.user });
       localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
-      localStorage.setItem('userId',JSON.stringify({ _id: response.data.user}));
+      localStorage.setItem('userId',JSON.stringify(response.data.user));
       //NOTE dispatching browserHistory doesnt work for react router 4
       //browserHistory.push('/bloom');
       //dispatch(push('/bloom')); /* dispatch an action that changes the browser history */
@@ -40,7 +40,7 @@ export function registerUser({ firstName,lastName,username,password }) {
       console.log(response);
       dispatch({ type: 'AUTH_USER', user: response.data.user });
       localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
-      localStorage.setItem('userId',JSON.stringify({ _id: response.data.user}));
+      localStorage.setItem('userId',JSON.stringify(response.data.user));
       //NOTE dispatching browserHistory doesnt work for react router 4
       //browserHistory.push('/signin');
       window.location.href = '/bloom';
