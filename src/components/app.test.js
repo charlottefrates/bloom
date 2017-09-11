@@ -4,7 +4,7 @@ import App from './app';
 
 //require("jest-localstorage-mock");
 
-
+//NOTE: To engablege this test make sure you change packa.json "test": "react-scripts test --env=jsdom",
 
 
 describe('<App />',()=>{

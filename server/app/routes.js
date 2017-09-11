@@ -121,7 +121,7 @@ module.exports = function(app, passport) {
      // =====================================
 
      app.get('/bloom', (req, res) => {
-          //NOTE: Grabbing user through custom user header
+          //NOTE: Grabbing user info through custom user header
           let user = req.headers.users;
           console.log(req.headers);
           Bloom

@@ -14,11 +14,9 @@ export const save_entry = (projection) =>({
 export function saveProjection(entry) {
   return function(dispatch) {
   // Submit projection to the sever
-  //NOTE: Adding app.use(cors({credentials: true, origin: 'localhost:9000'})); to server
   axios({
           method: 'post',
           url: `${API_URL}/new`,
-          //withCredentials:true,
           data: entry
         })
     .then(response => {
@@ -33,8 +31,6 @@ export function saveProjection(entry) {
 
   export function fetchProjections() {
     return (dispatch, getState) => {
-      //should get entries specific to user_id
-    //axios.get(`${API_URL}/bloom`)
     axios({
             method: 'get',
             url: `${API_URL}/bloom`,
