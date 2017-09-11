@@ -30,7 +30,6 @@ module.exports = function(app, passport) {
 
      app.post('/signup',
      function(req, res, next) {
-          debugger;
           console.log('check');
           passport.authenticate('local-signup',
           function(err, user, info) {
@@ -162,20 +161,6 @@ module.exports = function(app, passport) {
      });
 
 
-       //grabs pre-existing entry JSON data
-       app.get('/:id/json', (req, res) => {
-           Bloom
-                .findById(req.params.id)
-                .exec()
-                .then(entry => res.json(entry.apiRepr()))
-                .catch(err => {
-                     console.error(err);
-                     res.status(500).json({
-                          error: 'something went horribly awry'
-                     });
-                });
-      });
-
       app.post('/new', (req, res) => {
           console.log(JSON.stringify(req.headers));
           const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected','user'];
@@ -187,7 +172,6 @@ module.exports = function(app, passport) {
                     return res.status(400).send(message);
                }
           }
-          console.log(req.session);
           Bloom
                .create({
                     zones: req.body.zones,
@@ -206,6 +190,37 @@ module.exports = function(app, passport) {
                     });
                });
      });
+
+     app.post('/new/test', (req, res) => {
+         console.log(JSON.stringify(req.headers));
+         const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected','user'];
+         for (let i = 0; i < requiredFields.length; i++) {
+              const field = requiredFields[i];
+              if (!(field in req.body)) {
+                   const message = `Missing \`${field}\` in request body`
+                   console.error(message);
+                   return res.status(400).send(message);
+              }
+         }
+         Bloom
+              .create({
+                   zones: req.body.zones,
+                   days: req.body.days,
+                   gal_min: req.body.gal_min,
+                   min: req.body.min,
+                   projected: req.body.projected,
+                   created: req.body.created,
+                   user_id:req.body.user
+              })
+              .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
+              .catch(err => {
+                   console.error(err);
+                   res.status(500).json({
+                        error: 'Something went wrong'
+                   });
+              });
+    });
+
 
      app.delete('/delete/:id', (req, res) => {
           Bloom

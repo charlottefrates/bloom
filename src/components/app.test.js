@@ -1,11 +1,7 @@
 import React from 'react';
+import { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme';
 import App from './app';
-
-//require("jest-localstorage-mock");
-
-//NOTE: To engablege this test make sure you change packa.json "test": "react-scripts test --env=jsdom",
-
 
 describe('<App />',()=>{
 
