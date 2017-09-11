@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication_actions';
+import '../styles/landing.css';
+import '../styles/nav.css';
+
 
 class Login extends Component {
 
@@ -31,6 +34,11 @@ class Login extends Component {
                                   <input ref={element => {this.password = element; return this.password; }} type="password" className="placeholder" name="password" id="password" placeholder="Password" required=""/>
                               </fieldset>
                   <button type="submit" className="sign-up-button">Sign In</button>
+                  <br/>
+                  <br/>
+                  <br/>
+                  <p onClick={() =>window.location.href = '/signup'} className="noAccount" > Don't have an account? Click here. </p>
+                  <p className="noAccount" > Forgot your username/password? Click here. </p>
                 </form>
               </div>
             </div>

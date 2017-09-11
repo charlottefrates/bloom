@@ -30,10 +30,12 @@ import { registerUser } from '../actions/authentication_actions';
                               <fieldset name="register-info">
                                 <input  ref={element => {this.firstName = element; return this.firstName; }} type="text" className="placeholder" name="firstName" id="firstName"  placeholder="first name" required=""/>
                                 <input  ref={element => {this.lastName = element; return this.lastName; }} type="text" className="placeholder" name="lastName" id="lastName"  placeholder="last name" required=""/>
+                                {/*<input  ref={element => {this.lastName = element; return this.email; }} type="text" className="placeholder" name="email" id="email"  placeholder="email" required=""/>*/}
                                 <input  ref={element => {this.username = element; return this.username; }} type="text" className="placeholder" name="username" id="username"  placeholder="username" required=""/>
                                 <input  ref={element => {this.password = element; return this.password; }} type="password" className="placeholder" name="password" id="password" placeholder="password" required=""/>
                               </fieldset>
                   <button type="submit" className="sign-up-button">Sign In</button>
+                  <p onClick={() =>window.location.href = '/signin'} className="noAccount" > Already have an account? Click here. </p>
                 </form>
               </div>
             </div>

@@ -14,7 +14,7 @@ export const save_entry = (projection) =>({
 export function saveProjection(entry) {
   return function(dispatch) {
   // Submit projection to the sever
-  //NOTE: Adding {withCredentials:true} throws a CORS error
+  //NOTE: Adding app.use(cors({credentials: true, origin: 'localhost:9000'})); to server
   axios({
           method: 'post',
           url: `${API_URL}/new`,
@@ -33,8 +33,14 @@ export function saveProjection(entry) {
 
   export function fetchProjections() {
     return (dispatch, getState) => {
-      //const id = getState().auth.user._id;
-    axios.get(`${API_URL}/all`)
+      //should get entries specific to user_id
+    //axios.get(`${API_URL}/bloom`)
+    axios({
+            method: 'get',
+            url: `${API_URL}/bloom`,
+            //custom header to grab user
+            headers: {'users':localStorage.getItem('userId').replace(/\"/g, "")}
+          })
     .then(response => {
         console.log(response);
         dispatch({
@@ -52,7 +58,7 @@ export function saveProjection(entry) {
 
   export function deleteProjection(id) {
     return(dispatch) => {
-       axios.delete(`${API_URL}/delete/${id}`)
+    axios.delete(`${API_URL}/delete/${id}`)
        .then(response => {
            console.log(response);
            dispatch(projectionDeleted(id));

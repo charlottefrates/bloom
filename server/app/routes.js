@@ -121,13 +121,11 @@ module.exports = function(app, passport) {
      // =====================================
 
      app.get('/bloom', (req, res) => {
-          let user = req.user;
-          let userid = user._id;
-          console.log(user);
-          console.log(userid);
-
+          //NOTE: Grabbing user through custom user header
+          let user = req.headers.users;
+          console.log(req.headers);
           Bloom
-               .find( {user_id: userid})
+               .find({user_id: user})
                .sort({
                     created: 1
                }) //sorts recent date first
@@ -145,6 +143,7 @@ module.exports = function(app, passport) {
 
      //NOTE: NEW grab all entries despite user
      app.get('/all', (req, res) => {
+          console.log(req);
           Bloom
                .find( )
                .sort({
@@ -178,9 +177,8 @@ module.exports = function(app, passport) {
       });
 
       app.post('/new', (req, res) => {
-          let user = req.user;
           console.log(JSON.stringify(req.headers));
-          const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected'];
+          const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected','user'];
           for (let i = 0; i < requiredFields.length; i++) {
                const field = requiredFields[i];
                if (!(field in req.body)) {
@@ -198,8 +196,7 @@ module.exports = function(app, passport) {
                     min: req.body.min,
                     projected: req.body.projected,
                     created: req.body.created,
-                    //TODO: Capture USER ID!!!
-                    //user_id:user
+                    user_id:req.body.user
                })
                .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
                .catch(err => {

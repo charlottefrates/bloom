@@ -1,5 +1,6 @@
 // server/server.js
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
@@ -24,7 +25,7 @@ require('./config/passport')(passport); // pass passport for configuration
 
 
 // Setup logger
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+app.use(morgan('common'));
 app.use(cookieParser()); // read cookies (needed for auth)
 //app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
@@ -41,6 +42,11 @@ app.set('superSecret', configDB.secret); // secret variable
 
 //Enables CORS on Express JS for multi server use
 //https://enable-cors.org/server_expressjs.html
+
+//https://www.npmjs.com/package/cors
+app.use(cors({credentials: true}));
+//app.use(cors());
+
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");

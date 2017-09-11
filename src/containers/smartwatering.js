@@ -168,7 +168,9 @@ class Smart extends React.Component{
       "days": this.props.selectedDays,
       "gal_min": this.props.rate,
       "min":this.props.time,
-      "projected": this.props.projectedUse
+      "projected": this.props.projectedUse,
+      //captures local storage user name and saves it to database
+      "user":localStorage.getItem('userId').replace(/\"/g, "")
     };
 
     console.log(save);
