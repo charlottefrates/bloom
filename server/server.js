@@ -64,4 +64,4 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 require('./app/routes.js')(app, passport);
 
 
-module.exports = app;
+module.exports = {app};

@@ -74,14 +74,14 @@ describe('Empty test', function() {
 
 
 describe('Passing tests', () => {
-  it('should pass', () => {
+  it('test should pass', () => {
     expect(true).to.be.true;
   });
 });
 
 
 describe('Post endpoint', function(){
-  it('should add a new projection', function(done) {
+  it('test should add a new projection', function(done) {
     const newProjection = generateProjections();
     //identifies additional response
     const expectedKeys = ['id'].concat(Object.keys(newProjection));
@@ -105,7 +105,7 @@ describe('Post endpoint', function(){
       });
       done();
   });
-  it('should error if POST missing expected values', function() {
+  it('test should error if POST missing expected values', function() {
      const badRequestData = {};
      chai.request(app)
        .post('http://localhost:9000/new')
@@ -123,21 +123,21 @@ describe('DELETE endpoint', function() {
   //  2. make a DELETE request for that projection's id
   //  3. assert that response has right status code
   //  4. prove that projection with the id doesn't exist in db anymore
-  it('should delete a projection by id', function() {
-    let bloom;
-    return Bloom
-      .findOne()
-      .exec()
-      .then(function(_exp) {
-        bloom = _exp;
-        return chai.request(app).delete(`http://localhost:9000/delete/${bloom.id}`);
-      })
-      .then(function(res) {
-        res.should.have.status(204);
-        return Experiment.findById(bloom.id).exec();
-      })
-      .then(function(_exp) {
-        should.not.exist(_exp);
-      });
-  });
+  it('test should delete a projection by id', function() {
+    let projectionEntry;
+      return Bloom
+        .findOne()
+        .exec()
+        .then(function(_exp) {
+          projectionEntry = _exp;
+          return chai.request(app).delete(`/delete/${projectionEntry.id}`);
+        })
+        .then(function(res) {
+          res.should.have.status(204);
+          return Bloom.findById(projectionEntry.id).exec();
+        })
+        .then(function(_exp) {
+          should.not.exist(_exp);
+        });
+    });
 });
