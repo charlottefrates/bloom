@@ -191,35 +191,7 @@ module.exports = function(app, passport) {
                });
      });
 
-     app.post('/new/test', (req, res) => {
-         console.log(JSON.stringify(req.headers));
-         const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected','user'];
-         for (let i = 0; i < requiredFields.length; i++) {
-              const field = requiredFields[i];
-              if (!(field in req.body)) {
-                   const message = `Missing \`${field}\` in request body`
-                   console.error(message);
-                   return res.status(400).send(message);
-              }
-         }
-         Bloom
-              .create({
-                   zones: req.body.zones,
-                   days: req.body.days,
-                   gal_min: req.body.gal_min,
-                   min: req.body.min,
-                   projected: req.body.projected,
-                   created: req.body.created,
-                   user_id:req.body.user
-              })
-              .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
-              .catch(err => {
-                   console.error(err);
-                   res.status(500).json({
-                        error: 'Something went wrong'
-                   });
-              });
-    });
+
 
 
      app.delete('/delete/:id', (req, res) => {
@@ -239,5 +211,55 @@ module.exports = function(app, passport) {
                         });
               });
 
+              // =====================================
+              // Bloom Section- TEST ROUTES===========
+              // =====================================
+
+              app.post('/new/test', (req, res) => {
+                  console.log(JSON.stringify(req.headers));
+                  const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected','user'];
+                  for (let i = 0; i < requiredFields.length; i++) {
+                       const field = requiredFields[i];
+                       if (!(field in req.body)) {
+                            const message = `Missing \`${field}\` in request body`
+                            console.error(message);
+                            return res.status(400).send(message);
+                       }
+                  }
+                  Bloom
+                       .create({
+                            zones: req.body.zones,
+                            days: req.body.days,
+                            gal_min: req.body.gal_min,
+                            min: req.body.min,
+                            projected: req.body.projected,
+                            created: req.body.created,
+                            user_id:req.body.user
+                       })
+                       .then(bloomEntry => res.status(201).json(bloomEntry.apiRepr()))
+                       .catch(err => {
+                            console.error(err);
+                            res.status(500).json({
+                                 error: 'Something went wrong'
+                            });
+                       });
+              });
+
+              app.delete('/delete/test/:id', (req, res) => {
+                   Bloom
+                        .findByIdAndRemove(req.params.id)
+                        .exec()
+                        .then(() => {
+                             res.status(204).json({
+                                           message: 'success'
+                                      });
+                                 })
+                        .catch(err => {
+                              console.error(err);
+                                      res.status(500).json({
+                                           error: 'something went terribly wrong'
+                                      });
+                                 });
+                       });
 
 };
