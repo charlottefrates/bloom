@@ -118,18 +118,22 @@ describe('Post endpoint', function(){
 });
 
 describe('DELETE endpoint', function() {
-
-  xit('test should delete a projection by it\'s id', function() {
+  xit('test should delete a projection by id', function() {
     let projectionEntry;
       return Bloom
         .findOne()
         .exec()
         .then(function(_exp) {
           projectionEntry = _exp;
-          return chai.request(app).delete(`http://localhost:9000/delete/${projectionEntry.id}`);
+          return chai.request(app).delete(`/delete/${projectionEntry.id}`);
         })
         .then(function(res) {
-             res.should.have.status(204);
-           });
+          res.should.have.status(204);
+          return Bloom.findById(projectionEntry.id).exec();
+        })
+        .then(function(_exp) {
+          should.not.exist(_exp);
+        });
     });
+
 });
