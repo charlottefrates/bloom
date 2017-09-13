@@ -245,6 +245,8 @@ module.exports = function(app, passport) {
                        });
               });
 
+              
+
               app.delete('/delete/test/:id', (req, res) => {
                    Bloom
                         .findByIdAndRemove(req.params.id)
