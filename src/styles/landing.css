@@ -146,7 +146,7 @@ margin-top: 12%;
      display: inline-block;
      border-width: 0;
      height: 2px;
-     margin: 2em 0;
+     margin: .5em 0;
      width: 50px;
      background-color: #fff;
 }
@@ -276,72 +276,238 @@ input[type="password"].placeholder::-webkit-input-placeholder {
      background: #687932
 }
 
+@media only screen and (max-width: 650px) {
 
-/* ===================================== NAVIGATION =================================== */
-
-.navigation-bar {
-     left: 0;
-     position: fixed;
-     right: 0;
-     top: -17px;
-     z-index: 1000;
-     color: white;
-}
-
-.navigation-bar-login {
-    height: 8%;
-    background: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-    font-size: 24px;
-    top: -17px;
-     list-style: none;
+    .landingpage-details-container {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 0;
-    position: fixed;
-     display: inline-block;
     right: 0;
-    z-index: 1000;
-    color: #fffcfc;
-}
+    width: 270px;
+    height: 242px;
+    margin: auto;
+    padding-top: 21px;
+    padding-bottom: 0px;
+    background: rgba(245, 245, 220, 0.57);
+    }
 
+    .about-header-container {
+    top: -200px;
+    position: relative;
+    color: black;
+    }
 
-.nav-ul-scroll {
-    background-color: rgba(255,255,255,.95);
-    color: #303030;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+    video#blooming {
+        display: none;
+    }
 
-.navigation-bar.is-visible {
-     opacity: 1;
-     -webkit-transform: translate(0, 0);
-     -webkit-transition: -webkit-transform .2s, background .3s, color .3s;
-}
+    .about-card-landings-container-1 {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-top: -55%;
+    margin-right: 19%;
+    }
 
-.navigation-bar ul {
-    background: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: hidden;
+    .about-card-landings-container-2 {
+        width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding-top: 35%;
+    margin-right: 19%;
+    }
+
+    .about-page {
+    height: 20vh;
+    min-height: 470px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .about-card-landing {
+    background-color: #687932;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    color: #fff;
+    width: 61%;
+    height: 138px;
+    margin-left: 25px;
+    margin-right: 25px;
+    }
+
+    .about-card-landing p {
+    display: none;
+    }
+
+    .about-card-landing h3 {
+    font-size: 11pt;
     text-align: center;
-    margin: 0;
-    padding: 0;
-    color: #fffcfc;
-    letter-spacing: .5px;
-    -webkit-transition: max-height 0.4s;
-    -ms-transition: max-height 0.4s;
-    -moz-transition: max-height 0.4s;
-    -o-transition: max-height 0.4s;
-    transition: max-height 0.4s;
-    transition: all 0.4s ease;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-     list-style: none;
-     margin: 0;
-     padding: 0;
+    }
+
+    .short-line {
+    display: none;
+    }
+
+    #sign-up {
+    width: 100%;
+    margin-top: 10%;
+    height: 300px;
+    padding-top: 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    }
+
+    .col-12-landing {
+    padding-top: 30px;
+    background: rgba(245, 245, 220, 0.57);
+    height: 151px;
+    }
+
+    .sign-up-title {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 25px;
+    line-height: 35px;
+    }
+
+
+    .background{
+    margin-top: 50% !important;
+    }
+
+    #sign-up2 {
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    bottom: 100px;
+    }
+
+    .sign-up-box-2 {
+    width: 240px;
+    height: 400px;
+    padding-left: -27px;
+    padding-right: 80%;
+    /* margin: 0 auto; */
+    border-radius: 4px;
+    text-align: center;
+     }
+
+
+     .register input {
+     width: 200px;
+     border: 2px solid white;
+     border-left: none;
+     border-top: none;
+     border-right: none;
+     padding: 2px 0;
+     font-size: 20px;
+     background-color: transparent;
+     margin-bottom: 31px;
+     margin-top: -1px;
+     text-align: center;
+ }
+
+    button {
+    width: 217px;
+    margin-top: 40px;
+    cursor: pointer;
+    background: white;
 }
 
-.navigation-bar ul li {
-     float: right;
-     display: inline-flex;
-     padding: 1em;
-     margin-right: 1%;
+.noAccount {
+    margin-top: 26px;
+    font-size: 10pt;
+    width: 225px;
+    color: white;
+}
+
+
+}
+
+
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+      .landingpage-details-container {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 503px;
+    height: 443px;
+    margin: auto;
+    padding-top: 62px;
+    padding-bottom: 0px;
+    background: rgba(245, 245, 220, 0.57);
+    }
+
+    .about-header-container {
+    top: -75px;
+    position: relative;
+    color: black;
+    }
+
+    video#blooming {
+    display: none;
+    }
+
+    .about-card-landings-container-1 {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-top: -9%;
+    margin-right: 19%;
+    }
+
+    .about-card-landings-container-2 {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    padding-top: 10%;
+    margin-right: 19%;
+    }
+
+    .about-page {
+    height: 20vh;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .short-line {
+    display: inline-block;
+    border-width: 0;
+    height: 2px;
+    margin: 1em 0;
+    width: 50px;
+    background-color: #fff;
+}
+
+
+
+
+
+
 }

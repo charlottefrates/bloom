@@ -156,7 +156,6 @@ class Home extends React.Component {
         					<div className="col-12-landing">
         						<h2 className="sign-up-title black">Start Tracking Your Watering Zones now</h2>
         						<div className="sign-up-box">
-                                <button className="sign-up-button" onClick={() =>this.props.history.push('/signup')} >Sign Up</button>
         						</div>
         					</div>
         				</div>

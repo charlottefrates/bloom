@@ -10,10 +10,16 @@ import {
 import $ from 'jquery';
 
 
-
-
-
 class Header extends React.Component {
+
+    componentDidMount() {
+
+      $('.handle').on('click', function() {
+        $('header ul').toggleClass('showing');
+      });
+
+    }
+
     onLogout = () =>{
          this.props.dispatch(logoutUser());
     };

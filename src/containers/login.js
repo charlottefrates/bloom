@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication_actions';
-import $ from 'jquery';
 
 import '../styles/landing.css';
 import '../styles/nav.css';
@@ -33,10 +32,6 @@ class Login extends Component {
         BLOOM
         </li>
         </ul>
-
-        <div className="handle">
-        Menu
-        </div>
 
         </nav>
 

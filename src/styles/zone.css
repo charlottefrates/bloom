@@ -99,3 +99,53 @@ button {
      color: white;
      font-weight: lighter;
 }
+
+/* phones */
+@media only screen and (max-width: 650px) {
+
+     .create-new input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 65%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+}
+
+.create-new button {
+    width: 30%;
+    background: #eee;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 18px;
+    margin-right: -1% !important;
+    margin: 0;
+    border: none;
+}
+
+.header h1 {
+    font-size: 28px !important;
+    margin: 0;
+    color: white;
+    font-weight: lighter;
+}
+
+.actions button {
+    padding: 7px;
+    border-radius: 2px;
+    border: none;
+    background: #444;
+    color: white;
+    font-weight: lighter;
+    width: 50px;
+}
+
+
+}
+
+     /* ipad */
+@media only screen
+       and (min-device-width: 768px)
+       and (max-device-width: 1024px)
+       and (-webkit-min-device-pixel-ratio: 1) {}

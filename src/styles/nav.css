@@ -6,6 +6,91 @@ nav {
   position: relative;
 }
 
+.main-nav a {
+  font-size: 1.1em;
+  color: #151501;
+  text-align: center;
+  text-transform: uppercase;
+  display: block;
+  padding: 1em;
+  transition: .2s;
+}
+.main-nav a:hover,
+.main-nav .active
+ {
+  color: #fff;
+  background: #4e630c;
+}
+
+
+.navigation-bar {
+     left: 0;
+     position: fixed;
+     right: 0;
+     top: -17px;
+     z-index: 1000;
+     color: white;
+}
+
+.navigation-bar-login {
+    height: 8%;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    font-size: 24px;
+    top: -17px;
+     list-style: none;
+    left: 0;
+    position: fixed;
+     display: inline-block;
+    right: 0;
+    z-index: 1000;
+    color: #fffcfc;
+}
+
+
+.nav-ul-scroll {
+    background-color: rgba(255,255,255,.95);
+    color: #303030;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navigation-bar.is-visible {
+     opacity: 1;
+     -webkit-transform: translate(0, 0);
+     -webkit-transition: -webkit-transform .2s, background .3s, color .3s;
+}
+
+.navigation-bar ul {
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #fffcfc;
+    letter-spacing: .5px;
+    -webkit-transition: max-height 0.4s;
+    -ms-transition: max-height 0.4s;
+    -moz-transition: max-height 0.4s;
+    -o-transition: max-height 0.4s;
+    transition: max-height 0.4s;
+    transition: all 0.4s ease;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+}
+
+.navigation-bar ul li {
+     float: right;
+     display: inline-flex;
+     padding: 1em;
+     margin-right: 1%;
+}
+
+
 .ul {
   text-align: right;
   list-style: none;
@@ -125,6 +210,8 @@ a {
   top: 5px;
 }
 
+
+/* phones */
 @media only screen and (max-width: 650px) {
   .brandLogo {
     display: none;
@@ -150,6 +237,8 @@ a {
     max-height: 20em;
     margin-top: 51px;
   }
+
+
 
   ul.showing{
     text-align: right;
@@ -192,4 +281,142 @@ a {
     top: 0;
     display: block;
   }
+
+
+  .brand-login {
+  padding: -2px 15px !important;
+  color: black;
+  position: absolute;
+  left: -61%;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  }
+
+  header {
+      background: #edeff0;
+  }
+
+.navigation-bar-login {
+    height: 12%;
+    background: white;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    font-size: 24px;
+    top: -17px;
+    list-style: none;
+    left: 0;
+    position: fixed;
+    display: inline-block;
+    right: 0;
+    z-index: 1000;
+    color: #fffcfc;
+}
+
+.main-nav{
+    display: block;
+    top: 0;
+    padding-left: 10%;
+    text-align: left;
+    max-height: 500px;
+}
+
+.main-nav a {
+    font-size: 10pt;
+    color: #151501;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+    padding: 0;
+}
+
+
+a {
+    text-decoration: none;
+    float: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+}
+
+/* ipad */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+       .brandLogo {
+         display: none;
+       }
+
+       nav {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         z-index: 99;
+       }
+
+       ul {
+         display: block;
+         top: 0;
+         padding-left: 0;
+         text-align: left;
+         max-height: 0;
+       }
+
+       .showing {
+         max-height: 20em;
+         margin-top: 51px;
+       }
+
+       ul.showing{
+         text-align: right;
+         list-style: none;
+         color: white;
+         font-size: 24px;
+         display: inline-block;
+         position: absolute;
+         right: 0;
+         top: 76px;
+         width: 100%;
+         overflow: hidden;
+         transition: max-height 0.4s;
+         -webkit-transform: max-height 0.4s;
+         -ms-transform: max-height 0.4s;
+         -moz-transform: max-height 0.4s;
+         -o-transform: max-height 0.4s;
+
+       }
+
+       li:hover {
+         font-size: 26px;
+       }
+
+       .brand:hover {
+         font-size: 26px;
+       }
+
+       li {
+         box-sizing: border-box;
+         width: 100%;
+       }
+
+       .brand {
+         display: none !important;
+       }
+
+       .handle {
+         position: absolute;
+         top: 0;
+         display: block;
+       }
+
+
+
 }

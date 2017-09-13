@@ -2,8 +2,6 @@
 
 process.env.NODE_ENV = 'test';
 
-require('testdom')('<html><body></body></html>');
-
 const React          = require('react');
 const chai           = require('chai');
 const chaiHttp       = require('chai-http');

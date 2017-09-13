@@ -29,10 +29,6 @@ import { registerUser } from '../actions/authentication_actions';
       </li>
       </ul>
 
-      <div className="handle">
-      Menu
-      </div>
-
       </nav>
       </div>
       <div>

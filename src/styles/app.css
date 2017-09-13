@@ -383,30 +383,12 @@ hr {
 }
 header {
   background: #edeff0;
-  margin-bottom: 2em;
 }
 .main-content {
   height: 650px;
   overflow: scroll;
 }
 
-/* MAIN NAV -------- */
-
-.main-nav a {
-  font-size: 1.1em;
-  color: #151501;
-  text-align: center;
-  text-transform: uppercase;
-  display: block;
-  padding: 1em;
-  transition: .2s;
-}
-.main-nav a:hover,
-.main-nav .active
- {
-  color: #fff;
-  background: #4e630c;
-}
 
 
 /* =================================
@@ -427,6 +409,18 @@ header {
    .main-nav a:hover {
      border-color: rgba(0,0,0, .1);
    }
+   a {
+     /* text-decoration: none; */
+     /* color: #3b80d1; */
+     float: none;
+     /* line-height: 50px; */
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+
+
 }
 @media (min-width: 769px) {
   body {
@@ -449,6 +443,7 @@ header {
     border-right: 3px solid transparent;
 
   }
+
   .main-nav a:hover {
     border-color: rgba(0,0,0, .1);
   }
