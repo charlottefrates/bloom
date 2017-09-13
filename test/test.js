@@ -59,12 +59,6 @@ function generateUser() {
   }
 };
 
-function tearDownDb() {
-    console.warn('Deleting database');
-    return mongoose.connection.dropDatabase();
-};
-
-
 describe('Empty test', function() {
   it('An empty test should run successfully', function() {
     assert.equal('A', 'A');

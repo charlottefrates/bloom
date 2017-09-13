@@ -19,7 +19,22 @@ import { registerUser } from '../actions/authentication_actions';
   render(props) {
 
     return (
+      <div className="background">
       <div>
+      <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
+
+      <ul className="ul-login">
+      <li className="brand-login" onClick={() =>this.props.history.push('/')}>
+      BLOOM
+      </li>
+      </ul>
+
+      <div className="handle">
+      Menu
+      </div>
+
+      </nav>
+      </div>
       <div>
         <div id="sign-up2">
           <div className="rowwer2">

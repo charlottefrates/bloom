@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication_actions';
+import $ from 'jquery';
+
 import '../styles/landing.css';
 import '../styles/nav.css';
 
@@ -21,8 +23,24 @@ class Login extends Component {
   render() {
 
     return (
+      <div className="background">
       <div>
-      <div>
+        <div>
+        <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
+
+        <ul className="ul-login">
+        <li className="brand-login" onClick={() =>this.props.history.push('/')}>
+        BLOOM
+        </li>
+        </ul>
+
+        <div className="handle">
+        Menu
+        </div>
+
+        </nav>
+
+      </div>
         <div id="sign-up2">
           <div className="rowwer2">
             <div className="col-12-landing-2">
@@ -38,7 +56,6 @@ class Login extends Component {
                   <br/>
                   <br/>
                   <p onClick={() =>window.location.href = '/signup'} className="noAccount" > Don't have an account? Click here. </p>
-                  <p className="noAccount" > Forgot your username/password? Click here. </p>
                 </form>
               </div>
             </div>
@@ -47,7 +64,7 @@ class Login extends Component {
       </div>
 
 
-      </div>
+    </div>
 
     );
   }

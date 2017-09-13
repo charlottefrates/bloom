@@ -230,7 +230,7 @@ class Smart extends React.Component{
                           min: <input type="text" className="smartTime"name="time"  onChange={this.changeTime}/><br/>
                         </form>
                         <br/>
-                        <button onClick={this.projectedWaterUse.bind(this)}> Calculate Use  </button>
+                        <button className="butt" onClick={this.projectedWaterUse.bind(this)}> Calculate Use  </button>
                          <br/>
                           <br/>
 
@@ -249,7 +249,7 @@ class Smart extends React.Component{
                       </div>
                        <br/>
                         <br/>
-                      <button onClick={this.handleFormSubmit.bind(this)}> Save Projection </button>
+                      <button className="butt" onClick={this.handleFormSubmit.bind(this)}> Save Projection </button>
 
                       </div>
                       </div>

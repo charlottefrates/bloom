@@ -24,6 +24,23 @@ nav {
   -o-transform: max-height 0.4s;
 }
 
+.ul-login {
+  text-align: right;
+  list-style: none;
+  color: white;
+  font-size: 24px;
+  display: inline-block;
+  right: 0;
+  top: 16px;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.4s;
+  -webkit-transform: max-height 0.4s;
+  -ms-transform: max-height 0.4s;
+  -moz-transform: max-height 0.4s;
+  -o-transform: max-height 0.4s;
+}
+
 .signup {
   margin-right: 12px;
 }
@@ -37,7 +54,7 @@ nav {
   padding: 10px 15px;
   transition: all 0.3s ease;
   font-size: 20px;
-  color: #323e0c;
+  color: black;
 }
 
 .li:hover {
@@ -54,13 +71,23 @@ a {
 
 .brand {
   padding: 20px 15px !important;
-  color: #323e0c;
+  color: black;
   position: absolute;
-  left: 90px;
+  left: 2%;
   transition: all 0.3s ease;
 }
 
-.brand:hover {
+.brand-login {
+    padding: 9px 15px !important;
+    color: black;
+    position: absolute;
+    left: 90px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.brand:hover, .brand-login:hover {
   background-color: #687932;
   font-size: 30px;
 }

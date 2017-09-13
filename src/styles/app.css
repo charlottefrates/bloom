@@ -1,6 +1,7 @@
 
 html, #root, .appContainer, .homeContainer {
   height: 100%;
+  font-family: 'Taviraj', sans-serif;
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 }
 
 .signout{
-font-size: .95em;
+font-size: 1.1em;
 color: #737474;
 text-align: center;
 text-transform: uppercase;
@@ -64,9 +65,9 @@ input {
    max-width: 88%;
    padding-top: 20px;
    padding-bottom: 20px;
-   margin: 80px auto;
-   margin-bottom: 100px;
-   box-shadow: 0 0 5px #0b2c3c;
+   margin: 10px auto;
+   margin-bottom: 50px;
+   box-shadow: 0 0 5px #03100b;
    border-radius: 5px;
 }
 
@@ -165,7 +166,7 @@ a:hover, a:active, a:focus{
 
 .active {
   color: white;
-  background: orange;
+  background: yellow;
   text-decoration: none;
   opacity: 1;
 }
@@ -344,7 +345,7 @@ font-size: 40pt;
 ul {
   list-style-type: none;
   width: 100%;
-  padding-left: 25%;
+  padding-left: 22%;
   padding-right: 10%;
 }
 
@@ -385,13 +386,15 @@ header {
   margin-bottom: 2em;
 }
 .main-content {
+  height: 650px;
+  overflow: scroll;
 }
 
 /* MAIN NAV -------- */
 
 .main-nav a {
-  font-size: .95em;
-  color: #222;
+  font-size: 1.1em;
+  color: #151501;
   text-align: center;
   text-transform: uppercase;
   display: block;

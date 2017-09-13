@@ -10,6 +10,8 @@ import {
 } from '../actions/history_actions';
 
 import '../styles/history.css';
+
+
 import $ from 'jquery';
 
 
@@ -46,7 +48,7 @@ class History extends React.Component{
           <div className="min">
             Minutes Watered : {entry.min}
           </div>
-          <button onClick={() => this.onDeleteClick(entry.id)} className="deleteButton">delete</button>
+          <button onClick={() => this.onDeleteClick(entry.id)} className="deleteButton butt">delete</button>
 
         </div>
       );

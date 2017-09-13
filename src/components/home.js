@@ -21,7 +21,7 @@ class Home extends React.Component {
         $('nav ul').toggleClass('showing');
       });
 
-      $('.brand').on('click',function(event){
+      $('.brand, .logo').on('click',function(event){
                                event.preventDefault();
 
                                var page = $("html, body");
@@ -69,12 +69,12 @@ class Home extends React.Component {
           BLOOM
           </li>
 
-            <li onClick={() =>this.props.history.push('/signup')} className="signup li" >
+            <li onClick={() =>this.props.history.push('/signup')} className="signin li" >
               Sign-Up
             </li>
 
 
-            <li onClick={() =>this.props.history.push('/signin')} className="signin li" >
+            <li onClick={() =>this.props.history.push('/signin')} className="signup li" >
               Sign-In
             </li>
             </div>
@@ -102,7 +102,7 @@ class Home extends React.Component {
         	    <div className="landingpage-container">
         	        <div className="landingpage-details-container">
         	             {/*<h1 className="welcome-header">Bloom</h1>*/}
-        	             <h2>A Smart Water Tracker</h2>
+                       <img className="logo" role="presentation" src="logo.jpg" />
         	        </div>
         	   	</div>
         	</div>
@@ -144,7 +144,7 @@ class Home extends React.Component {
         						<img className="about-icon-landing" role="presentation" src="assets/images/local.png" />
         						<h3>Save Projections</h3>
         						<hr className="short-line cards-line" />
-        						<p>Compare and contrast historical projections to get a better understanding of your water use through time.</p>
+        						<p>Maintain a list of historical projections to get a better understanding of your water use through time.</p>
         					</div>
         			</div>
 
@@ -154,7 +154,7 @@ class Home extends React.Component {
         			<div id="sign-up">
         				<div className="rowwer">
         					<div className="col-12-landing">
-        						<h2 className="sign-up-title">Start Tracking Your Watering Zones now</h2>
+        						<h2 className="sign-up-title black">Start Tracking Your Watering Zones now</h2>
         						<div className="sign-up-box">
                                 <button className="sign-up-button" onClick={() =>this.props.history.push('/signup')} >Sign Up</button>
         						</div>
