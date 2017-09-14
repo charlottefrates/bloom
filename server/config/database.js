@@ -5,6 +5,6 @@
 
 module.exports = {
 	'secret': 'bloom',
-	'url':'mongodb://localhost/bloom',
+	'url':'mongodb://admin:admin@ds161471.mlab.com:61471/bloom',
 	'test':'mongodb://localhost/bloomtest'
 };
