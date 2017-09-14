@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:9000',
+export const API_URL = 'https://bloom-water-tracker.herokuapp.com/';//'http://localhost:9000',
              FETCH_PROJECTIONS = 'fetch_projections',
              DELETE_PROJECTION = 'delete_projection';
 
