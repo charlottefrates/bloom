@@ -611,9 +611,7 @@ header {
 
 /* macbook pro 13 inch*/
 
-@media only screen
-and (min-device-width : 800px)
-and (max-device-width : 1280px){
+@media screen and (width: 1200px) , screen and (height: 800px) {
     .landingpage-details-container {
         color: #0c0c0c;
         text-align: center;
@@ -680,5 +678,190 @@ and (max-device-width : 1280px){
     position: relative;
     overflow: hidden;
 }
+
+.about-card-landing p{
+  font-size: 10pt;
+}
+
+.about-card-landing h3{
+  font-size: 12pt;
+}
+
+#sign-up2 {
+    width: 100%;
+    height: 800px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    bottom: 65px;
+}
+
+button {
+    background: white;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.main-nav a {
+    font-size: 1.0em;
+    color: #151501;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    padding: 1em;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+
+.signout {
+    font-size: 1em;
+    color: #737474;
+    text-align: center;
+    display: block;
+    padding: 1em;
+    -o-transition: .2s;
+    -webkit-transition: .2s;
+    transition: .2s;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: none;
+    line-height: 50px;
+}
+
+ul {
+    list-style-type: none;
+    width: 101%;
+    padding-left: 16%;
+    padding-right: 8%;
+}
+
+.main-content {
+    height: 570px;
+    overflow: scroll;
+}
+
+.label {
+    width: 13%;
+    display: inline-block;
+    background: grey;
+    color: white;
+    text-transform: uppercase;
+    font-family: arial;
+    font-size: 10pt;
+    padding: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.42);
+    cursor: pointer;
+    -webkit-transition: opacity 100ms;
+    -o-transition: opacity 100ms;
+    transition: opacity 100ms;
+}
+
+}
+
+/*in between range*/
+@media only screen
+and (min-width : 1023px)
+and (max-width : 1465px)
+ {
+
+  .main-nav a {
+    font-size: 10pt !important;
+    color: #151501;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    padding: 1em;
+    -webkit-transition: .2s;
+    -o-transition: .2s;
+    transition: .2s;
+}
+
+
+.signout {
+    font-size: 10pt !important;
+    color: #737474;
+    text-align: center;
+    display: block;
+    padding: 1em;
+    -o-transition: .2s;
+    -webkit-transition: .2s;
+    transition: .2s;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: none;
+    line-height: 50px;
+}
+
+
+ul {
+    list-style-type: none;
+    width: 105% !important;
+    padding-left: 14% !important;
+    padding-right: 10%;
+}
+
+video#blooming {
+  position: relative;
+      top: 35%;
+      left: 16%;
+      padding: 0;
+      height: 644px;
+      height: %30;
+      background-size: cover;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+}
+
+.about-header-container {
+  top: -821px;
+  margin-left: 34%;
+  position: relative;
+  color: black;
+}
+
+.about-card-landings-container-1 {
+  margin-left: 43%;
+  width: 45%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  margin-top: -56%;
+}
+
+.about-card-landings-container-2 {
+padding-bottom: 1%;
+margin-left: 43%;
+width: 45%;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-pack: distribute;
+justify-content: space-around;
+margin-top: 15%;
+}
+
+
+#sign-up {
+width: 100%;
+margin-top: 4%;
+height: 600px;
+padding-top: 90px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+
+.about-card-landing p{
+font-size: 10pt;
+}
+
+.about-card-landing h3{
+font-size: 12pt;
+}
+
 
 }
