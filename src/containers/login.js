@@ -8,6 +8,10 @@ import '../styles/nav.css';
 
 class Login extends Component {
 
+ componentDidMount () {
+   window.scrollTo(0, 0)
+   }
+
   handleUserFormSubmit(event) {
   event.preventDefault();
 

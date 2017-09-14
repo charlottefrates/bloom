@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { registerUser } from '../actions/authentication_actions';
 
  class Register extends React.Component {
+
+   componentDidMount () {
+     window.scrollTo(0, 0)
+   }
+
   handleUserFormSubmit(event) {
   event.preventDefault();
 

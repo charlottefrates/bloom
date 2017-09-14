@@ -43,6 +43,18 @@ video#blooming {
     border: 0;
 }
 
+.sign-up-button2 {
+  background: white;
+  height: 50px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-size: 22px;
+  line-height: 46px;
+}
+
+.sign-up-button2:hover {
+  color: #41CC7D;
+}
 
 
 

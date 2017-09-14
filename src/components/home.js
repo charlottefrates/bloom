@@ -28,15 +28,12 @@ class Home extends React.Component {
 
                                page.on(function(){page.stop();});
 
-                               page.animate({ scrollTop: $(".about-page").offset().top -65}, 900, function(){
+                               page.animate({ scrollTop: $(".navigation-bar-login is-visible").offset().top}, 900, function(){
                                    page.off();
                                });
 
                                return false;
-                               //scroll in to view more questions
-                              // $('html, body').animate({
-                                  //  scrollTop: $("#question_container").offset().top
-                               //}, 300);
+
       })
 
     }
@@ -156,6 +153,7 @@ class Home extends React.Component {
         					<div className="col-12-landing">
         						<h2 className="sign-up-title black">Start Tracking Your Watering Zones now</h2>
         						<div className="sign-up-box">
+                                <button className="sign-up-button2" onClick={() =>this.props.history.push('/signup')} >Sign Up</button>
         						</div>
         					</div>
         				</div>

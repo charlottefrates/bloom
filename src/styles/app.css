@@ -2,11 +2,9 @@
 html, #root, .appContainer, .homeContainer {
   height: 100%;
   font-family: 'Taviraj', sans-serif;
-}
-
-body {
 
 }
+
 
 .black{
   color: black;
