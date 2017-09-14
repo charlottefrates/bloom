@@ -30,6 +30,11 @@ p {
 .bluebold {
      color: #0b2c3c;
      font-weight: bolder;
+     width: 29%;
+     padding: 12px;
+     margin-left: auto;
+     margin-right: auto;
+     background: #9db74c;
 }
 
 .checkbox[type=checkbox] {
@@ -143,4 +148,75 @@ h1 {
 .label.seven {
      border-radius: 0 5px 5px 0;
      border: none;
+}
+
+
+/* phones */
+@media only screen and (max-width: 650px) {
+     .maincont {
+    background: white;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 99%;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 5px #0b2c3c;
+    box-shadow: 0 0 5px #0b2c3c;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+}
+
+.labelIcon {
+    margin-left: 37px;
+    position: relative;
+    width: 14%;
+    display: block;
+    color: #687932;
+    text-transform: uppercase;
+    font-size: 15pt !important;
+    padding: 12px;
+}
+
+.label {
+    width: 49%;
+    display: block;
+    background: grey;
+    color: white;
+    text-transform: uppercase;
+    font-family: arial;
+    font-size: 11pt;
+    padding: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid rgb(43, 45, 35);
+    cursor: pointer;
+    -webkit-transition: opacity 100ms;
+    -o-transition: opacity 100ms;
+    transition: opacity 100ms;
+    position: relative;
+    bottom: 327px;
+    left: 89px;
+}
+
+#day {
+    position: relative;
+    margin-top: 45px;
+    top: -23px;
+    text-align: center;
+    margin-bottom: -329px;
+}
+
+p{
+     margin-top: -10px !important;
+     padding-left: 20px;
+     padding-right: 20px;
+}
+
+.smartTime[type=text] {
+    width: 30%;
+    text-align: center;
+}
+
+
 }

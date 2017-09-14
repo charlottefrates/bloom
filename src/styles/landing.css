@@ -378,6 +378,20 @@ input[type="password"].placeholder::-webkit-input-placeholder {
     overflow: hidden;
     }
 
+    .sign-up-button2 {
+    background: white;
+    height: 38px;
+    padding: 0 5px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 36px;
+    width: 105px;
+    margin-left: -54%;
+    /* margin-bottom: 21%; */
+    bottom: 30px;
+    position: relative;
+}
+
     .col-12-landing {
     padding-top: 30px;
     background: rgba(245, 245, 220, 0.57);
@@ -439,7 +453,7 @@ input[type="password"].placeholder::-webkit-input-placeholder {
 }
 
 .noAccount {
-    margin-top: 26px;
+    margin-top: 26px !important;
     font-size: 10pt;
     width: 225px;
     color: white;

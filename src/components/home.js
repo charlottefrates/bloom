@@ -28,9 +28,9 @@ class Home extends React.Component {
 
                                page.on(function(){page.stop();});
 
-                               page.animate({ scrollTop: $(".navigation-bar-login is-visible").offset().top}, 900, function(){
-                                   page.off();
-                               });
+                               page.animate({ scrollTop: $(".about-page").offset().top -65}, 900, function(){
+                                  page.off();
+                              });
 
                                return false;
 
