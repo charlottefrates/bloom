@@ -149,7 +149,7 @@ nav {
 }
 
 a {
-  color: white;
+  color: black !important;
   text-decoration: none;
 }
 
@@ -213,6 +213,14 @@ a {
 
 /* phones */
 @media only screen and (max-width: 650px) {
+
+  body{
+      background-image: none;
+      background-repeat:  none;
+      background-size:  none;
+      background-color: none;
+      height: 100%;
+  }
   .brandLogo {
     display: none;
   }
@@ -293,6 +301,7 @@ a {
   transition: all 0.3s ease;
   }
 
+
   header {
       background: #edeff0;
   }
@@ -340,6 +349,21 @@ a {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.signout {
+    font-size: 10pt !important;
+    color: #737474;
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    padding: 1em;
+    -o-transition: .2s;
+    -webkit-transition: .2s;
+    transition: .2s;
+    text-decoration: none;
+    float: none;
+    line-height: 13px !important;
 }
 
 

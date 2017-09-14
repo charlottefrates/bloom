@@ -24,6 +24,7 @@ render(){
         <Route path="/smart" component={Smart} />
         <Route path="/history" component={History} />
         </div>
+
         </Router>
 
     );
