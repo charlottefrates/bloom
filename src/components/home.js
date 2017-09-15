@@ -107,7 +107,7 @@ class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-2">
 
         		<div className="about-page">
-        			<video id="blooming" src="http://localhost:3000/blooming.mp4" autoPlay loop></video>
+        			<video id="blooming" src="https://bloom-water-tracker.herokuapp.com/blooming.mp4" autoPlay loop></video>
 
         		   	<div className="about-header-container">
         					<h2>How It Works</h2>
