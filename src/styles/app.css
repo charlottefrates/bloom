@@ -445,7 +445,7 @@ header {
 }
 
 /* phones */
-@media only screen and (max-width: 650px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (orientation : portrait) {
 
   .container {
     width: 100%;
@@ -531,6 +531,65 @@ header {
 
 }
 
+/*phones landscape mode*/
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+  .navigation-bar-login {
+    height: 20%;
+    background: white;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    font-size: 24px;
+    top: -17px;
+    list-style: none;
+    left: 0;
+    position: fixed;
+    display: inline-block;
+    right: 0;
+    z-index: 1000;
+    color: #fffcfc;
+}
+
+  #sign-up2 {
+    width: 100%;
+    height: 265px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    bottom: 0;
+}
+
+.sign-up-title {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 2px;
+    font-size: 20px;
+    line-height: -11px;
+}
+
+.register input {
+    width: 320px;
+    border: 2px solid white;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding: 2px 0;
+    font-size: 13px;
+    background-color: transparent;
+    margin-bottom: 25px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+button {
+    margin: 3px;
+    cursor: pointer;
+    background: white;
+}
+
+
+}
+
 
 /* ipad */
 @media only screen
@@ -610,7 +669,6 @@ header {
 
 
 /* macbook pro 13 inch*/
-
 @media screen and (width: 1200px) , screen and (height: 800px) {
     .landingpage-details-container {
         color: #0c0c0c;

@@ -17,7 +17,7 @@ class Header extends React.Component {
     componentDidMount() {
 
       $(".mobile-menu").on('click', function(){
-		$(".mobile-dropdown").slideToggle("slow");
+		$(".mobile-dropdown").slideToggle("fast");
 	});
 
     }

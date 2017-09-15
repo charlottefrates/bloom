@@ -200,7 +200,7 @@ a {
   cursor: pointer;
   position: relative;
   top: 205px;
-  color: #687932;
+  color: black;
   display: none;
   box-sizing: border-box;
 }
@@ -216,7 +216,7 @@ a {
 }
 
 /* phones */
-@media only screen and (max-width: 650px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (orientation : portrait) {
 
   body{
       background-image: none;
