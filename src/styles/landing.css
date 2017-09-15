@@ -79,7 +79,7 @@ video#blooming {
      position: absolute;
      top: 52%;
      margin-left: 57%;
-     width: 500px;
+     width: 28%;
      padding-top: 10px;
      padding-bottom: 10px;
      padding-left: 10px;
@@ -304,7 +304,7 @@ input[type="password"].placeholder::-webkit-input-placeholder {
       bottom: 27%;
       left: -3%;
       right: 0;
-      width: 231px;
+      width: 35%;
       height: 207px;
       margin: auto;
       padding-top: 21px;
@@ -479,7 +479,7 @@ input[type="password"].placeholder::-webkit-input-placeholder {
     position: absolute;
     top: 16%;
     margin-left: 34%;
-    width: 200px;
+    width: 35%;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
