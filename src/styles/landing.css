@@ -30,6 +30,10 @@ video#blooming {
     height: 85%;
 }
 
+.signin{
+  margin-left: -3% !important;
+}
+
 .background{
     background-image: url("http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png");
     /*background-position: calc(100% - 0px) calc(100% - -20px);*/

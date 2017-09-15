@@ -87,7 +87,8 @@ nav {
      float: right;
      display: inline-flex;
      padding: 1em;
-     margin-right: 1%;
+     margin-right: 4%;
+     margin-left: 2%;
      color: #687932;
 }
 
@@ -159,7 +160,7 @@ a {
   padding: 20px 15px !important;
   color: black;
   position: absolute;
-  left: 2%;
+  left: 4%;
   transition: all 0.3s ease;
 }
 
