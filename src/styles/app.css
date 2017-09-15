@@ -925,6 +925,19 @@ and (max-width : 1465px)
     line-height: 50px;
 }
 
+.landingpage-details-container {
+    color: #0c0c0c;
+    text-align: center;
+    position: absolute;
+    top: 37%;
+    margin-left: 55%;
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: rgba(245, 245, 220, 0.57);
+}
 
 ul {
     list-style-type: none;
