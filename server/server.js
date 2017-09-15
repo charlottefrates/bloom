@@ -63,5 +63,9 @@ app.use(express.static(path.resolve(__dirname, '..', 'build')));
 // load our routes and pass in our app and fully configured passport
 require('./app/routes.js')(app, passport);
 
+app.get('*', (req, res) => {
+    res.sendFile(join(__dirname, '../build/index.html'));
+  });
+
 
 module.exports = {app};
