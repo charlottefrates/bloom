@@ -127,6 +127,15 @@ export default (state, action) => {
                zones:updatedZones
           };
 
+          case 'CLEAR_SELECTED_DAYS':
+          //clears selected zones upon projection save
+          console.log('zones have been cleared', state.selectedDays)
+          return {
+               ...state,
+               selectedDays:[ ]
+          };
+
+
           case 'SELECT_DAYS':
           state.selectedDays = action.data;
           return{

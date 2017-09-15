@@ -7,7 +7,8 @@ import {
      select_zone,
      set_time,
      set_watering,
-     set_projected
+     set_projected,
+     clear_selected_days
 } from '../actions/zone_actions';
 
 import {
@@ -176,6 +177,8 @@ class Smart extends React.Component{
     console.log(save);
     this.props.dispatch(saveProjection(save));
     alert('Your projection has been saved.');
+    //clear selectedDays state
+    this.props.dispatch(clear_selected_days());
     // automatically routes to history after save
     this.props.history.push('/history');
   };

@@ -24,18 +24,27 @@ export const edit_zone = (id) =>({
   id
 });
 
+
 //deletes zone properties
 export const DELETE_ZONE = 'DELETE_ZONE';
 export const delete_zone = (id) =>({
      type: DELETE_ZONE,
      id
 });
+
 //captures selected zones from projection component
 export const SELECT_DAYS = 'SELECT_DAYS';
 export const select_days = (data) =>({
      type:SELECT_DAYS,
      data
 });
+
+//clears select_days upon projection save to allow for new projections
+export const CLEAR_SELECTED_DAYS = "CLEAR_SELECTED_DAYS";
+export const clear_selected_days = ()=>({
+     type: CLEAR_SELECTED_DAYS
+})
+
 
 //captures selected zones from projection component
 export const SELECT_ZONE = 'SELECT_ZONE';

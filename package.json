@@ -46,8 +46,8 @@
     "start": "react-scripts start",
     "dev": "nodemon server.js",
     "build": "react-scripts build",
-    "test": "jest",
-    "test:watch": "mocha --watch",
+    "test": "mocha",
+    "test:jest": "jest",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
