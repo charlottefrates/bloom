@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const API_URL = process.env.REACT_APP_API_BASE_URL ||
-                      "https://bloom-water-tracker.herokuapp.com/",//'https://bloom-water-tracker.herokuapp.com',//'https://bloom-water-tracker.herokuapp.com' or 'http://localhost:9000',
+                      "https://bloom-water-tracker.herokuapp.com",//'https://bloom-water-tracker.herokuapp.com',//'https://bloom-water-tracker.herokuapp.com' or 'http://localhost:9000',
              FETCH_PROJECTIONS = 'fetch_projections',
              DELETE_PROJECTION = 'delete_projection';
 

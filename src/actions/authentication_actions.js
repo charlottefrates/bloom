@@ -4,7 +4,7 @@ export const AUTH_USER = 'auth_user',
              UNAUTH_USER = 'unauth_user',
              AUTH_ERROR = 'auth_error',
              API_URL = process.env.REACT_APP_API_BASE_URL ||
-                                   "https://bloom-water-tracker.herokuapp.com/";
+                                   "https://bloom-water-tracker.herokuapp.com";
              //'https://bloom-water-tracker.herokuapp.com';//'https://bloom-water-tracker.herokuapp.com' or 'http://localhost:9000';
 
 
