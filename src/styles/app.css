@@ -447,6 +447,10 @@ header {
 /* phones */
 @media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (orientation : portrait) {
 
+  body{
+    overflow:hidden;
+  }
+
   .container {
     width: 100%;
     padding-top: 0;
@@ -534,6 +538,8 @@ header {
 /*phones landscape mode*/
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+
+
   .navigation-bar-login {
     height: 20%;
     background: white;
@@ -552,7 +558,7 @@ header {
 
   #sign-up2 {
     width: 100%;
-    height: 265px;
+    height: 280px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -561,7 +567,7 @@ header {
 
 .sign-up-title {
     color: white;
-    margin-top: 0;
+    margin-top: -20px;
     margin-bottom: 2px;
     font-size: 20px;
     line-height: -11px;
@@ -576,15 +582,81 @@ header {
     padding: 2px 0;
     font-size: 13px;
     background-color: transparent;
-    margin-bottom: 25px;
-    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-top: 9px;
     text-align: center;
 }
 
 button {
-    margin: 3px;
+    margin: 7px;
     cursor: pointer;
     background: white;
+}
+
+.noAccount {
+    color: white;
+    position: fixed;
+    bottom: 9px;
+    left: 183px;
+}
+
+.container {
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: none;
+  margin: auto;
+  background: none;
+  border-radius: none;
+  border-color: none;
+  overflow: hidden;
+  box-shadow: none;
+  overflow:auto;
+}
+
+input {
+    border: none;
+    border-bottom: 1px dotted black;
+    margin-left: 0.5em;
+    font-size: 1em;
+    text-align: center;
+    outline: none;
+}
+
+.wrappermain {
+    max-width: 88%;
+    padding-top: 20px;
+    padding-bottom: -12px;
+    margin: 10px auto;
+    margin-top: 43px;
+}
+
+#wrapper {
+    background-color: #687932;
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 100%;
+    padding: 0px;
+    color: white;
+    height: 200px;
+    overflow: hidden;
+}
+
+.change3 {
+    color: white;
+    margin: 0;
+}
+
+.left_one {
+  display: none;
+}
+
+.change4{
+  top: 10px;
+  margin-right: -8%;
+}
+
+.forcast_one{
+  display: none;
 }
 
 
@@ -921,5 +993,10 @@ font-size: 10pt;
 font-size: 12pt;
 }
 
+
+}
+
+/*iPhone 6+ Portrait*/
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
 
 }

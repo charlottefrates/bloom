@@ -178,7 +178,80 @@ button {
 
 }
 
-     /* ipad */
+/*phones landscape mode*/
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+     body{
+          background: none;
+     }
+
+     .header {
+    background: #444;
+    padding: 0px;
+    border-radius: 5px 5px 0 0;
+}
+
+.header h1 {
+    font-size: 20px !important;
+    margin: 0;
+    color: white;
+    font-weight: lighter;
+}
+
+     input {
+         border: none;
+         border-bottom: 1px dotted black;
+         margin-left: 0 !important;
+         font-size: 1em;
+         outline: none;
+     }
+
+     .create-new {
+    border-top: 1px solid #777;
+    width: 100%;
+    background: white;
+}
+
+     .create-new input {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 81.5%;
+    padding: 10px;
+    padding-right: 1px;
+    font-size: 18px;
+    border: none;
+    text-align: left;
+}
+
+.create-new button {
+    width: 17.4%;
+    background: #eee;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 18px;
+    margin-right: -1% !important;
+    margin: 0;
+    border: none;
+}
+
+.to-do-item {
+    margin: 1px 0 1px 0;
+    border-top: 1px solid #5e6d2f;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+    font-weight: lighter;
+}
+
+
+}
+
+/* ipad */
 @media only screen
        and (min-device-width: 768px)
        and (max-device-width: 1024px)

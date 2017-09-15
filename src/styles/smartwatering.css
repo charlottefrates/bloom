@@ -218,5 +218,77 @@ p{
     text-align: center;
 }
 
+}
+
+
+/*phones landscape mode*/
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+
+
+
+     .label {
+         width: 13%;
+         display: inline-block;
+         background: grey;
+         color: white;
+         text-transform: uppercase;
+         /* font-family: arial; */
+         font-size: 5.4pt ;
+         padding: 11px;
+         padding-left: 10px;
+         padding-right: 10px;
+         border-right: 1px solid rgba(255, 255, 255, 0.42);
+         cursor: pointer;
+         -webkit-transition: opacity 100ms;
+         -o-transition: opacity 100ms;
+         transition: opacity 100ms;
+     }
+
+     .main-content {
+         margin-top: -27px;
+         height: 650px;
+         overflow: scroll;
+     }
+
+     .header2 {
+         background: #687932;
+         padding: .0156px;
+         border-radius: 3px 3px 0 0;
+     }
+
+     .secondcont {
+         -webkit-box-sizing: border-box;
+         box-sizing: border-box;
+         width: 86%;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: -2%;
+         text-align: center;
+         border-radius: 3px;
+         -webkit-box-shadow: 0 0 5px #252525;
+         box-shadow: 0 0 5px #252525;
+         min-height: 100px;
+
+     }
+
+     #day {
+         position: relative;
+         margin-top: 30px;
+         top: -10px;
+         text-align: center;
+     }
+
+      p{
+       padding-left: 20px;
+     padding-right: 20px;
+     /* padding-top: 0; */
+     margin-top: -25px;
+     }
+
+     .smartTime[type=text] {
+         width: 33%;
+         text-align: center;
+     }
 
 }
