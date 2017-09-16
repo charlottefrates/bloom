@@ -42,13 +42,14 @@ class WeatherForecast extends React.Component{
         //let metric = 'metric';
         let imperial = 'imperial'
 
-        const urlPrefix = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast/daily?q='
-        const urlPrefixcurrent = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q='
-        let urlSuffix = `&APPID=${key}&units=${imperial}`;
-        let cnt = '&cnt=7'
-        const url = urlPrefix + location + urlSuffix + cnt;
-        const urlcurrent = urlPrefixcurrent + location + urlSuffix;
+        const urlPrefix = 'https://api.apixu.com/v1/forecast.json?key=150c61ea3ec54da6b5f201714171609&q=';
+        const urlPrefixcurrent = 'https://api.apixu.com/v1/current.json?key=150c61ea3ec54da6b5f201714171609&q=';
+        let days = '&days=7'
+        const url = urlPrefix + location + days;
+        const urlcurrent = urlPrefixcurrent + location;
+
         console.log(url);
+        console.log(urlcurrent);
 
         //API call #1
         //gets 7 day forecast
@@ -96,7 +97,7 @@ class WeatherForecast extends React.Component{
                   <label>I want to know the weather for
                     {/* controlled input for now */}
                     <input
-                    placeholder={"State, Country"}
+                    placeholder={"City"}
                     type="text"
                     value={this.props.location}
                     onChange={this.changeLocation}
@@ -114,7 +115,7 @@ class WeatherForecast extends React.Component{
 
                     {/* <!-- Right panel --> */}
                     <div className="col-md-4 col-sm-5 change3">
-                      <h5><spam id="cityName">{this.props.weather.data.city.name}</spam>, <spam id="cityCode">{this.props.weather.data.city.country}</spam></h5>
+                      <h5><spam id="cityName">{this.props.weather.data.forecast.location.name}</spam>, <spam id="cityCode">{this.props.weather.data.forecast.location.region}</spam></h5>
                       <h6 id="localDate">{today}</h6>
                       <h5 id="localTime"></h5>
                     </div>
@@ -138,12 +139,6 @@ class WeatherForecast extends React.Component{
                         <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
                           <h6>Wind: <spam id="wind">{this.props.current_wind}</spam> m/s</h6>
                         </div>
-                        <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>High: <spam id="mainTempHot">{this.props.current_high}</spam>°</h6>
-                        </div>
-                        <div className="col-md-12 col-sm-3 col-xs-3 side-weather-info">
-                          <h6>Low: <spam id="mainTempLow">{this.props.current_min}</spam>°</h6>
-                        </div>
                       </div>
                     </div>
 
@@ -160,7 +155,7 @@ class WeatherForecast extends React.Component{
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-1-name">{this.props.dates[1]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-1-main">{this.props.weather.data.list[1].temp.day}°</h5>
+                            <h5 id="forecast-day-1-main">{this.props.weather.data.forecast.forecastday[1].day.avgtemp_f}°</h5>
                             <i className={this.props.icons[1]} id="forecast-day-1-icon"></i>
                           </div>
                         </div>
@@ -177,7 +172,7 @@ class WeatherForecast extends React.Component{
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-2-name">{this.props.dates[2]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-2-main">{this.props.weather.data.list[2].temp.day}°</h5>
+                            <h5 id="forecast-day-2-main">{this.props.weather.data.forecast.forecastday[2].day.avgtemp_f}°</h5>
                             <i className={this.props.icons[2]} id="forecast-day-2-icon"></i>
                           </div>
                         </div>
@@ -194,7 +189,7 @@ class WeatherForecast extends React.Component{
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-3-name"> {this.props.dates[3]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-3-main">{this.props.weather.data.list[3].temp.day}°</h5>
+                            <h5 id="forecast-day-3-main">{this.props.weather.data.forecast.forecastday[3].day.avgtemp_f}°</h5>
                             <i className={this.props.icons[3]} id="forecast-day-3-icon"></i>
                           </div>
                         </div>
@@ -214,7 +209,7 @@ class WeatherForecast extends React.Component{
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-4-name"> {this.props.dates[4]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-4-main">{this.props.weather.data.list[4].temp.day}°</h5>
+                            <h5 id="forecast-day-4-main">{this.props.weather.data.forecast.forecastday[4].day.avgtemp_f}°</h5>
                             <i className={this.props.icons[4]} id="forecast-day-4-icon"></i>
                           </div>
                         </div>
@@ -231,7 +226,7 @@ class WeatherForecast extends React.Component{
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-3-name"> {this.props.dates[5]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-3-main">{this.props.weather.data.list[5].temp.day}°</h5>
+                            <h5 id="forecast-day-3-main">{this.props.weather.data.forecast.forecastday[5].day.avgtemp_f}°</h5>
                             <i className={this.props.icons[5]} id="forecast-day-3-icon"></i>
                           </div>
                         </div>
@@ -248,7 +243,7 @@ class WeatherForecast extends React.Component{
                         <div className="col-sm-8 forecast-main">
                           <p id="forecast-day-3-name"> {this.props.dates[6]}</p>
                           <div className="row">
-                            <h5 id="forecast-day-3-main">{this.props.weather.data.list[6].temp.day}°</h5>
+                            <h5 id="forecast-day-3-main">{this.props.weather.data.forecast.forecastday[6].day.avgtemp_f}°</h5>
                             <i className={this.props.icons[6]} id="forecast-day-3-icon"></i>
                           </div>
                         </div>
