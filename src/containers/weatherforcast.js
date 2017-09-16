@@ -33,8 +33,8 @@ class WeatherForecast extends React.Component{
         //let metric = 'metric';
         let imperial = 'imperial'
 
-        const urlPrefix = 'https://api.openweathermap.org/data/2.5/forecast/daily?q='
-        const urlPrefixcurrent = 'https://api.openweathermap.org/data/2.5/weather?q='
+        const urlPrefix = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast/daily?q='
+        const urlPrefixcurrent = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q='
         let urlSuffix = `&APPID=${key}&units=${imperial}`;
         let cnt = '&cnt=7'
         const url = urlPrefix + location + urlSuffix + cnt;
