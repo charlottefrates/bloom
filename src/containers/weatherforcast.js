@@ -29,8 +29,8 @@ class WeatherForecast extends React.Component{
 
         //API call to find current geolocation
         $.getJSON("https://ipapi.co/json/", function(position) {
-            console.log('Your current location is',position.city + position.region + position.country + ', ' + position.postal);
-            console.log(position);
+            console.log('Your current location is: ',position.city +' ' + position.region + ' ' + position.country + ', ' + position.postal);
+            console.log('"https://ipapi.co/json/" rendered: ',position);
         });
 
         const location = encodeURIComponent(this.props.location);
