@@ -1,5 +1,8 @@
 import React from 'react';
 
+import $ from 'jquery';
+
+
 import {connect} from 'react-redux';
 
 import {
@@ -24,6 +27,12 @@ class WeatherForecast extends React.Component{
         e.preventDefault();
         e.currentTarget.reset();
 
+        //API call to find current geolocation
+        $.getJSON("https://ipapi.co/json/", function(position) {
+            console.log('Your current location is',position.city + position.region + position.country + ', ' + position.postal);
+            console.log(position);
+        });
+
         const location = encodeURIComponent(this.props.location);
 
         let key = '3229556f6b40c6492802319447e8181d';
@@ -33,8 +42,8 @@ class WeatherForecast extends React.Component{
         //let metric = 'metric';
         let imperial = 'imperial'
 
-        const urlPrefix = 'https://cors-everywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast/daily?q='
-        const urlPrefixcurrent = 'https://cors-everywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q='
+        const urlPrefix = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast/daily?q='
+        const urlPrefixcurrent = 'https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q='
         let urlSuffix = `&APPID=${key}&units=${imperial}`;
         let cnt = '&cnt=7'
         const url = urlPrefix + location + urlSuffix + cnt;
