@@ -23,13 +23,6 @@ mongoose.connect(configDB.url, {
 
 require('./config/passport')(passport); // pass passport for configuration
 
-app.use(function (req, res, next){
-  if (req.headers['x-forwarded-proto'] === 'https') {
-    res.redirect('http://' + req.hostname + req.url);
-  } else {
-    next();
-  }
-});
 
 // Setup logger
 app.use(morgan('common'));
