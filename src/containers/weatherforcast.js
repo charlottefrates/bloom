@@ -39,6 +39,7 @@ class WeatherForecast extends React.Component{
         let cnt = '&cnt=7'
         const url = urlPrefix + location + urlSuffix + cnt;
         const urlcurrent = urlPrefixcurrent + location + urlSuffix;
+        console.log(url);
 
         //API call #1
         //gets 7 day forecast
