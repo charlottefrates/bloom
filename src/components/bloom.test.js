@@ -5,8 +5,8 @@ import Bloom from './bloom';
 //NOTE: add react-scripts test --env=jsdom to test in package.json instead of jest to reproduce referror localStorage undefined
 
 
-xdescribe('<Bloom />', () => {
-    xit('Renders without crashing', () => {
+describe('<Bloom />', () => {
+    it('Renders without crashing', () => {
         shallow(<Bloom />);
     });
 });

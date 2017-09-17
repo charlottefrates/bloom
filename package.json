@@ -47,8 +47,8 @@
     "start": "node server/index.js",
     "dev": "nodemon server.js",
     "build": "react-scripts build",
-    "test": "mocha",
-    "test:jest": "jest",
+    "test": "jest",
+    "test:mocha": "mocha",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
@@ -72,5 +72,28 @@
     "mocha": "^3.5.2",
     "mock-local-storage": "^1.0.5",
     "regenerator-runtime": "^0.11.0"
+  },
+  "jest": {
+    "roots": [
+      "src"
+    ],
+    "setupFiles": [
+      "<rootDir>/test/mock-localstorage.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/[^(business\\-rule\\-client)]",
+      "node_modules/react\\-treebeard"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "^.*\\.s?css$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
