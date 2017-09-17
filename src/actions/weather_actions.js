@@ -9,20 +9,18 @@ export const pull_weather = (location) =>({
 
 //passes full weather data response
 export const SET_DATA = "SET_DATA";
-export const set_data = (weather) =>({
+export const set_data = (data) =>({
      type: SET_DATA,
-     weather
+     data
 });
 
 //passes current weather data
 export const SET_CURRENT= "SET_CURRENT";
-export const set_current = (c_temp,c_hum,c_wind,c_high,c_min,c_con) =>({
+export const set_current = (c_temp,c_hum,c_wind,c_con) =>({
      type: SET_CURRENT,
      c_temp,
      c_hum,
      c_wind,
-     c_high,
-     c_min,
      c_con
 });
 
@@ -42,34 +40,55 @@ export function fetchData(url) {
   return function thunk(dispatch) {
        // Maps the API's icons to the ones from https://erikflowers.github.io/weather-icons/
     let weatherIconsMap = {
-       "01d": "wi-Sunny",
-       "01n": "wi-Clear",
-       "02d": "wi-Partly cloudy",
-       "03d": "wi-Overcast",
-       "03n": "wi-Overcast",
-       "04d": "wi-Cloudy",
-       "04n": "wi-Cloudy",
-       "09d": "wi-Patchy rain possible",
-       "09n": "wi-Patchy light drizzle",
-       "09n": "wi-Light drizzle",
-       "09n": "wi-Freezing drizzle",
-       "09n": "wi-Heavy freezing drizzle",
-       "09n": "wi-Patchy light rain",
-       "09n": "wi-Light rain",
-       "09n": "wi-Moderate rain at times",
-       "09n": "wi-Moderate rain",
-       "09n": "wi-Heavy rain at times",
-       "09n": "wi-Heavy rain",
-       "09n": "wi-Light freezing rain",
-       "09n": "wi-Moderate or heavy freezing rain",
-       "10d": "wi-day-hail",
-       "10n": "wi-night-hail",
-       "11d": "wi-thunderstorm",
-       "11n": "wi-thunderstorm",
-       "13d": "wi-snow",
-       "13n": "wi-snow",
-       "50d": "wi-fog",
-       "50n": "wi-fog"
+      "Sunny": "wi-day-sunny",
+      "Clear": "wi-night-clear",
+      "Partly cloudy": "wi-day-cloudy",
+      "Cloudy": "wi-cloud",
+      "Overcast": "wi-day-sunny-overcast",
+      "Mist": "wi-day-haze",
+      "Patchy rain possible":"wi-day-rain-mix",
+      "Patchy snow possible": "wi-day-snow",
+      "Patchy sleet possible":"wi-day-sleet",
+      "Patchy freezing drizzle possible":"wi-day-rain",
+      "Thundery outbreaks possible":"wi-day-lightning",
+      "Blowing snow":"wi-day-snow-wind",
+      "Blizzard":"wi-day-rain-wind",
+      "Fog":"wi-day-fog",
+      "Freezing fog":"wi-day-fog",
+      "Patchy light drizzle":"wi-day-rain-mix",
+      "Light drizzle":"wi-day-rain-mix",
+      "Freezing drizzle":"wi-day-rain-mix",
+      "Heavy freezing drizzle":"wi-day-hail",
+      "Patchy light rain":"wi-day-hail",
+      "Light rain":"wi-day-hail",
+      "Moderate rain at times":"wi-day-hail",
+      "Heavy rain at times":"wi-day-rain",
+      "Heavy rain":"wi-day-rain",
+      "Moderate rain":"wi-day-rain",
+      "Light freezing rain":"wi-day-rain-mix",
+      "Moderate or heavy freezing rain":"wi-day-rain-wind",
+      "Light sleet":"wi-day-sleet",
+      "Moderate or heavy sleet":"wi-day-sleet",
+      "Patchy light snow":"wi-day-snow",
+      "Light snow":"wi-day-snow",
+      "Patchy moderate snow":"wi-day-snow",
+      "Moderate snow":"wi-day-snow",
+      "Patchy heavy snow":"wi-day-snow-wind",
+      "Heavy snow":"wi-day-snow-wind",
+      "Ice pellets":"wi-snowflake-cold",
+      "Light rain shower":"wi-sprinkle",
+      "Moderate or heavy rain shower":"wi-sprinkle",
+      "Torrential rain shower":"wi-showers",
+      "Light sleet showers":"wi-sleet",
+      "Moderate or heavy sleet showers":"wi-day-sleet",
+      "Light snow showers":"wi-day-snow-wind",
+      "Moderate or heavy snow showers":"wi-snow",
+      "Light showers of ice pellets":"wi-rain-mix",
+      "Moderate or heavy showers of ice pellets":"wi-snowflake-cold",
+      "Patchy light rain with thunder":"wi-storm-showers",
+      "Moderate or heavy rain with thunder":"wi-thunderstorm",
+      "Patchy light snow with thunder":"wi-storm-showers",
+      "Moderate or heavy snow with thunder":"wi-storm-showers"
     };
 
 
@@ -79,7 +98,10 @@ export function fetchData(url) {
     //first API call
     axios.get(url)
        .then(response => {
+
          console.log('7 days forecast:',response);
+
+         let api_response = response;
          //grabs response in a variable
          let list = response.data.forecast.forecastday;
 
@@ -91,7 +113,6 @@ export function fetchData(url) {
          let icons = [];
 
          for (let i = 0; i < list.length; i++) {
-           debugger;
             let maxarray = Math.round(list[i].day.maxtemp_f);
             let minarray = Math.round(list[i].day.mintemp_f);
 
@@ -114,12 +135,12 @@ export function fetchData(url) {
             console.log(mintemps);
             console.log(descriptions);
 
-
-            //captures response to array
-            dispatch(set_data(response));
-
             //Adds arrays to state.
             dispatch(set_array(dates,maxtemps,mintemps,descriptions,icons));
+            debugger;
+            //captures response to array
+            dispatch(set_data(api_response));
+
 
        })
        .catch(error => {
@@ -151,7 +172,7 @@ export function fetchData2(url) {
 
                //NOTE: this.props.dispatch IS NOT NEEDED
                //adda data to state.current weather parameters
-               //dispatch(set_current(currentTemperature,humidity,wind,maxtemp,mintemp,condition));
+               dispatch(set_current(currentTemperature,humidity,wind,condition));
 
 
          })

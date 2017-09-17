@@ -4,8 +4,6 @@ const initialState = {
      current_temp:'',
      current_humidity: '',
      current_wind:'',
-     current_high:'',
-     current_min: '',
      current_condition:'',
      dates: [],
      maxtemps: [],
@@ -37,19 +35,17 @@ export default (state, action) => {
                     };
 
           case 'SET_DATA':
-               state.weather = action.weather;
+               state.weather = action.data;
                     console.log('SET_DATA')
-                    console.log(state.weather);
+                    console.log(state);
                     return{
-                         ...state, weather: action.weather
+                         ...state, weather: action.data
                     };
 
           case 'SET_CURRENT':
                state.current_temp = action.c_temp;
                state.current_humidity = action.c_hum;
                state.current_wind = action.c_wind;
-               state.current_high = action.c_high;
-               state.current_min = action.c_min;
                state.current_condition = action.c_con;
                     console.log('SET_CURRENT');
                     console.log(state);
@@ -58,8 +54,6 @@ export default (state, action) => {
                          current_temp:action.c_temp,
                          current_humidity:action.c_hum,
                          current_wind:action.c_wind,
-                         current_high:action.c_high,
-                         current_min:action.c_min,
                          current_condition:action.c_con
                     };
 

@@ -39,7 +39,6 @@ class WeatherForecast extends React.Component{
         //let key2 = '16feb82ad77fc7d5f39ac7507d74ffe4';
 
         //to change units
-        //let metric = 'metric';
         let imperial = 'imperial'
 
         const urlPrefix = 'https://api.apixu.com/v1/forecast.json?key=150c61ea3ec54da6b5f201714171609&q=';
@@ -115,7 +114,7 @@ class WeatherForecast extends React.Component{
 
                     {/* <!-- Right panel --> */}
                     <div className="col-md-4 col-sm-5 change3">
-                      <h5><spam id="cityName">{this.props.weather.data.forecast.location.name}</spam>, <spam id="cityCode">{this.props.weather.data.forecast.location.region}</spam></h5>
+                      <h5><spam id="cityName">{this.props.weather.data.location.name}</spam>, <spam id="cityCode">{this.props.weather.data.location.region}</spam></h5>
                       <h6 id="localDate">{today}</h6>
                       <h5 id="localTime"></h5>
                     </div>
