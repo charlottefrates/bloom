@@ -1,5 +1,6 @@
 //NOTE: To run this test type npm test
 
+
 process.env.NODE_ENV = 'test';
 
 const React          = require('react');
@@ -72,7 +73,7 @@ describe('Passing tests', () => {
 });
 
 
-describe('POST and DELETE endpoints', function(){
+describe('Test endpoints', function(){
 
   it('test should add a new projection', function(done) {
     const newProjection = generateProjections();
