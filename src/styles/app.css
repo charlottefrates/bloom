@@ -5,6 +5,9 @@ html, #root, .appContainer, .homeContainer {
 
 }
 
+.root{
+     overflow: hidden;
+}
 
 .black{
   color: black;
@@ -367,6 +370,7 @@ hr {
 .container {
   width: 95%;
   max-width: 90%;
+  height: 850px;
   padding-top: 0;
   padding-bottom: 2em;
   margin: 40px auto 2em;

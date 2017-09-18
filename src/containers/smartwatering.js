@@ -149,8 +149,13 @@ class Smart extends React.Component{
     let time = this.props.time;
     let projectedUse = days * zones * rate * time;
 
+
     this.props.dispatch(set_projected(projectedUse));
     console.log('Based on your selections your are projected to use ' + this.props.projectedUse + " gallons of water");
+
+
+    //TODO:scrolls to projected water use calculation
+
 
   }
 
