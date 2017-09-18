@@ -420,7 +420,6 @@ header {
 @media (min-width: 769px) {
   body {
    margin: 0;
-   overflow: hidden;
   }
   .media > div {
     width: 85.1%;
