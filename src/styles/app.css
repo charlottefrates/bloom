@@ -420,6 +420,7 @@ header {
 @media (min-width: 769px) {
   body {
    margin: 0;
+   overflow: hidden;
   }
   .media > div {
     width: 85.1%;
@@ -430,7 +431,7 @@ header {
   .main-nav {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 8%;
+    margin-left: auto;
     margin-right: auto;
   }
   .main-nav a {
@@ -1005,6 +1006,18 @@ font-size: 10pt;
 
 .about-card-landing h3{
 font-size: 12pt;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 8%;
+  margin-right: auto;
+}
+
+.main-content {
+  height: 460px;
+  overflow: scroll;
 }
 
 
