@@ -3,10 +3,6 @@
 }
 
 body{
-    background-image: url("http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png");
-    background-repeat:  no-repeat;
-    background-size:  cover;
-    background-color: white;
     height: 100%;
 }
 
@@ -112,6 +108,7 @@ h2.welcome-header{
      align-items: center;
 }
 
+
 .about-card-landing {
      text-align: center;
 margin-bottom: -150px;
@@ -120,7 +117,7 @@ z-index: 1;
 }
 
 .about-header-container{
-      margin-left: 20%;
+    margin-left: 20%;
      top: -700px;
      position: relative;
      color: black;
@@ -154,7 +151,7 @@ margin-top: 12%;
      box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
      color: #fff;
      width: 61%;
-     height: 300px;
+     height: 240px;
      margin-left: 25px;
      margin-right: 25px;
 }

@@ -45,6 +45,7 @@ input {
   margin-left: 0.5em;
   font-size: 1em;
   outline: none;
+  text-align: center;
 }
 
 .wrapper {
@@ -429,7 +430,7 @@ header {
   .main-nav {
     display: flex;
     flex-wrap: wrap;
-    margin-left: auto;
+    margin-left: 8%;
     margin-right: auto;
   }
   .main-nav a {
@@ -961,7 +962,7 @@ video#blooming {
 
 .about-header-container {
   top: -753px;
-  margin-left: 34%;
+  margin-left: 44%;
   position: relative;
   color: black;
 }
