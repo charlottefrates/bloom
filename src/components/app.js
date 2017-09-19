@@ -37,7 +37,6 @@ export default function App() {
         <Route exact path="/bloom" component={RequireAuth(Bloom)} />
         <Route exact path="/signin" component={Login}/>
         <Route exact path="/signup" component={Register}/>
-
         </div>
         </Router>
     );

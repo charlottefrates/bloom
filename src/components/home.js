@@ -84,7 +84,7 @@ class Home extends React.Component {
     render() {
         return (
             <Router>
-            <div>
+            <div className="overflow">
             <nav className="navigation-bar is-visible" data-nav-status="toggle">
                 <ul className="ul">
                   {this.renderLinks()}

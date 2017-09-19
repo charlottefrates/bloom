@@ -17,14 +17,16 @@ render(){
     return (
 
         <Router >
-        <div className="container">
-        <Header />
-        <Route path="/zone" component={Zones} />
-        <Route path="/weather" component={WeatherForecast} />
-        <Route path="/smart" component={Smart} />
-        <Route path="/history" component={History} />
+        <div>
+             <div className="container">
+             <Header />
+             <Route path="/zone" component={Zones} />
+             <Route path="/weather" component={WeatherForecast} />
+             <Route path="/smart" component={Smart} />
+             <Route path="/history" component={History} />
+             </div>
+             <img src="http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png" className="fix"/>
         </div>
-
         </Router>
 
     );

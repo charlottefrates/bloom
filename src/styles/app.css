@@ -6,13 +6,33 @@ html, #root, .appContainer, .homeContainer {
 }
 
 .root{
+  /*
+  background-image: url(http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white*/
+  overflow: hidden;
+}
+
+.overflow{
+  overflow: auto;
+}
+
+.hills{
   background-image: url(http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-color: white;
-  height: 100%;
-  overflow: hidden;
+  height: 100%
+
 }
+
+.fix{
+   position:absolute;
+   bottom:0px;
+   left:50%;
+   z-index: -31485;
+   }
 
 .black{
   color: black;
