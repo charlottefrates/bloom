@@ -30,7 +30,6 @@ html, #root, .appContainer, .homeContainer {
 .fix{
    position:absolute;
    bottom:0px;
-   left:50%;
    z-index: -31485;
    }
 
