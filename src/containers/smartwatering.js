@@ -155,6 +155,8 @@ class Smart extends React.Component{
 
 
     //TODO:scrolls to projected water use calculation
+    let contactTopPosition = $(".bluebold").position().top-200;
+    $(".main-content").animate({scrollTop: contactTopPosition});
 
 
   }

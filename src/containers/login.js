@@ -55,6 +55,12 @@ class Login extends Component {
                   <br/>
                   <br/>
                   <p onClick={() =>window.location.href = '/signup'} className="noAccount" > Don't have an account? Click here. </p>
+                  <p className="noAccount"> For Demo account use:
+                    <br/>
+                    username = demo
+                    <br/>
+                    password = demo
+                  </p>
                 </form>
               </div>
             </div>

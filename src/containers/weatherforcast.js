@@ -108,7 +108,7 @@ class WeatherForecast extends React.Component{
                 {(this.props.weather.data) ? (
                   <div className="wrapper">
 
-                  <div className="container" id="wrapper">
+                  <div className="weathercontainer" id="wrapper">
                     <div className="container-fluid" id="current-weather">
                     <div className="row">
 

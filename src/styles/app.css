@@ -6,7 +6,12 @@ html, #root, .appContainer, .homeContainer {
 }
 
 .root{
-     overflow: hidden;
+  background-image: url(http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+  height: 100%;
+  overflow: hidden;
 }
 
 .black{
@@ -370,7 +375,6 @@ hr {
 .container {
   width: 95%;
   max-width: 90%;
-  height: 850px;
   padding-top: 0;
   padding-bottom: 2em;
   margin: 40px auto 2em;
@@ -380,6 +384,21 @@ hr {
   overflow: hidden;
   box-shadow: 0 0 30px black;
 }
+
+.weathercontainer {
+  width: 95%;
+  max-width: 90%;
+  height: 550px;
+  padding-top: 0;
+  padding-bottom: 2em;
+  margin: 40px auto 2em;
+  border-radius: .5em;
+  border-color: grey;
+  overflow: hidden;
+  box-shadow: 0 0 30px black;
+}
+
+
 header {
   background: #edeff0;
 }
@@ -970,6 +989,17 @@ video#blooming {
   position: relative;
   color: black;
 }
+
+.about-card-landing {
+     background-color: #687932;
+     box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+     color: #fff;
+     width: 61%;
+     height: 240px;
+     margin-left: 25px;
+     margin-right: 25px;
+}
+
 
 .about-card-landings-container-1 {
   margin-left: 43%;
