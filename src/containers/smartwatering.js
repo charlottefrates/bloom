@@ -154,8 +154,8 @@ class Smart extends React.Component{
     console.log('Based on your selections your are projected to use ' + this.props.projectedUse + " gallons of water");
 
 
-    //TODO:scrolls to projected water use calculation
-    let contactTopPosition = $(".bluebold").position().top-200;
+    //scrolls to projected water use calculation
+    let contactTopPosition = $(".bluebold").position().top+500;
     $(".main-content").animate({scrollTop: contactTopPosition});
 
 
