@@ -494,6 +494,10 @@ header {
     overflow:hidden;
   }
 
+  .fix{
+    display: none;
+  }
+
   .container {
     width: 100%;
     padding-top: 0;
@@ -581,6 +585,10 @@ header {
 /*phones landscape mode*/
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+
+  .fix{
+    display: none;
+  }
 
 
   .navigation-bar-login {
