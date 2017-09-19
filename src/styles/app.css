@@ -948,6 +948,24 @@ and (min-width : 1023px)
 and (max-width : 1465px)
  {
 
+   #forecast-day-1-icon, #forecast-day-2-icon, #forecast-day-3-icon, #forecast-day-4-icon {
+       line-height: 1 !important;
+       font-size: 22pt;
+       margin-left: 40%;
+   }
+
+   .forecast-min-low{
+     margin-top: -10%;
+     margin-left: 10%;
+   }
+
+   header h1 {
+        font-size: 22px;
+        margin: 0;
+        color: white;
+        font-family:Taviraj,sans-serif;
+   }
+
 
       #sign-up2 {
            width: 100%;
@@ -1022,10 +1040,7 @@ video#blooming {
 }
 
 .about-header-container {
-  top: -753px;
-  margin-left: 44%;
-  position: relative;
-  color: black;
+  display: none;
 }
 
 .about-card-landing {

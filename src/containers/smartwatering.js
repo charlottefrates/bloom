@@ -177,6 +177,7 @@ class Smart extends React.Component{
       "gal_min": this.props.rate,
       "min":this.props.time,
       "projected": this.props.projectedUse,
+      "city": this.props.location,
       //captures local storage user name and saves it to database
       "user":localStorage.getItem('userId').replace(/\"/g, "")
     };

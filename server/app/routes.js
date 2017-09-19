@@ -130,6 +130,7 @@ module.exports = function(app, passport) {
                }) //sorts recent date first
                .exec()
                .then(entries => {
+                    console.log(entries);
                     res.json(entries.map(entry => entry.apiRepr()));
                })
                .catch(err => {
@@ -163,7 +164,7 @@ module.exports = function(app, passport) {
 
       app.post('/new', (req, res) => {
           console.log(JSON.stringify(req.headers));
-          const requiredFields = ['zones', 'days', 'gal_min', 'min', 'projected','user'];
+          const requiredFields = ['zones', 'days','gal_min', 'min', 'projected','user'];
           for (let i = 0; i < requiredFields.length; i++) {
                const field = requiredFields[i];
                if (!(field in req.body)) {
@@ -245,7 +246,7 @@ module.exports = function(app, passport) {
                        });
               });
 
-              
+
 
               app.delete('/delete/test/:id', (req, res) => {
                    Bloom

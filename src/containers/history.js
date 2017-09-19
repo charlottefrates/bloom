@@ -28,6 +28,7 @@ class History extends React.Component{
 
   renderProjections() {
     return this.props.entries.map((entry, index) => {
+         console.log(entry);
       return (
         <div className="entry" key={index}>
         <div className="created">
