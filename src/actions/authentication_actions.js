@@ -14,11 +14,13 @@ export function loginUser({ username, password }) {
         console.log(response);
         console.log('token:',response.data.token);
         console.log('user:',response.data.user);
+        alert(JSON.stringify(response));
       // If request is good...
       // - Update state to indicate user is authenticated
       dispatch({ type: 'AUTH_USER', user: response.data.user });
       localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
       localStorage.setItem('userId',JSON.stringify(response.data.user));
+      alert(localStorage['userId']);
       //NOTE dispatching browserHistory doesnt work for react router 4
       //browserHistory.push('/bloom');
       //dispatch(push('/bloom')); /* dispatch an action that changes the browser history */
