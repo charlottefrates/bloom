@@ -16,6 +16,8 @@ const configDB = require('./config/database.js');
 const expressJwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
 
+const join = require('path').join;
+
 // connect to our database
 mongoose.connect(configDB.url, {
   useMongoClient: true
