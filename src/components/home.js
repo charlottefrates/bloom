@@ -45,8 +45,6 @@ class Home extends React.Component {
           this.props.dispatch(logoutUser());
      };
 
-     //onClick={() =>this.props.history.push('/signin')}
-     //onClick={() =>this.props.history.push('/signup')}
 
 
     renderLinks() {
@@ -55,7 +53,7 @@ class Home extends React.Component {
         return [
           <div>
 
-            <li onClick={() =>this.props.history.push('/bloom')} className="signup li" >
+            <li onClick={() =>browserHistory.push('/bloom')} className="signup li" >
               Welcome back {localStorage.getItem('userId').replace(/\"/g, " ")}! Enter Bloom
             </li>
             </div>
