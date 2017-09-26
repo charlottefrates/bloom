@@ -1,8 +1,7 @@
 import React from 'react';
 
 //React Router
-import {BrowserRouter as Router,Route} from 'react-router-dom';
-import {browserHistory} from 'react-router';
+import { Router,Route,browserHistory } from 'react-router';
 
 import RequireAuth from './require_auth'
 

@@ -1,4 +1,7 @@
 import axios from 'axios';
+//import {browserHistory} from 'react-router';
+import {browserHistory } from 'react-router';
+
 
 export const AUTH_USER = 'auth_user',
              UNAUTH_USER = 'unauth_user',
@@ -11,20 +14,17 @@ export function loginUser({ username, password }) {
   // Submit email/password to the sever
   axios.post(`${API_URL}/login`, { username, password })
     .then(response => {
+      debugger;
         console.log(response);
         console.log('token:',response.data.token);
         console.log('user:',response.data.user);
-        alert(JSON.stringify(response));
       // If request is good...
       // - Update state to indicate user is authenticated
       dispatch({ type: 'AUTH_USER', user: response.data.user });
       localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
       localStorage.setItem('userId',JSON.stringify(response.data.user));
-      alert(localStorage['userId']);
-      //NOTE dispatching browserHistory doesnt work for react router 4
-      //browserHistory.push('/bloom');
-      //dispatch(push('/bloom')); /* dispatch an action that changes the browser history */
-      window.location.href = '/bloom';
+      browserHistory.push('/bloom');
+      //window.location.href = '/bloom';
     })
     .catch(() => {
       // If request is bad...
@@ -43,9 +43,7 @@ export function registerUser({ firstName,lastName,username,password }) {
       dispatch({ type: 'AUTH_USER', user: response.data.user });
       localStorage.setItem('accessToken', JSON.stringify({token: response.data.token}));
       localStorage.setItem('userId',JSON.stringify(response.data.user));
-      //NOTE dispatching browserHistory doesnt work for react router 4
-      //browserHistory.push('/signin');
-      window.location.href = '/bloom';
+      browserHistory.push('/signin');
     })
     .catch(response => {
       dispatch(authError());

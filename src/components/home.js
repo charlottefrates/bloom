@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
+
+import {browserHistory } from 'react-router';
+
 import $ from 'jquery';
 import '../styles/landing.css';
 import '../styles/nav.css';
@@ -42,6 +45,10 @@ class Home extends React.Component {
           this.props.dispatch(logoutUser());
      };
 
+     //onClick={() =>this.props.history.push('/signin')}
+     //onClick={() =>this.props.history.push('/signup')}
+
+
     renderLinks() {
       if (this.props.authenticated) {
         // show a link to sign out
@@ -51,9 +58,6 @@ class Home extends React.Component {
             <li onClick={() =>this.props.history.push('/bloom')} className="signup li" >
               Welcome back {localStorage.getItem('userId').replace(/\"/g, " ")}! Enter Bloom
             </li>
-            {/*<li onClick={this.onLogout} className="signin li" >
-              sign out
-            </li>*/}
             </div>
         ]
       }
@@ -66,12 +70,12 @@ class Home extends React.Component {
           BLOOM
           </li>
 
-            <li onClick={() =>this.props.history.push('/signup')} className="signin li" >
+            <li onClick = {()=> browserHistory.push('/signup')} className="signin li" >
               Sign-Up
             </li>
 
 
-            <li onClick={() =>this.props.history.push('/signin')} className="signup li" >
+            <li  onClick = {()=> browserHistory.push('/signin')} className="signup li" >
               Sign-In
             </li>
             </div>

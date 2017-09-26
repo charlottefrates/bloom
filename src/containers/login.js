@@ -14,7 +14,7 @@ class Login extends Component {
 
   handleUserFormSubmit(event) {
   event.preventDefault();
-
+  debugger;
   this.props.dispatch(loginUser({
       username: this.username.value,
       password: this.password.value,
