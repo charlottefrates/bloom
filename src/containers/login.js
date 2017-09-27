@@ -32,7 +32,7 @@ class Login extends Component {
         <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
 
         <ul className="ul-login">
-        <li className="brand-login" onClick={() =>browserHistory.push('/bloom')}>
+        <li className="brand-login" onClick={() =>window.location.href = '/'}>
         BLOOM
         </li>
         </ul>
