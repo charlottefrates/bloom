@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/authentication_actions';
+import {browserHistory } from 'react-router';
 
  class Register extends React.Component {
 
@@ -29,7 +30,7 @@ import { registerUser } from '../actions/authentication_actions';
       <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
 
       <ul className="ul-login">
-      <li className="brand-login" onClick={() =>this.props.history.push('/')}>
+      <li className="brand-login" onClick={() =>browserHistory.push('/bloom')}>
       BLOOM
       </li>
       </ul>

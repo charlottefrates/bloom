@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication_actions';
+import {browserHistory } from 'react-router';
 
 import '../styles/landing.css';
 import '../styles/nav.css';
@@ -31,7 +32,7 @@ class Login extends Component {
         <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
 
         <ul className="ul-login">
-        <li className="brand-login" onClick={() =>this.props.history.push('/')}>
+        <li className="brand-login" onClick={() =>browserHistory.push('/bloom')}>
         BLOOM
         </li>
         </ul>
