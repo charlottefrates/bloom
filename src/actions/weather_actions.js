@@ -137,7 +137,6 @@ export function fetchData(url) {
 
             //Adds arrays to state.
             dispatch(set_array(dates,maxtemps,mintemps,descriptions,icons));
-            debugger;
             //captures response to array
             dispatch(set_data(api_response));
 

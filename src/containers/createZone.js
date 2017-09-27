@@ -31,7 +31,7 @@ import  '../styles/zone.css';
            <div className="create-new">
              <form id="zoneform" onSubmit={this.handleCreate.bind(this)}>
                <input type="text" placeholder="New Zone" ref="newZoneInput" />
-               <button>Create</button>
+               <button> + Create</button>
              </form>
            </div>
          );

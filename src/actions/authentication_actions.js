@@ -14,7 +14,6 @@ export function loginUser({ username, password }) {
   // Submit email/password to the sever
   axios.post(`${API_URL}/login`, { username, password })
     .then(response => {
-      debugger;
         console.log(response);
         console.log('token:',response.data.token);
         console.log('user:',response.data.user);

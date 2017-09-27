@@ -295,18 +295,18 @@ input[type="password"].placeholder::-webkit-input-placeholder {
 @media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (orientation : portrait) {
 
   .landingpage-details-container {
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      bottom: 27%;
-      left: -3%;
-      right: 0;
-      width: 35%;
-      height: 207px;
-      margin: auto;
-      padding-top: 21px;
-      padding-bottom: 0px;
-      background: rgba(245, 245, 220, 0.57);
+       display: inline-block;
+position: absolute;
+top: 0;
+bottom: 27%;
+left: -3%;
+right: 0;
+width: 60%;
+height: 207px;
+margin: auto;
+padding-top: 21px;
+padding-bottom: 0px;
+background: none;
   }
 
     .about-header-container {

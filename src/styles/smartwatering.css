@@ -201,11 +201,12 @@ h1 {
 }
 
 #day {
+    height: 100px;
     position: relative;
-    margin-top: 45px;
+    margin-top: 20%;
+    margin-bottom: 79%;
     top: -23px;
     text-align: center;
-    margin-bottom: -329px;
 }
 
 p{
