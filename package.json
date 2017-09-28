@@ -46,7 +46,7 @@
   },
   "scripts": {
     "start":"node server/index.js",
-    "dev": "nodemon server.js",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
     "test:mocha": "mocha",
