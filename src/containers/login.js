@@ -54,7 +54,7 @@ class Login extends Component {
                   <br/>
                   <br/>
                   <br/>
-                  <p className="noAccount"> For demo account use:
+                  <p className="noAccount2"> For demo account use:
                     <br/>
                     username = demo
                     <br/>

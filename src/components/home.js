@@ -52,11 +52,14 @@ class Home extends React.Component {
         // show a link to sign out
         return [
           <div>
+            <li className="brand">
+            BLOOM
+            </li>
 
             <li onClick={() =>browserHistory.push('/bloom')} className="signup li" >
               Welcome back {localStorage.getItem('userId').replace(/\"/g, " ")}! Enter Bloom
             </li>
-            </div>
+          </div>
         ]
       }
       else {
@@ -92,7 +95,7 @@ class Home extends React.Component {
                   {this.renderLinks()}
                 </ul>
                 <div className="handle">
-                  Menu
+                  Bloom
                 </div>
             </nav>
 
@@ -109,11 +112,6 @@ class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-2">
 
         		<div className="about-page">
-        			<video id="blooming" src="https://bloom-water-tracker.herokuapp.com/blooming.mp4" autoPlay loop></video>
-
-        		   	<div className="about-header-container">
-        					<h2>How It Works</h2>
-        			</div>
 
         			<div className="about-card-landings-container-1">
 
@@ -125,7 +123,7 @@ class Home extends React.Component {
         					<div className="about-card-landing">
         							<h3>Check Current Weather</h3>
         							<hr className="short-line cards-line" />
-        							<p>Bloom provides current weather forecasts from a highly trusted weather service to help in generating an optimized watering plan for your yard.</p>
+        							<p>Bloom provides current weather forecasts to help in generating an optimized watering plan for your yard.</p>
         					</div>
 
         			</div>
