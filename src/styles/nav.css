@@ -173,6 +173,7 @@ a {
 .brand:hover, .brand-login:hover {
      background-color: #687932;
      font-size: 30px;
+     color: white;
 }
 
 .brandLogo {
