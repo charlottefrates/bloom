@@ -38,7 +38,7 @@ video#blooming {
      background-color: white;
      z-index: -1;
      background-position: center center;
-     margin-top: 29% !important;
+     margin-top: 12% !important;
      margin: 0 auto;
      border: 0;
 }
@@ -257,6 +257,10 @@ input[type="password"].placeholder::-webkit-input-placeholder {
      color: white;
 }
 
+.noAccount2 {
+     color: white;
+}
+
 .col-12-landing {
      padding-top: 30px;
      background: rgba(245, 245, 220, 0.57)
@@ -452,12 +456,27 @@ input[type="password"].placeholder::-webkit-input-placeholder {
 /*ipad*/
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    .background {
+         background-image: url("http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png");
+         /*background-position: calc(100% - 0px) calc(100% - -20px);*/
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-color: white;
+         z-index: -1;
+         background-position: center center;
+         margin-top: 29% !important;
+         margin: 0 auto;
+         border: 0;
+    }
     .brand-login {
     padding: 2px 15px !important;
     color: black;
     position: absolute;
     left: -80% !important;
     transition: all 0.3s ease;
+    }
+    .noAccount {
+         color: white;
     }
     .noAccount2 {
          color: white;
