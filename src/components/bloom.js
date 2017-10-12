@@ -17,7 +17,7 @@ render(){
     return (
 
         <Router >
-        <div>
+        <div className="hidden">
             <nav className="navigation-bar is-visible" data-nav-status="toggle">
                 <div>
                  <ul className="ul nobox ">

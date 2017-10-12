@@ -41,6 +41,7 @@ video#blooming {
      margin-top: 12% !important;
      margin: 0 auto;
      border: 0;
+     overflow: hidden;
 }
 
 .sign-up-button2 {

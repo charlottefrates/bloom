@@ -11,7 +11,9 @@ html, #root, .appContainer, .homeContainer {
   background-color: white*/
      overflow: hidden;
 }
-
+.hidden{
+     overflow: hidden;
+}
 .overflow {
      overflow: auto;
 }
@@ -422,6 +424,9 @@ header {
      body {
           margin: 0;
      }
+     .hidden{
+          overflow: hidden;
+     }
      .home a {
           border-color: transparent;
      }
@@ -446,6 +451,9 @@ header {
 @media (min-width: 1028px) {
      body {
           margin: 0;
+     }
+     .hidden{
+          overflow: hidden;
      }
      .media>div {
           width: 85.1%;
@@ -475,6 +483,9 @@ header {
 
      .fix {
           display: none;
+     }
+     .hidden{
+          overflow: hidden;
      }
      .container {
           width: 100%;
@@ -617,6 +628,9 @@ header {
      .fix {
           display: none;
      }
+     .hidden{
+          overflow: hidden;
+     }
      .create-new button {
           width: 17.4%;
           -webkit-box-sizing: border-box;
@@ -738,6 +752,9 @@ header {
 /* ipad */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
      body {}
+     .hidden{
+               overflow: hidden;
+     }
      .container {
           width: 100%;
           padding-top: 0;
@@ -825,6 +842,9 @@ header {
 /* macbook pro 13 inch*/
 
 @media screen and (width: 1200px), screen and (height: 800px) {
+     .hidden{
+          overflow: hidden;
+     }
      .landingpage-details-container {
           color: #0c0c0c;
           text-align: center;
@@ -962,6 +982,9 @@ header {
 /*in between range*/
 
 @media only screen and (min-width: 1023px) and (max-width: 1465px) {
+     .hidden{
+          overflow: hidden;
+     }
      #forecast-day-1-icon, #forecast-day-2-icon, #forecast-day-3-icon, #forecast-day-4-icon {
           line-height: 1 !important;
           font-size: 22pt;
