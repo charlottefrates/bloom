@@ -57,7 +57,7 @@ class Home extends React.Component {
             </li>
 
             <li onClick={() =>browserHistory.push('/bloom')} className="signup li" >
-              Welcome back {localStorage.getItem('userId').replace(/\"/g, " ")}! Enter Bloom
+              Welcome back {localStorage.getItem('userId').replace(/\"/g, " ")}!
             </li>
           </div>
         ]
@@ -103,7 +103,6 @@ class Home extends React.Component {
             <div className="cd-fixed-bg cd-bg-1">
         	    <div className="landingpage-container">
         	        <div className="landingpage-details-container">
-        	             {/*<h1 className="welcome-header">Bloom</h1>*/}
                        <img className="logo" role="presentation" src="logo.jpg" />
         	        </div>
         	   	</div>

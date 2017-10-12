@@ -39,8 +39,13 @@ html, #root, .appContainer, .homeContainer {
      margin-left: 47%;
 }
 
+.margin{
+     margin-left: auto;
+     margin-right: auto;
+}
+
 .signout {
-     font-size: 1.1em;
+     font-size: 95%;
      color: #737474;
      text-align: center;
      display: block;
@@ -179,7 +184,10 @@ a:hover, a:active, a:focus {
      text-decoration: none;
      opacity: 1;
 }
-
+.logo2 {
+     width: 13%;
+  height: 10%;
+}
 .active {
      color: black;
      background: #687932;
@@ -375,12 +383,12 @@ hr {
      max-width: 90%;
      padding-top: 0;
      padding-bottom: 2em;
-     margin: 40px auto 2em;
+     margin: 6% auto 2em;
      background: white;
      border-radius: .5em;
      border-color: grey;
      overflow: hidden;
-     box-shadow: 0 0 30px black;
+     box-shadow: 0 0 1px black;
 }
 
 .weathercontainer {
@@ -435,7 +443,7 @@ header {
      }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1028px) {
      body {
           margin: 0;
      }
@@ -457,13 +465,14 @@ header {
      .main-nav a:hover {
           border-color: rgba(0, 0, 0, .1);
      }
+
 }
 
 
 /* phones */
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (orientation: portrait) {
      body {}
+
      .fix {
           display: none;
      }
@@ -604,7 +613,6 @@ header {
 
 
 /*phones landscape mode*/
-
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
      .fix {
           display: none;
@@ -728,7 +736,6 @@ header {
 
 
 /* ipad */
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
      body {}
      .container {
@@ -898,7 +905,7 @@ header {
           cursor: pointer;
      }
      .main-nav a {
-          font-size: 1.0em;
+          font-size: 95%;
           color: #151501;
           text-align: center;
           text-transform: uppercase;

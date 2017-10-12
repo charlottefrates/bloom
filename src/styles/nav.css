@@ -7,7 +7,7 @@ nav {
 }
 
 .main-nav a {
-     font-size: 1.1em;
+     font-size: 95%;
      color: #151501;
      text-align: center;
      text-transform: uppercase;
@@ -57,6 +57,8 @@ nav {
      -webkit-transition: -webkit-transform .2s, background .3s, color .3s;
 }
 
+
+
 .navigation-bar ul {
      background: white;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -80,6 +82,17 @@ nav {
      padding: 0;
 }
 
+.nobox{
+
+}
+
+.brand2:hover {
+     background-color: #687932;
+     cursor: pointer;
+     font-size: 20px;
+     color: white;
+}
+
 .navigation-bar ul li {
      float: right;
      display: inline-flex;
@@ -87,6 +100,16 @@ nav {
      margin-right: 4%;
      margin-left: 2%;
      color: #687932;
+}
+
+.nobox li {
+    padding: 7px 13px !important;
+    font-size: 15pt;
+    float: right;
+    display: inline-flex;
+    margin-right: 4%;
+    margin-left: 2%;
+    color: #687932;
 }
 
 .ul {
@@ -160,6 +183,16 @@ a {
      transition: all 0.3s ease;
 }
 
+.brand2 {
+    padding: 7px 13px !important;
+    color: black;
+    position: absolute;
+    left: 4%;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
 .brand-login {
      padding: 2px 15px !important;
      color: black;
@@ -215,7 +248,6 @@ a {
 
 
 /* phones */
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 667px) and (orientation: portrait) {
      body {
           background-image: none;
@@ -403,7 +435,6 @@ a {
 
 
 /*phones landscape mode*/
-
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
      .main-nav {
           display: none !important;

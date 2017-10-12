@@ -31,6 +31,7 @@ class Header extends React.Component {
       return (
         <div>
         <header>
+        <div className="margin">
           <ul className="main-nav">
             <li> <NavLink to="/zone">Watering Zones</NavLink> </li>
             <li> <NavLink to="/weather">Weather Analytics</NavLink> </li>
@@ -38,6 +39,7 @@ class Header extends React.Component {
             <li> <NavLink to="/history">History</NavLink> </li>
             <li onClick={this.onLogout} className="signout"> SignOut </li>
           </ul>
+         </div>
 
           <div className="mobile-menu">
           <a className="dropdown-link">Menu</a>

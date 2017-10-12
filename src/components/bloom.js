@@ -18,6 +18,21 @@ render(){
 
         <Router >
         <div>
+            <nav className="navigation-bar is-visible" data-nav-status="toggle">
+                <div>
+                 <ul className="ul nobox ">
+
+                      <li className="brand2" onClick={() =>window.location.href = '/'}>
+                       BLOOM
+                      </li>
+                      <li >
+                      Happy tracking,{localStorage.getItem('userId').replace(/\"/g, " ")}.
+                      </li>
+
+                  </ul>
+                </div>
+            </nav>
+
              <div className="container">
              <Header />
              <Route path="/zone" component={Zones} />
