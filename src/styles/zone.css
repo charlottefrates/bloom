@@ -5,6 +5,7 @@
 button {
      margin: 3px;
      cursor: pointer;
+     background: white;
 }
 
 .to-do-app {

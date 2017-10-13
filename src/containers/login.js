@@ -36,6 +36,9 @@ class Login extends Component {
         BLOOM
         </li>
         </ul>
+        <div className="handle">
+          Bloom
+        </div>
 
         </nav>
 

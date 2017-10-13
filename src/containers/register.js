@@ -34,6 +34,9 @@ import {browserHistory } from 'react-router';
       BLOOM
       </li>
       </ul>
+      <div className="handle">
+        Bloom
+      </div>
 
       </nav>
       </div>

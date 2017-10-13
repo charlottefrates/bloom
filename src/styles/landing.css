@@ -179,7 +179,7 @@ h2.welcome-header {
      position: relative;
      overflow: hidden;
      bottom: 100px;
-     margin-top: 8%;
+     margin-top: 200px;
 }
 
 .rowwer {
@@ -204,6 +204,7 @@ h2.welcome-header {
      color: white;
      margin-top: 0;
      margin-bottom: 30px;
+     margin-right: 4%;
      font-size: 30px;
      line-height: 35px;
 }
@@ -213,7 +214,7 @@ h2.welcome-header {
      height: 65px;
      padding-left: 40px;
      padding-right: 40px;
-     margin: 0 auto;
+     margin: 0 27%;
      border-radius: 4px;
      text-align: center;
 }
@@ -223,7 +224,7 @@ h2.welcome-header {
      height: 400px;
      padding-left: 40px;
      padding-right: 40px;
-     margin: 0 auto;
+     margin: 0 27%;
      border-radius: 4px;
      text-align: center;
 }
