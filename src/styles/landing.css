@@ -224,7 +224,7 @@ h2.welcome-header {
      height: 400px;
      padding-left: 40px;
      padding-right: 40px;
-     margin: 0 27%;
+     margin: 0 auto;
      border-radius: 4px;
      text-align: center;
 }
