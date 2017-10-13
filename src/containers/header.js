@@ -22,9 +22,6 @@ class Header extends React.Component {
 
     }
 
-    onLogout = () =>{
-         this.props.dispatch(logoutUser());
-    };
 
 
     render() {
@@ -37,7 +34,7 @@ class Header extends React.Component {
             <li> <NavLink to="/weather">Weather Analytics</NavLink> </li>
             <li> <NavLink to="/smart">Smart Projection</NavLink> </li>
             <li> <NavLink to="/history">History</NavLink> </li>
-            <li onClick={this.onLogout} className="signout"> SignOut </li>
+
           </ul>
          </div>
 

@@ -3,6 +3,14 @@ import React from 'react';
 //React Router
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
+import {
+    logoutUser
+} from '../actions/authentication_actions';
+
+import $ from 'jquery';
+
 import Header from '../containers/header';
 
 import WeatherForecast from '../containers/weatherforcast';
@@ -11,7 +19,12 @@ import Smart from '../containers/smartwatering';
 import History from '../containers/history';
 
 
-export default class Bloom extends React.Component {
+class Bloom extends React.Component {
+
+    onLogout = () =>{
+         this.props.dispatch(logoutUser());
+    };
+
 
 render(){
     return (
@@ -25,9 +38,7 @@ render(){
                       <li className="brand2" onClick={() =>window.location.href = '/'}>
                        BLOOM
                       </li>
-                      <li >
-                      Happy tracking,{localStorage.getItem('userId').replace(/\"/g, " ")}.
-                      </li>
+                      <li onClick={this.onLogout} className="signin li small"> SignOut </li>
 
                   </ul>
                 </div>
@@ -47,3 +58,16 @@ render(){
     );
 }
 }
+
+const mapStateToProps = (state, props) => ({
+     authenticated: state.authenticated
+});
+
+
+
+//this tells connect to inject the location field we have in our reducer into this component
+//passing in a function as the first argument that takes the entire state,
+//and then we return what we want to inject as props into our component
+//this automatically injects dispatch to run our actions,
+//which is why we can use this.props.dispatch
+export default connect(mapStateToProps)(Bloom);
