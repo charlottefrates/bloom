@@ -25,7 +25,7 @@ import {browserHistory } from 'react-router';
   render(props) {
 
     return (
-      <div className="background">
+      <div>
       <div>
       <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
 

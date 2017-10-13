@@ -366,7 +366,7 @@ input[type="password"].placeholder::-webkit-input-placeholder {
           height: 180px;
      }
      .col-12-landing-2 {
-    padding-top: 30px;
+    padding-top: 50px;
     padding-bottom: 120px;
     background: #687932;
     }
@@ -441,15 +441,7 @@ input[type="password"].placeholder::-webkit-input-placeholder {
           margin-left: 34%;
           width: 35%;
      }
-     .cd-bg-2 {
-          display: none;
-     }
-     .about-page {
-          display: none;
-     }
-     #sign-up {
-          display: none;
-     }
+
 }
 
 

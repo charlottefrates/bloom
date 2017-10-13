@@ -22,6 +22,11 @@ class Header extends React.Component {
 
     }
 
+    onLogout = () =>{
+        this.props.dispatch(logoutUser());
+   };
+
+
 
 
     render() {

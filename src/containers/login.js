@@ -26,7 +26,7 @@ class Login extends Component {
   render() {
 
     return (
-      <div className="background">
+      <div>
       <div>
         <div>
         <nav className="navigation-bar-login is-visible" data-nav-status="toggle">
