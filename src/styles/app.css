@@ -725,11 +725,11 @@ header {
      #wrapper {
           background-color: #687932;
           border-radius: 10px;
-          margin: 40px auto;
+          margin: 84px auto;
           max-width: 100%;
-          padding: 0px;
-          color: white;
-          height: 200px;
+          padding: 0;
+          color: #fff;
+          height: 350px;
           overflow: hidden;
      }
      .change3 {
