@@ -180,9 +180,9 @@ a {
      text-decoration: none;
 }
 
-a:hover, a:active, a:focus {
-     color: black;
-     background-color: #687932;
+a:hover, a:active, a:focus, .active:hover {
+     color: black !important;
+     background-color: #687932 !important;
      text-decoration: none;
      opacity: 1;
 }
@@ -191,8 +191,8 @@ a:hover, a:active, a:focus {
   height: 10%;
 }
 .active {
-     color: black;
-     background: #687932;
+     color: #5f6060 !important;
+     background: #edf0f1 !important;
      text-decoration: none;
      opacity: 1;
 }

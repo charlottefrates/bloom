@@ -32,10 +32,10 @@ export default function App() {
     return (
         <Router history={browserHistory}>
         <div className="root">
-        <Route exact path="/" component={Home} />
-        <Route exact path="/bloom" component={RequireAuth(Bloom)} />
-        <Route exact path="/signin" component={Login}/>
-        <Route exact path="/signup" component={Register}/>
+        <Route  path="/" component={Home} />
+        <Route  path="/bloom" component={RequireAuth(Bloom)} />
+        <Route  path="/signin" component={Login}/>
+        <Route  path="/signup" component={Register}/>
         </div>
         </Router>
     );

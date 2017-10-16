@@ -2,6 +2,7 @@ import React from 'react';
 
 //React Router
 import {BrowserRouter as Router,Route} from 'react-router-dom';
+import {IndexRoute} from 'react-router';
 
 import { connect } from 'react-redux';
 
@@ -31,6 +32,7 @@ render(){
 
         <Router >
         <div className="hidden">
+
             <nav className="navigation-bar is-visible" data-nav-status="toggle">
                 <div>
                  <ul className="ul nobox ">
@@ -46,10 +48,12 @@ render(){
 
              <div className="container">
              <Header />
-             <Route path="/zone" component={Zones} />
+
+             <Route exact path="/bloom" component={Zones}/>
              <Route path="/weather" component={WeatherForecast} />
              <Route path="/smart" component={Smart} />
              <Route path="/history" component={History} />
+
              </div>
              <img src="http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png" className="fix"/>
         </div>

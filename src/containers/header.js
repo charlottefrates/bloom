@@ -35,7 +35,7 @@ class Header extends React.Component {
         <header>
         <div className="margin">
           <ul className="main-nav">
-            <li> <NavLink to="/zone">Watering Zones</NavLink> </li>
+            <li> <NavLink to="/bloom">Watering Zones</NavLink> </li>
             <li> <NavLink to="/weather">Weather Analytics</NavLink> </li>
             <li> <NavLink to="/smart">Smart Projection</NavLink> </li>
             <li> <NavLink to="/history">History</NavLink> </li>
@@ -46,7 +46,7 @@ class Header extends React.Component {
           <div className="mobile-menu">
           <a className="dropdown-link">Menu</a>
           <ul className="mobile-dropdown">
-            <li><NavLink to="/zone">Watering Zones</NavLink></li>
+            <li><NavLink to="/bloom">Watering Zones</NavLink></li>
             <li><NavLink to="/weather">Weather Analytics</NavLink></li>
             <li><NavLink to="/smart">Smart Projection</NavLink></li>
             <li><NavLink to="/history">History</NavLink></li>
