@@ -8,8 +8,9 @@ import RequireAuth from './require_auth'
 import store from '../store';
 import Home from './home';
 import Bloom from './bloom';
-import Register from '../containers/register'
-import Login from '../containers/login'
+import Register from '../containers/register';
+import Login from '../containers/login';
+import Instructions from '../containers/instructions';
 
 
 //styling
@@ -36,6 +37,7 @@ export default function App() {
         <Route  path="/bloom" component={RequireAuth(Bloom)} />
         <Route  path="/signin" component={Login}/>
         <Route  path="/signup" component={Register}/>
+        <Route  path="/instructions" component={Instructions}/>
         </div>
         </Router>
     );

@@ -22,6 +22,7 @@ nav {
 }
 
 .small{
+      margin-right: 6% !important;
 
 }
 .navigation-bar {
@@ -108,7 +109,7 @@ nav {
 
 .nobox li {
     padding: 7px 13px !important;
-    font-size: 15pt;
+    font-size: 13pt;
     float: right;
     display: inline-flex;
     margin-right: 4%;
@@ -172,6 +173,9 @@ nav {
      cursor: pointer;
      font-size: 20px;
      color: white;
+     padding-right: 19px;
+     padding-left: 19px;
+     margin-right: 40px;
 }
 
 a {
@@ -188,6 +192,7 @@ a {
 }
 
 .brand2 {
+    font-size: 15pt !important;
     padding: 7px 13px !important;
     color: black;
     position: absolute;
@@ -248,6 +253,17 @@ a {
 
 .mobile-menu {
      display: none;
+}
+
+.signup2{
+     float: right;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    padding: 1em;
+    margin-right: 4% !important;
+    padding-right: 2%;
+    margin-left: 2%;
+    color: #687932;
 }
 
 

@@ -20,6 +20,8 @@ import Smart from '../containers/smartwatering';
 import History from '../containers/history';
 
 
+
+
 class Bloom extends React.Component {
 
     onLogout = () =>{
@@ -40,8 +42,9 @@ render(){
                       <li className="brand2" onClick={() =>window.location.href = '/'}>
                        BLOOM
                       </li>
-                      <li onClick={this.onLogout} className="signin li small"> SignOut </li>
 
+                      <li onClick={this.onLogout} className="signin li small"> SignOut </li>
+                      <li  onClick = {() =>window.location.href = '/instructions'} className="signup2 li" > Instructions </li>
                   </ul>
                 </div>
             </nav>
@@ -53,7 +56,6 @@ render(){
              <Route path="/weather" component={WeatherForecast} />
              <Route path="/smart" component={Smart} />
              <Route path="/history" component={History} />
-
              </div>
              <img src="http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png" className="fix"/>
         </div>
