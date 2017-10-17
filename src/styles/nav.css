@@ -160,6 +160,8 @@ nav {
      margin-right: 90px;
 }
 
+
+
 .li {
      display: in.line-block;
      padding: 10px 15px;
@@ -279,6 +281,10 @@ a {
      .brandLogo {
           display: none;
      }
+     .quick{
+          background: #dfe4df !important;
+     }
+     
      nav {
           position: fixed;
           top: 0;

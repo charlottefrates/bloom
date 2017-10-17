@@ -3,6 +3,8 @@ import React from 'react';
 //React Router
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import {IndexRoute} from 'react-router';
+import { NavLink} from 'react-router-dom';
+
 
 import { connect } from 'react-redux';
 
@@ -43,37 +45,40 @@ render(){
             </nav>
 
              <div className="container">
-
              <header>
-              <div>
+              <div className="margin">
                 <ul className="main-nav">
-                  <h1 className="guide"> Quick Guide </h1>
+                  <li className="guide"> Instructions </li>
                 </ul>
                </div>
+
+                <div className="mobile-menu">
+                <a onClick={() =>window.location.href = '/bloom'} className="dropdown-link">← Go Back </a>
+                </div>
+
               </header>
 
-              <div className="guideList">
-
-                    <p>Add customized watering zones.</p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/watering_zone.png" className=""/>
-                    <p>Search for current weather by entering a location of interest.</p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/weather.png" className=""/>
-                    <p>Based on the weather, select the days you would like to water. </p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/day_selection.png" className=""/>
-                    <p>Select the zone or zones you would like to water.</p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/zone_selection.png" className=""/>
-                    <p>Add information on how many gallons of water you would like to use and how long you want to warer for.</p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/watering.png" className=""/>
-                    <p>Calculate your projected water use.</p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/projection.png" className=""/>
-                    <p>Save your projection for future refrences.</p>
-                    <img src="https://bloom-water-tracker.herokuapp.com/history.png" className=""/>
-
+              <div className="maincont2">
+                 <div className="guideList">
+                        <p className="move">Add customized watering zones.</p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/watering_zone.png"/>
+                        <p className="move">Search for current weather by entering a location of interest.</p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/weather.png"/>
+                        <p className="move">Based on the weather, select the days you would like to water. </p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/day_selection.png"/>
+                        <p className="move">Select the zone or zones you would like to water.</p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/zone_selection.png"/>
+                        <p className="move">Add information on how many gallons of water you would like to use and how long you want to water for.</p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/watering.png" />
+                        <p className="move">Calculate your projected water use.</p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/projection.png"/>
+                        <p className="move">Save your projection for future refrences.</p>
+                        <img className="instImage" src="https://bloom-water-tracker.herokuapp.com/history.png"/>
+                 </div>
               </div>
 
-
              </div>
-             <img src="http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png" className="fix"/>
+
         </div>
         </Router>
 

@@ -46,6 +46,7 @@ class Header extends React.Component {
           <div className="mobile-menu">
           <a className="dropdown-link">Menu</a>
           <ul className="mobile-dropdown">
+            <li onClick={() =>window.location.href = '/instructions'} > <NavLink to="" className="quick"> Quick Guide </NavLink></li>
             <li><NavLink to="/bloom">Watering Zones</NavLink></li>
             <li><NavLink to="/weather">Weather Analytics</NavLink></li>
             <li><NavLink to="/smart">Smart Projection</NavLink></li>

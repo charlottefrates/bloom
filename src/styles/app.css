@@ -43,6 +43,22 @@ html, #root, .appContainer, .homeContainer {
 
 }
 
+.maincont2 {
+     box-sizing: border-box;
+     width: 88%;
+     margin: -50px auto 0 auto;
+     text-align: center;
+     border-radius: 5px;
+     padding-bottom: 50px;
+     margin-bottom: 100px;
+}
+
+
+.instImage{
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .hills {
      background-image: url(http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png);
      background-repeat: no-repeat;
@@ -88,6 +104,10 @@ html, #root, .appContainer, .homeContainer {
 .signout:hover {
      color: #fff;
      background: #787c7d
+}
+
+.move{
+    padding-top: 9% !important;
 }
 
 form {
@@ -569,6 +589,18 @@ header {
      .forcast_one {
           margin-top: -60%;
      }
+
+     .maincont2 {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 88%;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+    }
+
      #main-icon {
           color: white;
           margin-top: -8%;
