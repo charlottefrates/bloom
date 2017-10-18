@@ -85,6 +85,33 @@ class Home extends React.Component {
       };
     }
 
+    rendersignUp() {
+      if (this.props.authenticated) {
+        // show a link to sign out
+        return [
+          <div>
+
+          </div>
+        ]
+      }
+      else {
+        // show a link to sign in or sign up
+        return [
+             <div id="sign-up">
+                  <div className="rowwer">
+                       <div className="col-12-landing">
+                            <h2 className="sign-up-title black">Start Tracking Your Watering Zones now</h2>
+                            <div className="sign-up-box">
+                         <button className="sign-up-button2" onClick={()=> browserHistory.push('/signup')} >Sign Up</button>
+                            </div>
+                       </div>
+                  </div>
+             </div>
+
+        ]
+      };
+    }
+
 
     render() {
         return (
@@ -143,16 +170,7 @@ class Home extends React.Component {
         		</div>
         	</div>
                 <div className="cd-fixed-bg cd-bg-1">
-        			<div id="sign-up">
-        				<div className="rowwer">
-        					<div className="col-12-landing">
-        						<h2 className="sign-up-title black">Start Tracking Your Watering Zones now</h2>
-        						<div className="sign-up-box">
-                                <button className="sign-up-button2" onClick={()=> browserHistory.push('/signup')} >Sign Up</button>
-        						</div>
-        					</div>
-        				</div>
-        			</div>
+        				{this.rendersignUp()}
         		</div>
             </div>
 
