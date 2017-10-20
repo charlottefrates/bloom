@@ -11,7 +11,9 @@
 
 ## Purpose:
 
-<p>A simple water tracking application which captures user created watering zones, current weather analytics, project water usage, and save water projections.</p>
+<p>Water is necessary for the sustenance of human life. While the supply seems abundant, water is not a limitless resource, particularly the fresh potable water most necessary to human survival. Without conservation efforts, this vital supply of water may be exhausted. Conservation carries economic benefits as well, as energy and equipment are also conserved as a direct result of water preservation efforts.</p>
+
+<p>Bloom is inteded to help with your water usage with time. It is a tracking application that includes a projection of watering usage based on current weather information and user based settings.</p>
 
 ## Motivation:
 
