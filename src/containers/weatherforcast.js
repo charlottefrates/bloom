@@ -2,6 +2,10 @@ import React from 'react';
 
 import $ from 'jquery';
 
+import PlacesAutocomplete from 'react-places-autocomplete';
+
+import { geocodeByAddress, geocodeByPlaceId } from 'react-places-autocomplete';
+
 
 import {connect} from 'react-redux';
 
@@ -21,6 +25,16 @@ import '../styles/weather-icons-master/css/weather-icons.css';
 /*Functional Component using ES6 class to define component*/
 
 class WeatherForecast extends React.Component{
+
+    constructor(props) {
+   super(props)
+   this.state = { address:""}
+   this.onChange = (address) => {
+      this.setState({ address });
+      let location = address.split(',')[0].split(' ').pop();
+      this.props.dispatch(pull_weather(location));
+   }
+ }
 
     handleChange = (e) =>{
 
@@ -63,6 +77,7 @@ class WeatherForecast extends React.Component{
 
     //utility method to capture controlled text input
     //and sets the location state
+
     changeLocation = (e) =>{
         this.props.dispatch(pull_weather(e.target.value));
     }
@@ -86,6 +101,18 @@ class WeatherForecast extends React.Component{
   	               curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
                    let today = dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 
+        const inputProps = {
+            value: this.state.address,
+            onChange: this.onChange,
+            onBlur: () => {
+                console.log('blur!')
+                },
+            type: 'search',
+            placeholder: "City",
+            autoFocus: true,
+              }
+
+        const AutocompleteItem = ({ suggestion }) => (<div><i className="fa fa-map-marker"/>{suggestion}</div>)
 
         return (
              <div className="main-content">
@@ -94,13 +121,9 @@ class WeatherForecast extends React.Component{
 
                 <form className="wrappermain"onSubmit={this.handleChange}>
                   <label>I want to know the weather for
-                    {/* controlled input for now */}
-                    <input
-                    placeholder={"City"}
-                    type="text"
-                    value={this.props.location}
-                    onChange={this.changeLocation}
-                    />
+                    <div className="input">
+                    <PlacesAutocomplete inputProps={inputProps} autocompleteItem={AutocompleteItem} value={this.props.location}/>
+                    </div>
                     <input className="butt"type="submit" value="Submit" />
                   </label>
                 </form>

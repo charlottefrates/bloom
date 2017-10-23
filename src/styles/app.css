@@ -18,6 +18,11 @@ html, #root, .appContainer, .homeContainer {
      overflow: auto;
 }
 
+.input{
+     margin-left: 35%;
+     width: 28%;
+}
+
 .guide {
     font-size: 100%;
     text-transform: uppercase;
