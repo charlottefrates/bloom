@@ -6,6 +6,7 @@ import PlacesAutocomplete from 'react-places-autocomplete';
 
 import { geocodeByAddress, geocodeByPlaceId } from 'react-places-autocomplete';
 
+import axios from 'axios';
 
 import {connect} from 'react-redux';
 
@@ -27,14 +28,30 @@ import '../styles/weather-icons-master/css/weather-icons.css';
 class WeatherForecast extends React.Component{
 
     constructor(props) {
-   super(props)
-   this.state = { address:""}
-   this.onChange = (address) => {
-      this.setState({ address });
-      let location = address.split(',')[0].split(' ').pop();
-      this.props.dispatch(pull_weather(location));
-   }
- }
+        super(props)
+        this.state = { address:""}
+        this.onChange = (address) => {
+           let geolocation;
+           let lng;
+           let lat;
+           let first = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+           //1600+Amphitheatre+Parkway,+Mountain+View,+CA
+           let second = address;
+           let third = "&key=AIzaSyAUdcxaq33qSuZukuNXgt6PyNxY8POfmKo";
+           let url = first + second + third;
+
+           axios.get(url)
+              .then(response => {
+                lng = response.data.results[0].geometry.location.lng;
+                lat = response.data.results[0].geometry.location.lat;
+                geolocation = lat + "," + lng;
+                this.props.dispatch(pull_weather(geolocation));
+              })
+
+            this.setState({ address });
+
+        }
+    }
 
     handleChange = (e) =>{
 
