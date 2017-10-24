@@ -2,7 +2,6 @@ import React from 'react';
 
 //React Router
 import {BrowserRouter as Router,Route} from 'react-router-dom';
-import {IndexRoute} from 'react-router';
 import { NavLink} from 'react-router-dom';
 
 
@@ -38,7 +37,7 @@ render(){
                       <li className="brand2" onClick={() =>window.location.href = '/'}>
                        BLOOM
                       </li>
-                      <li onClick={() =>window.location.href = '/bloom'} className="signin li small"> ← Go Back </li>
+                      <li onClick={() =>window.location.href = '/'} className="signin li small"> ← Main Page </li>
 
                   </ul>
                 </div>

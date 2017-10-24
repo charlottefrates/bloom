@@ -2,7 +2,6 @@ import React from 'react';
 
 //React Router
 import {BrowserRouter as Router,Route} from 'react-router-dom';
-import {IndexRoute} from 'react-router';
 
 import { connect } from 'react-redux';
 
@@ -18,6 +17,7 @@ import WeatherForecast from '../containers/weatherforcast';
 import Zones from '../containers/zone';
 import Smart from '../containers/smartwatering';
 import History from '../containers/history';
+import Instructions from '../containers/instructions';
 
 
 
@@ -56,6 +56,7 @@ render(){
              <Route path="/weather" component={WeatherForecast} />
              <Route path="/smart" component={Smart} />
              <Route path="/history" component={History} />
+             <Route  path="/instructions" component={Instructions}/>
              </div>
              <img src="http://www.ciderboys.com/wp-content/uploads/2014/05/bg_2.png" className="fix"/>
         </div>
