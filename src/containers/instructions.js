@@ -52,7 +52,7 @@ render(){
                </div>
 
                 <div className="mobile-menu">
-                <a onClick={() =>window.location.href = '/bloom'} className="dropdown-link">← Go Back </a>
+                <li onClick={() =>window.location.href = '/'} className="signin li small"> ← Main Page </li>
                 </div>
 
               </header>
