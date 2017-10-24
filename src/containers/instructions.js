@@ -52,7 +52,7 @@ render(){
                </div>
 
                 <div className="mobile-menu">
-                <li onClick={() =>window.location.href = '/'} className="dropdown-link"> ← Main Page </li>
+                <a onClick={() =>window.location.href = '/'} className="dropdown-link"> ← Main Page </a>
                 </div>
 
               </header>
