@@ -37,13 +37,14 @@ class Zones extends React.Component{
        render() {
          return (
               <div className="main-content">
-           <div className="to-do-app">
-             <div className="header">
-               <h1>Watering Zones</h1>
-             </div>
-             <CreateZone  createZone={this.createZone.bind(this)}/>
-             <ZoneList  deleteZone={this.deleteZone} saveZone={this.saveZone.bind(this)} />
-           </div>
+                <p className="example">Example: Front yard, Zone 1, Back yard</p>
+                <div className="to-do-app"> 
+                  <div className="header">
+                    <h1>Watering Zones</h1>
+                  </div>
+                  <CreateZone  createZone={this.createZone.bind(this)}/>
+                  <ZoneList  deleteZone={this.deleteZone} saveZone={this.saveZone.bind(this)} />
+                </div>
            </div>
          );
        }

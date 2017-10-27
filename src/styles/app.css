@@ -23,6 +23,11 @@ html, #root, .appContainer, .homeContainer {
      width: 28%;
 }
 
+.example{
+    text-align: center;
+    margin-bottom: -30px; 
+}
+
 .guide {
     font-size: 100%;
     text-transform: uppercase;
