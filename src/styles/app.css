@@ -534,7 +534,7 @@ header {
 
 /* phones */
 @media all and (min-width: 320px) and (max-width: 667px) {
-     body {}
+   
 
      .fix {
           display: none;
@@ -818,7 +818,7 @@ header {
 
 /* ipad */
 @media all and (min-width: 768px) and (max-width: 1024px) and (-webkit-min-pixel-ratio: 1) {
-     body {}
+    
      .hidden{
                overflow: hidden;
      }
@@ -925,18 +925,7 @@ header {
           padding-right: 10px;
           background: none;
      }
-     video#blooming {
-          position: relative;
-          top: 35%;
-          left: 21%;
-          padding: 0;
-          height: 700px;
-          height: %30;
-          background-size: cover;
-          -webkit-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-     }
+     
      .about-header-container {
           top: -821px;
           margin-left: 34%;
@@ -1119,18 +1108,7 @@ header {
           padding-left: 14% !important;
           padding-right: 10%;
      }
-     video#blooming {
-          position: relative;
-          top: 35%;
-          left: 16%;
-          padding: 0;
-          height: 644px;
-          height: %30;
-          background-size: cover;
-          -webkit-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-     }
+  
      .about-header-container {
           display: none;
      }
